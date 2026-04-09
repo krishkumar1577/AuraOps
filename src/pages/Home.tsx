@@ -58,66 +58,90 @@ const navLinks = [
 
 export default function Home() {
   return (
-    <main className="w-screen h-screen overflow-hidden flex flex-col fixed top-0 left-0 relative bg-black">
-      {/* ════ Light Pillar Background ════ */}
-      <div className="absolute inset-0">
-        <LightPillar
-          topColor="#5227FF"
-          bottomColor="#FF9FFC"
-          intensity={1.5}
-          rotationSpeed={0.4}
-          glowAmount={0.002}
-          pillarWidth={8.3}
-          pillarHeight={0.3}
-          noiseIntensity={0.2}
-          pillarRotation={55}
-          interactive={false}
-          mixBlendMode="screen"
-          quality="high"
-        />
-      </div>
-
-      {/* ════ Top Navigation (outside content layer) ════ */}
-      <div className="relative z-20 pt-4 flex justify-center">
-        <TopNotchNav links={navLinks} />
-      </div>
-
-      {/* ════ Content Layer ════ */}
-      <div className="relative z-10 flex flex-col flex-1 w-full">
-        {/* ── Hero Section ── */}
-        <section className="flex-1 flex flex-col items-center justify-center text-center px-6 pb-6">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 mb-8 bg-white/5 border border-white/15 rounded-full px-4 py-2 backdrop-blur-sm">
-            <span className="px-3 py-1 bg-blue-600/80 text-white text-xs font-bold rounded-full">
-              Gen AI
-            </span>
-            <span className="text-sm font-medium text-white/80">Intelligent Automation</span>
-          </div>
-
-          {/* Main Headline */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight tracking-tighter drop-shadow-lg">
-            We Make AI Work
-            <br />
-            Not Against You
-          </h1>
-
-          {/* Subheading */}
-          <p className="text-base md:text-lg text-white/60 mb-10 max-w-lg leading-relaxed">
-            Intelligent automation that saves time, cuts costs, and makes your business run smoother — powered by next-gen AI.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex gap-4 mb-16">
-            <RollingButton label="Book a call" variant="primary" href="#" />
-            <RollingButton label="Learn more" variant="ghost" href="#" />
-          </div>
-        </section>
-
-        {/* ── Bottom Marquee ── */}
-        <div className="flex justify-center pb-0">
-          <BottomMarqueeNotch logos={logos} speed={26} maxWidth={800} />
+    <>
+      {/* ════ SECTION 1: Hero ════ */}
+      <main className="w-screen h-screen overflow-hidden flex flex-col relative bg-black">
+        {/* ════ Light Pillar Background ════ */}
+        <div className="absolute inset-0">
+          <LightPillar
+            topColor="#5227FF"
+            bottomColor="#FF9FFC"
+            intensity={1.5}
+            rotationSpeed={0.4}
+            glowAmount={0.002}
+            pillarWidth={8.3}
+            pillarHeight={0.3}
+            noiseIntensity={0.2}
+            pillarRotation={55}
+            interactive={false}
+            mixBlendMode="screen"
+            quality="high"
+          />
         </div>
-      </div>
-    </main>
+
+        {/* ════ Top Navigation ════ */}
+        <div className="relative z-20 pt-4 flex justify-center">
+          <TopNotchNav links={navLinks} />
+        </div>
+
+        {/* ════ Content Layer ════ */}
+        <div className="relative z-10 flex flex-col flex-1 w-full">
+          {/* ── Hero Section ── */}
+          <section className="flex-1 flex flex-col items-center justify-center text-center px-6 pb-6">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 mb-8 bg-white/5 border border-white/15 rounded-full px-4 py-2 backdrop-blur-sm">
+              <span className="px-3 py-1 bg-blue-600/80 text-white text-xs font-bold rounded-full">
+                Gen AI
+              </span>
+              <span className="text-sm font-medium text-white/80">Intelligent Automation</span>
+            </div>
+
+            {/* Main Headline */}
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight tracking-tighter drop-shadow-lg">
+              We Make AI Work
+              <br />
+              Not Against You
+            </h1>
+
+            {/* Subheading */}
+            <p className="text-base md:text-lg text-white/60 mb-10 max-w-lg leading-relaxed">
+              Intelligent automation that saves time, cuts costs, and makes your business run smoother — powered by next-gen AI.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex gap-4 mb-16">
+              <RollingButton label="Book a call" variant="primary" href="#" />
+              <RollingButton label="Learn more" variant="ghost" href="#" />
+            </div>
+          </section>
+
+          {/* ── Bottom Marquee ── */}
+          <div className="flex justify-center pb-0">
+            <BottomMarqueeNotch logos={logos} speed={26} maxWidth={800} />
+          </div>
+        </div>
+      </main>
+
+      {/* ════ SECTION 2: Impact (Scrollable) ════ */}
+      <div className="w-screen h-screen flex items-center justify-center bg-black">
+          <div className="text-center px-6">
+            <h2 
+              className="font-black tracking-tighter"
+              style={{
+                fontSize: "clamp(120px, 25vw, 350px)",
+                background: "linear-gradient(135deg, #e8e8e8 0%, #c0c0c0 25%, #e8e8e8 50%, #c0c0c0 75%, #e8e8e8 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                textShadow: "0 20px 40px rgba(255,255,255,0.1), 0 0 60px rgba(200,200,200,0.15)",
+                filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.5))",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              10 M
+            </h2>
+          </div>
+        </div>
+    </>
   )
 }

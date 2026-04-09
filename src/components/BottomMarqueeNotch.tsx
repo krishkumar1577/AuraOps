@@ -128,8 +128,6 @@ export default function BottomMarqueeNotch({
         </svg>
       </div>
 
-      {/* Floor strip */}
-      <div style={{ width: "100%", height: 3, background: "#0e0e14" }} />
 
       <style>{`
         @keyframes marqueeScroll {
