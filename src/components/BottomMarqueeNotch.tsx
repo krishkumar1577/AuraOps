@@ -34,12 +34,12 @@ export default function BottomMarqueeNotch({
           style={{
             flex: 1,
             maxWidth,
-            height: 66,
+            height: 57,
             background: "#0e0e14",
-            borderRadius: "20px 20px 0 0",
+            borderRadius: "0",
             position: "relative",
             overflow: "hidden",
-            border: "1px solid rgba(255,255,255,0.1)",
+            // border: "1px solid rgba(255,255,255,0.1)",
             borderBottom: "none",
             boxShadow:
               "inset 0 3px 12px rgba(0,0,0,1), inset 0 10px 40px rgba(0,0,0,0.7), inset 6px 0 28px rgba(0,0,0,0.7), inset -6px 0 28px rgba(0,0,0,0.7)",

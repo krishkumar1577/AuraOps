@@ -80,7 +80,7 @@ export default function Home() {
       {/* ════ Content Layer ════ */}
       <div className="relative z-10 flex flex-col h-full">
         {/* ── Top Navigation ── */}
-        <div className="pt-6 flex justify-center">
+        <div className="pt-8 flex justify-center">
           <TopNotchNav links={navLinks} />
         </div>
 

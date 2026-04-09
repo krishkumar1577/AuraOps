@@ -12,16 +12,23 @@ interface TopNotchNavProps {
   logo?: React.ReactNode;
 }
 
-const DefaultLogo = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="1.6" />
-    <path
-      d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4"
-      stroke="white"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-    />
-    <circle cx="12" cy="12" r="1.8" fill="white" />
+const DefaultLogo = ({ collapsed }: { collapsed: boolean }) => (
+  <svg 
+    viewBox="0 0 512 512" 
+    className={`${collapsed ? 'w-10 h-10' : 'w-8 h-8'} transition-all duration-500`}
+    fill="none"
+  >
+    <defs>
+      <style>
+        {`.stroke { fill: none; stroke: white; stroke-width: 28; stroke-linecap: round; stroke-linejoin: round; }`}
+      </style>
+    </defs>
+    {/* Triangle-like A */}
+    <path className="stroke" d="M120 340 L256 120 L392 340" />
+    {/* Cross/loop forming O */}
+    <circle className="stroke" cx="300" cy="300" r="90" />
+    {/* Connecting loop stroke */}
+    <path className="stroke" d="M180 320 C240 260, 340 260, 380 320" />
   </svg>
 );
 
@@ -34,107 +41,79 @@ const defaultLinks: NavLink[] = [
 
 export default function TopNotchNav({
   links = defaultLinks,
-  logo = <DefaultLogo />,
 }: TopNotchNavProps) {
   const [open, setOpen] = useState(false);
 
-  const mid = Math.floor(links.length / 2);
-  const leftLinks = links.slice(0, mid);
-  const rightLinks = links.slice(mid);
-
   return (
     <div
-      className="relative w-full flex justify-center z-50"
+      className="relative flex justify-center pointer-events-auto z-20"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      {/* Left corner curve */}
-      <svg
-        className="absolute top-0 z-10 pointer-events-none"
-        style={{ left: `calc(50% - ${open ? 185 : 48}px - 28px)`, transition: "left 0.55s cubic-bezier(0.22,1,0.36,1)" }}
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
-        fill="none"
-      >
-        <path d="M28 0 Q0 0 0 28 L28 28 Z" fill="#000" />
-      </svg>
-
-      {/* Notch body */}
+      {/* Main notch circle */}
       <div
-        className="relative flex items-center justify-center overflow-hidden"
-        style={{
-          width: open ? 370 : 96,
-          height: 54,
-          background: "#111118",
-          borderRadius: "0 0 22px 22px",
-          border: "1px solid rgba(255,255,255,0.1)",
-          borderTop: "none",
-          boxShadow: "0 4px 32px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255,255,255,0.04)",
-          transition: "width 0.55s cubic-bezier(0.22,1,0.36,1)",
-        }}
+        className={`relative h-16 rounded-full overflow-hidden transition-all duration-700 ease-out ${
+          open ? 'w-full md:w-[650px]' : 'w-16'
+        }`}
       >
-        {/* Closed: logo only */}
-        <div
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%,-50%)",
-            opacity: open ? 0 : 1,
-            transition: "opacity 0.15s ease",
-            pointerEvents: open ? "none" : "auto",
-          }}
-        >
-          {logo}
-        </div>
+        {/* Background with glassmorphism */}
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-xl border border-white/15 rounded-full" />
 
-        {/* Open: nav links */}
-        <div
-          className="flex items-center whitespace-nowrap"
-          style={{
-            opacity: open ? 1 : 0,
-            pointerEvents: open ? "auto" : "none",
-            transition: `opacity 0.3s ease ${open ? "0.2s" : "0s"}`,
-          }}
-        >
-          {leftLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-white/60 hover:text-white transition-colors duration-200"
-              style={{ fontSize: 12.5, fontWeight: 500, padding: "0 15px", letterSpacing: "0.01em", textDecoration: "none" }}
-            >
-              {link.label}
-            </a>
-          ))}
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none rounded-full" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/8 via-transparent to-pink-600/8 pointer-events-none rounded-full" />
 
-          <span className="px-3 flex items-center">{logo}</span>
+        {/* Content container */}
+        <div className="relative h-full flex items-center justify-center px-8">
+          {/* Logo center (collapse state) */}
+          <div
+            className={`absolute transition-all duration-500 ${
+              open
+                ? 'opacity-0 scale-95 pointer-events-none'
+                : 'opacity-100 scale-100'
+            }`}
+          >
+            <DefaultLogo collapsed={!open} />
+          </div>
 
-          {rightLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-white/60 hover:text-white transition-colors duration-200"
-              style={{ fontSize: 12.5, fontWeight: 500, padding: "0 15px", letterSpacing: "0.01em", textDecoration: "none" }}
-            >
-              {link.label}
-            </a>
-          ))}
+          {/* Navigation (expand state) */}
+          <nav
+            className={`flex items-center gap-10 transition-all duration-500 ${
+              open
+                ? 'opacity-100 scale-100 pointer-events-auto'
+                : 'opacity-0 scale-95 pointer-events-none absolute'
+            }`}
+          >
+            {links.slice(0, Math.floor(links.length / 2)).map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
+              >
+                {link.label}
+              </a>
+            ))}
+
+            {/* Center logo in nav */}
+            <div className="flex items-center justify-center w-10 h-10">
+              <DefaultLogo collapsed={false} />
+            </div>
+
+            {links.slice(Math.floor(links.length / 2)).map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Shine effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none rounded-full" />
         </div>
       </div>
-
-      {/* Right corner curve */}
-      <svg
-        className="absolute top-0 z-10 pointer-events-none"
-        style={{ left: `calc(50% + ${open ? 185 : 48}px)`, transition: "left 0.55s cubic-bezier(0.22,1,0.36,1)" }}
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
-        fill="none"
-      >
-        <path d="M0 0 Q28 0 28 28 L0 28 Z" fill="#000" />
-      </svg>
     </div>
   );
 }
