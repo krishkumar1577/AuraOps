@@ -46,7 +46,7 @@ export default function TopNotchNav({
 
   return (
     <div
-      className="relative flex justify-center pointer-events-auto z-20 "
+      className="relative flex justify-center pointer-events-auto z-20 mt-12"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >

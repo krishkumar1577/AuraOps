@@ -58,7 +58,7 @@ const navLinks = [
 
 export default function Home() {
   return (
-    <main className="w-screen h-screen overflow-hidden flex flex-col relative bg-black">
+    <main className="w-screen h-screen overflow-hidden flex flex-col fixed top-0 left-0 relative bg-black">
       {/* ════ Light Pillar Background ════ */}
       <div className="absolute inset-0">
         <LightPillar
@@ -77,15 +77,15 @@ export default function Home() {
         />
       </div>
 
-      {/* ════ Content Layer ════ */}
-      <div className="relative z-10 flex flex-col h-full">
-        {/* ── Top Navigation ── */}
-        <div className="pt-8 flex justify-center">
-          <TopNotchNav links={navLinks} />
-        </div>
+      {/* ════ Top Navigation (outside content layer) ════ */}
+      <div className="relative z-20 pt-4 flex justify-center">
+        <TopNotchNav links={navLinks} />
+      </div>
 
+      {/* ════ Content Layer ════ */}
+      <div className="relative z-10 flex flex-col flex-1 w-full">
         {/* ── Hero Section ── */}
-        <section className="flex-1 flex flex-col items-center justify-center text-center px-6 pb-20">
+        <section className="flex-1 flex flex-col items-center justify-center text-center px-6 pb-6">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 mb-8 bg-white/5 border border-white/15 rounded-full px-4 py-2 backdrop-blur-sm">
             <span className="px-3 py-1 bg-blue-600/80 text-white text-xs font-bold rounded-full">
@@ -114,7 +114,7 @@ export default function Home() {
         </section>
 
         {/* ── Bottom Marquee ── */}
-        <div className="flex justify-center pb-8">
+        <div className="flex justify-center pb-0">
           <BottomMarqueeNotch logos={logos} speed={26} maxWidth={800} />
         </div>
       </div>
