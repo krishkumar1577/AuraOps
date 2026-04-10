@@ -2,6 +2,8 @@ import LightPillar from '../components/LightPillar'
 import TopNotchNav from '../components/TopNotchNav'
 import RollingButton from '../components/RollingButton'
 import BottomMarqueeNotch from '../components/BottomMarqueeNotch'
+import BenefitsOrbital from '../components/BenefitsOrbital'
+import AIPipeline from '../components/AIPipeline'
 import type { LogoItem } from '../components/BottomMarqueeNotch'
 
 // ────── Logo Icons ──────────────────────────────────────────────────────
@@ -142,6 +144,14 @@ export default function Home() {
             </h2>
           </div>
         </div>
+
+      {/* ════ SECTION 3: Benefits Orbital ════ */}
+      <BenefitsOrbital />
+
+      {/* ════ SECTION 4: AI Pipeline ════ */}
+      <div className="w-screen bg-black py-24">
+        <AIPipeline />
+      </div>
     </>
   )
 }
