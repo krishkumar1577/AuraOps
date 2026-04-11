@@ -98,7 +98,7 @@ export default function PipelineNode({ node, state, canvasWidth, canvasHeight }:
           <div
             className="absolute flex items-center justify-center"
             style={{
-              top: -6, right: -6,
+              top: 4, right: 1,
               width: 16, height: 16,
               borderRadius: '50%',
               background: '#22c55e',

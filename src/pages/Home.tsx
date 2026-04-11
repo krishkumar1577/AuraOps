@@ -1,9 +1,11 @@
-import LightPillar from '../components/LightPillar'
+// import LightPillar from '../components/LightPillar'
 import TopNotchNav from '../components/TopNotchNav'
 import RollingButton from '../components/RollingButton'
 import BottomMarqueeNotch from '../components/BottomMarqueeNotch'
 import BenefitsOrbital from '../components/BenefitsOrbital'
 import AIPipeline from '../components/AIPipeline'
+import IntegrationsPipeline from '../components/IntegrationsPipeline'
+import TypewriterEffect from '../components/TypewriterEffect'
 import type { LogoItem } from '../components/BottomMarqueeNotch'
 
 // ────── Logo Icons ──────────────────────────────────────────────────────
@@ -64,7 +66,7 @@ export default function Home() {
       {/* ════ SECTION 1: Hero ════ */}
       <main className="w-screen h-screen overflow-hidden flex flex-col relative bg-black">
         {/* ════ Light Pillar Background ════ */}
-        <div className="absolute inset-0">
+        {/* <div className="absolute inset-0">
           <LightPillar
             topColor="#5227FF"
             bottomColor="#FF9FFC"
@@ -79,7 +81,7 @@ export default function Home() {
             mixBlendMode="screen"
             quality="high"
           />
-        </div>
+        </div> */}
 
         {/* ════ Top Navigation ════ */}
         <div className="relative z-20 pt-4 flex justify-center">
@@ -127,10 +129,18 @@ export default function Home() {
       {/* ════ SECTION 2: Impact (Scrollable) ════ */}
       <div className="w-screen h-screen flex items-center justify-center bg-black">
           <div className="text-center px-6">
-            <h2 
-              className="font-black tracking-tighter"
+            <TypewriterEffect
+              phrases={[
+                "10M+ GPU Hours Optimized",
+                "10x Faster Rebuilds",
+                "10 Frameworks Supported"
+              ]}
+              typingSpeed={40}
+              deletingSpeed={25}
+              pauseDuration={2500}
               style={{
-                fontSize: "clamp(120px, 25vw, 350px)",
+                fontSize: "clamp(60px, 15vw, 200px)",
+                fontWeight: 900,
                 background: "linear-gradient(135deg, #e8e8e8 0%, #c0c0c0 25%, #e8e8e8 50%, #c0c0c0 75%, #e8e8e8 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
@@ -138,20 +148,23 @@ export default function Home() {
                 textShadow: "0 20px 40px rgba(255,255,255,0.1), 0 0 60px rgba(200,200,200,0.15)",
                 filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.5))",
                 letterSpacing: "-0.02em",
+                display: "block",
+                lineHeight: "1.1",
               }}
-            >
-              10 M
-            </h2>
+            />
           </div>
         </div>
 
       {/* ════ SECTION 3: Benefits Orbital ════ */}
       <BenefitsOrbital />
 
-      {/* ════ SECTION 4: AI Pipeline ════ */}
-      <div className="w-screen bg-black py-24">
+      {/* ════ SECTION 4: AuraOps Orchestration Pipeline ════ */}
+      <div className="w-screen bg-black py-16">
         <AIPipeline />
       </div>
+
+      {/* ════ SECTION 5: Integrations Pipeline ════ */}
+      <IntegrationsPipeline />
     </>
   )
 }

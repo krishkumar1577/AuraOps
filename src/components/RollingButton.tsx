@@ -10,6 +10,7 @@ interface RollingButtonProps {
   onClick?: () => void;
   href?: string;
   className?: string;
+  disabled?: boolean;
 }
 
 const variantStyles: Record<Variant, React.CSSProperties> = {
@@ -48,6 +49,7 @@ export default function RollingButton({
   onClick,
   href,
   className = "",
+  disabled = false,
 }: RollingButtonProps) {
   useRef<HTMLButtonElement | HTMLAnchorElement>(null);
 
@@ -129,12 +131,14 @@ export default function RollingButton({
     fontSize: 13.5,
     fontWeight: 600,
     letterSpacing: "-0.2px",
-    cursor: "pointer",
+    cursor: disabled ? "default" : "pointer",
     border: "none",
     overflow: "hidden",
     position: "relative",
     transition: "transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease",
     textDecoration: "none",
+    opacity: disabled ? 0.5 : 1,
+    pointerEvents: disabled ? "none" : "auto",
   };
 
   if (href) {
@@ -154,10 +158,11 @@ export default function RollingButton({
   return (
     <button
       onClick={onClick}
+      disabled={disabled}
       className={`rolling-btn ${className}`}
       style={baseStyle}
-      onMouseEnter={(e) => Object.assign((e.currentTarget as HTMLElement).style, hoverStyles[variant])}
-      onMouseLeave={(e) => Object.assign((e.currentTarget as HTMLElement).style, variantStyles[variant])}
+      onMouseEnter={(e) => !disabled && Object.assign((e.currentTarget as HTMLElement).style, hoverStyles[variant])}
+      onMouseLeave={(e) => !disabled && Object.assign((e.currentTarget as HTMLElement).style, variantStyles[variant])}
     >
       {innerContent}
     </button>

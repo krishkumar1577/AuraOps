@@ -1,0 +1,90 @@
+/* ── ORBIT ANIMATIONS ── */
+@keyframes spin1 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin2 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin3 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes counter1 {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+@keyframes counter2 {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+@keyframes counter3 {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Orbit group animations */
+.orbit-group-1 {
+  animation: spin1 22s linear infinite;
+}
+
+.orbit-group-2 {
+  animation: spin2 30s linear infinite;
+}
+
+.orbit-group-3 {
+  animation: spin3 40s linear infinite reverse;
+}
+
+/* Counter-spin chips */
+.orbit-group-1 .icon-chip {
+  animation: counter1 22s linear infinite;
+}
+
+.orbit-group-2 .icon-chip {
+  animation: counter2 30s linear infinite;
+}
+
+.orbit-group-3 .icon-chip {
+  animation: counter3 40s linear infinite reverse;
+}
+
+/* Tooltip animation */
+.icon-chip[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 50;
+}
+
+.icon-chip[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
+/* Subtle background tint */
+.integration-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 60%, rgba(230, 240, 255, 0.5) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(220, 255, 230, 0.3) 0%, transparent 50%);
+  pointer-events: none;
+}

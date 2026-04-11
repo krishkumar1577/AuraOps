@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import PipelinePaths from './PipelinePaths'
 import PipelineNodeEl from './PipelineNode'
+import RollingButton from '../RollingButton'
 import { NODES, EXEC_ORDER, DURATIONS, STATUS_MSGS, CANVAS_HEIGHT } from './constants'
 import type { NodeState } from './types'
 
@@ -119,45 +120,25 @@ export default function AIPipeline() {
           }}
         />
 
-        {/* ── HEADER ── */}
-        <div className="relative flex items-end justify-between flex-wrap gap-3 mb-7" style={{ zIndex: 2 }}>
-          <div>
-            <h2 className="text-white font-extrabold" style={{ fontSize: 18, letterSpacing: '-0.6px' }}>
-              AI Deployment Pipeline
+        {/* ── INTRO SECTION WITH BUTTON ── */}
+        <div className="relative flex items-start justify-between gap-8 mb-12 max-w-7xl mx-auto px-8" style={{ zIndex: 2 }}>
+          <div className="flex-1 max-w-2xl">
+            <h2 className="text-5xl md:text-6xl font-light text-white mb-4 tracking-tight" style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400, letterSpacing: '-0.01em' }}>
+              AuraOps Orchestration Engine
             </h2>
-            <p
-              className="mt-1"
-              style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 11, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.02em' }}
-            >
-              model: gpt-prod-v4.1 · env: production · region: us-east-1
+            <p className="text-base text-white/60 leading-relaxed">
+              Watch as AuraOps analyzes your repository, optimizes dependencies, separates model weights from logic, and orchestrates a deterministic deployment pipeline to GPU clouds. From code to production in one command.
             </p>
           </div>
-
-          <button
-            onClick={launch}
-            disabled={isRunning}
-            className="flex items-center gap-2 rounded-[10px] font-bold transition-all duration-200"
-            style={{
-              padding: '9px 18px',
-              background: '#040d04',
-              border: '1px solid',
-              borderColor: isRunning ? 'rgba(74,222,128,0.45)' : 'rgba(74,222,128,0.28)',
-              color: '#4ade80',
-              fontSize: 12.5,
-              fontFamily: 'Inter, sans-serif',
-              boxShadow: isRunning ? '0 0 24px rgba(74,222,128,0.12)' : undefined,
-              cursor: isRunning ? 'default' : 'pointer',
-            }}
-          >
-            <span
-              className="w-[7px] h-[7px] rounded-full flex-shrink-0"
-              style={{
-                background: '#4ade80',
-                animation: isRunning ? 'btnDot 0.7s ease-in-out infinite' : undefined,
-              }}
+          
+          <div className="flex-shrink-0 pt-2">
+            <RollingButton 
+              label={isRunning ? 'Running...' : done.length === EXEC_ORDER.length ? 'Relaunch' : 'Launch'}
+              variant="primary"
+              onClick={launch}
+              disabled={isRunning}
             />
-            {isRunning ? 'Running...' : done.length === EXEC_ORDER.length ? 'Relaunch' : 'Launch AI pipeline'}
-          </button>
+          </div>
         </div>
 
         {/* ── CANVAS ── */}

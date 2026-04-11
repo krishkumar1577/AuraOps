@@ -11,8 +11,8 @@ const cardsData = [
         <path d="M8.5 4.5v8M6.2 7C6.2 5.78 7.23 4.8 8.5 4.8s2.3.98 2.3 2.2S9.77 9.2 8.5 9.2s-2.3.98-2.3 2.2S7.23 14 8.5 14" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2" strokeLinecap="round" />
       </svg>
     ),
-    title: 'Cost Efficient.',
-    desc: 'Reduce manual workload across your team.',
+    title: 'Zero-Config.',
+    desc: 'Single command analyzes and deploys automatically.',
   },
   {
     id: 'fi',
@@ -24,8 +24,8 @@ const cardsData = [
         <path d="M6.5 14.2h4M7.2 15.5h2.6" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2" strokeLinecap="round" />
       </svg>
     ),
-    title: 'Better Insights.',
-    desc: 'Understand data quickly and clearly.',
+    title: 'Model Separation.',
+    desc: 'Weights split from logic for lightning rebuilds.',
   },
   {
     id: 'ft',
@@ -37,8 +37,8 @@ const cardsData = [
         <path d="M8.5 5.5V8.5l2.2 2.2" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
-    title: 'Time saving.',
-    desc: 'Automate tasks instantly without friction.',
+    title: 'CUDA Native.',
+    desc: 'Intelligent handling of GPU dependencies & optimization.',
   },
   {
     id: 'fsc',
@@ -49,8 +49,8 @@ const cardsData = [
         <path d="M2.5 13V9.5M5.5 13V6.5M8.5 13V3.5M11.5 13V7M14.5 13V5" stroke="rgba(255,255,255,0.7)" strokeWidth="1.3" strokeLinecap="round" />
       </svg>
     ),
-    title: 'Easy Scaling.',
-    desc: 'Grow without extra effort or complexity.',
+    title: 'AI Framework Aware.',
+    desc: 'Native support for LangChain, PyTorch, and more.',
   },
   {
     id: 'fw',
@@ -62,8 +62,8 @@ const cardsData = [
         <path d="M8.5 8.5h5M10.5 6l3 2.5-3 2.5" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
-    title: 'Faster Workflows.',
-    desc: 'Speed up operations across every step.',
+    title: 'Deterministic.',
+    desc: 'Reproducible builds every deployment, guaranteed.',
   },
   {
     id: 'fa',
@@ -76,8 +76,8 @@ const cardsData = [
         <circle cx="8.5" cy="8.5" r="1.1" fill="rgba(255,255,255,0.7)" />
       </svg>
     ),
-    title: 'Higher Accuracy.',
-    desc: 'Minimize human errors in every process.',
+    title: 'GPU Cloud Ready.',
+    desc: 'Seamless deployment to specialized GPU infrastructure.',
   },
 ];
 
