@@ -1,4 +1,5 @@
 import './IntegrationsPipeline.css';
+import RollingButton from './RollingButton';
 
 const IntegrationsPipeline = () => {
   const iconChips = [
@@ -224,15 +225,15 @@ const IntegrationsPipeline = () => {
   ];
 
   return (
-    <section className="bg-white text-neutral-900 relative">
+    <section className="bg-black text-white relative">
       {/* Hero Section */}
       <div className="integration-hero relative grid grid-cols-2 items-center min-h-[72vh] px-20 py-20 gap-10 overflow-hidden">
         {/* Orbit Container */}
         <div className="relative w-[420px] h-[420px] mx-auto flex-shrink-0">
           {/* Dashed Rings */}
-          <div className="absolute top-1/2 left-1/2 w-[170px] h-[170px] border-[1.5px] border-dashed border-black/12 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] border-[1.5px] border-dashed border-black/12 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute top-1/2 left-1/2 w-[410px] h-[410px] border-[1.5px] border-dashed border-black/12 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute top-1/2 left-1/2 w-[170px] h-[170px] border-[1.5px] border-dashed border-white/12 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] border-[1.5px] border-dashed border-white/12 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute top-1/2 left-1/2 w-[410px] h-[410px] border-[1.5px] border-dashed border-white/12 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
 
           {/* Central Hub */}
           <div className="absolute top-1/2 left-1/2 w-[72px] h-[72px] bg-black rounded-full flex items-center justify-center z-20 transform -translate-x-1/2 -translate-y-1/2"
@@ -270,36 +271,31 @@ const IntegrationsPipeline = () => {
 
         {/* Right Text Column */}
         <div className="pl-5">
-          <span className="inline-block text-xs font-medium uppercase tracking-widest text-neutral-900 border-[1.5px] border-black/20 px-4 py-1.5 rounded mb-7">
+          <span className="inline-block text-xs font-medium uppercase tracking-widest text-white border-[1.5px] border-white/30 px-4 py-1.5 rounded mb-7">
             Work with your tools
           </span>
-          <h1 className="font-serif text-5xl font-light leading-tight mb-6">
+          <h1 className="font-serif text-5xl font-light leading-tight mb-6 text-white">
             Seamless Integrations,<br/>Zero Hassle
           </h1>
-          <p className="text-base font-light leading-relaxed text-neutral-600 max-w-md mb-10">
+          <p className="text-base font-light leading-relaxed text-white/60 max-w-md mb-10">
             Connect your AI pipelines in seconds — from GitHub Actions to Kubernetes, our agents orchestrate wherever you ship.
           </p>
-          <a href="#" className="inline-flex items-center gap-2.5 bg-neutral-900 text-white text-sm font-medium px-7 py-3.5 rounded-lg transition-all hover:bg-neutral-800 hover:-translate-y-0.5">
-            Explore Features
-            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
+          <RollingButton label="Explore Features" />
         </div>
       </div>
 
       {/* Feature Cards Section */}
       <div className="px-20 pb-20 grid grid-cols-3 gap-4">
         {cards.map((card, idx) => (
-          <div key={idx} className="bg-white/70 border border-black/10 rounded-2xl p-6 flex gap-4.5 backdrop-blur-sm transition-all hover:shadow-lg hover:-translate-y-0.5"
-            style={{ background: 'rgba(255,255,255,0.7)' }}>
+          <div key={idx} className="bg-white/8 border border-white/12 rounded-2xl p-6 flex gap-4.5 backdrop-blur-sm transition-all hover:bg-white/12 hover:border-white/20 hover:-translate-y-0.5"
+            style={{ background: 'rgba(255,255,255,0.08)' }}>
             <div className="w-[46px] h-[46px] rounded-full flex-shrink-0 flex items-center justify-center"
               style={{ background: card.bg }}>
               {card.icon}
             </div>
             <div>
-              <div className="text-sm font-semibold text-neutral-900 mb-1">{card.title}</div>
-              <div className="text-xs font-light text-neutral-600 leading-relaxed">{card.desc}</div>
+              <div className="text-sm font-semibold text-white mb-1">{card.title}</div>
+              <div className="text-xs font-light text-white/60 leading-relaxed">{card.desc}</div>
             </div>
           </div>
         ))}

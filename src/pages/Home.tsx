@@ -5,6 +5,7 @@ import BottomMarqueeNotch from '../components/BottomMarqueeNotch'
 import BenefitsOrbital from '../components/BenefitsOrbital'
 import AIPipeline from '../components/AIPipeline'
 import IntegrationsPipeline from '../components/IntegrationsPipeline'
+import BentoGrid from '../components/BentoGrid'
 import TypewriterEffect from '../components/TypewriterEffect'
 import type { LogoItem } from '../components/BottomMarqueeNotch'
 
@@ -165,6 +166,9 @@ export default function Home() {
 
       {/* ════ SECTION 5: Integrations Pipeline ════ */}
       <IntegrationsPipeline />
+
+      {/* ════ SECTION 6: Bento Grid Features ════ */}
+      <BentoGrid />
     </>
   )
 }
