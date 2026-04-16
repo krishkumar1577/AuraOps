@@ -6,7 +6,10 @@ import BenefitsOrbital from '../components/BenefitsOrbital'
 import AIPipeline from '../components/AIPipeline'
 import IntegrationsPipeline from '../components/IntegrationsPipeline'
 import BentoGrid from '../components/BentoGrid'
+import UseCaseComparison from '../components/UseCaseComparison'
 import TypewriterEffect from '../components/TypewriterEffect'
+import FAQSection from '../components/FAQSection'
+import Footer from '../components/Footer'
 import type { LogoItem } from '../components/BottomMarqueeNotch'
 
 // ────── Logo Icons ──────────────────────────────────────────────────────
@@ -169,6 +172,15 @@ export default function Home() {
 
       {/* ════ SECTION 6: Bento Grid Features ════ */}
       <BentoGrid />
+
+      {/* ════ SECTION 7: Use Case Comparison ════ */}
+      <UseCaseComparison />
+
+      {/* ════ SECTION 8: FAQ ════ */}
+      <FAQSection />
+
+      {/* ════ FOOTER ════ */}
+      <Footer />
     </>
   )
 }
