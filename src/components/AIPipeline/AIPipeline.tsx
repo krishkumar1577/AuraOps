@@ -121,23 +121,27 @@ export default function AIPipeline() {
         />
 
         {/* ── INTRO SECTION WITH BUTTON ── */}
-        <div className="relative flex items-start justify-between gap-8 mb-12 max-w-7xl mx-auto px-8" style={{ zIndex: 2 }}>
-          <div className="flex-1 max-w-2xl">
-            <h2 className="text-5xl md:text-6xl font-light text-white mb-4 tracking-tight" style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400, letterSpacing: '-0.01em' }}>
+          <div className="relative z-10 mb-6">
+            <h1 className="section-title text-white tracking-[-2.2px]" style={{ fontSize: 'clamp(32px, 4vw, 52px)' }}>
               AuraOps Orchestration Engine
-            </h2>
-            <p className="text-base text-white/60 leading-relaxed">
-              Watch as AuraOps analyzes your repository, optimizes dependencies, separates model weights from logic, and orchestrates a deterministic deployment pipeline to GPU clouds. From code to production in one command.
-            </p>
+            </h1>
           </div>
-          
-          <div className="flex-shrink-0 pt-2">
-            <RollingButton 
-              label={isRunning ? 'Running...' : done.length === EXEC_ORDER.length ? 'Relaunch' : 'Launch'}
-              variant="primary"
-              onClick={launch}
-              disabled={isRunning}
-            />
+        <div className="relative max-w-7xl mx-auto px-8 mb-8" style={{ zIndex: 2 }}>
+          <div className="relative flex items-start justify-between gap-8 mb-6">
+            <div className="flex-1 max-w-2xl">
+              <p className="body-copy text-secondary leading-relaxed">
+                Watch as AuraOps analyzes your repository, optimizes dependencies, separates model weights from logic, and orchestrates a deterministic deployment pipeline to GPU clouds. From code to production in one command.
+              </p>
+            </div>
+            
+            <div className="flex-shrink-0 pt-2">
+              <RollingButton 
+                label={isRunning ? 'Running...' : done.length === EXEC_ORDER.length ? 'Relaunch' : 'Launch'}
+                variant="primary"
+                onClick={launch}
+                disabled={isRunning}
+              />
+            </div>
           </div>
         </div>
 

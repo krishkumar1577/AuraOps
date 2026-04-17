@@ -1,4 +1,5 @@
 import React from 'react'
+import AuraOpsLogoSvg from '../assets/auraops_true_vector.svg'
 
 interface NavLink {
   label: string
@@ -12,24 +13,26 @@ interface SocialLink {
 }
 
 const navigationLinks: NavLink[] = [
-  { label: 'Product', href: '#product' },
   { label: 'Features', href: '#features' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Docs', href: '#docs' },
+  { label: 'AI Pipeline', href: '#ai-pipeline' },
+  { label: 'Integrations', href: '#integrations' },
+  { label: 'Use Cases', href: '#use-cases' },
+  { label: 'Benefits', href: '#benefits' },
 ]
 
 const companyLinks: NavLink[] = [
-  { label: 'About', href: '#about' },
-  { label: 'Blog', href: '#blog' },
-  { label: 'Careers', href: '#careers' },
-  { label: 'Status', href: '#status' },
+  { label: 'About AuraOps', href: '#about' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'Roadmap', href: '#roadmap' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 const resourceLinks: NavLink[] = [
   { label: 'Documentation', href: '#docs' },
-  { label: 'Tutorials', href: '#tutorials' },
+  { label: 'Getting Started', href: '#getting-started' },
+  { label: 'CLI Guide', href: '#cli' },
   { label: 'API Reference', href: '#api' },
-  { label: 'Community', href: '#community' },
+  { label: 'FAQ', href: '#faq' },
 ]
 
 const legalLinks: NavLink[] = [
@@ -85,32 +88,32 @@ export default function Footer(): React.ReactElement {
     <footer className="bg-black border-t border-white/10">
       {/* ── Main Footer Content ── */}
       <div className="max-w-7xl mx-auto px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-12 mb-12">
           {/* ── Brand Section ── */}
           <div className="md:col-span-1">
-            <div className="mb-4 flex items-center gap-2">
-              <div className="w-8 h-8 bg-white/10 border border-white/20 rounded-lg flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <circle cx="8" cy="8" r="6" stroke="white" strokeWidth="1.2" />
-                  <path d="M8 4v8M4 8h8" stroke="white" strokeWidth="1.2" strokeLinecap="round" />
-                </svg>
-              </div>
+            <div className="mb-4 flex items-center gap-3">
+              <img
+                src={AuraOpsLogoSvg}
+                alt="AuraOps Logo"
+                className="w-10 h-10 flex-shrink-0"
+                style={{ filter: 'brightness(0) invert(1)' }}
+              />
               <span className="text-lg font-bold text-white">AuraOps</span>
             </div>
-            <p className="text-sm text-white/40">
+            <p className="text-system body-copy">
               Eliminate the Infrastructure Tax. Automate AI deployments at scale.
             </p>
           </div>
 
-          {/* ── Product Links ── */}
+          {/* ── Features Links ── */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4 tracking-wider">PRODUCT</h4>
+            <h4 className="system-label mb-4">FEATURES</h4>
             <ul className="space-y-2.5">
               {navigationLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-white/50 hover:text-white/80 transition-colors"
+                    className="text-system body-copy hover:text-white/80 transition-colors"
                   >
                     {link.label}
                   </a>
@@ -121,13 +124,13 @@ export default function Footer(): React.ReactElement {
 
           {/* ── Company Links ── */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4 tracking-wider">COMPANY</h4>
+            <h4 className="system-label mb-4">COMPANY</h4>
             <ul className="space-y-2.5">
               {companyLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-white/50 hover:text-white/80 transition-colors"
+                    className="text-system body-copy hover:text-white/80 transition-colors"
                   >
                     {link.label}
                   </a>
@@ -138,13 +141,13 @@ export default function Footer(): React.ReactElement {
 
           {/* ── Resources Links ── */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4 tracking-wider">RESOURCES</h4>
+            <h4 className="system-label mb-4">RESOURCES</h4>
             <ul className="space-y-2.5">
               {resourceLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-white/50 hover:text-white/80 transition-colors"
+                    className="text-system body-copy hover:text-white/80 transition-colors"
                   >
                     {link.label}
                   </a>
@@ -153,16 +156,47 @@ export default function Footer(): React.ReactElement {
             </ul>
           </div>
 
+          {/* ── More Links ── */}
+          <div>
+            <h4 className="system-label mb-4">MORE</h4>
+            <ul className="space-y-2.5">
+              <li>
+                <a
+                  href="#blog"
+                  className="text-system body-copy hover:text-white/80 transition-colors"
+                >
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#changelog"
+                  className="text-system body-copy hover:text-white/80 transition-colors"
+                >
+                  Changelog
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#status"
+                  className="text-system body-copy hover:text-white/80 transition-colors"
+                >
+                  Status
+                </a>
+              </li>
+            </ul>
+          </div>
+
           {/* ── Social Links ── */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4 tracking-wider">CONNECT</h4>
+            <h4 className="system-label mb-4">CONNECT</h4>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
                   title={social.name}
-                  className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all"
+                  className="w-10 h-10 rounded-lg bg-white/5 border border-[#1A1A1A] flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all"
                 >
                   {social.icon}
                 </a>
@@ -177,7 +211,7 @@ export default function Footer(): React.ReactElement {
         {/* ── Bottom Footer ── */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* ── Copyright ── */}
-          <div className="text-sm text-white/40">
+          <div className="text-system">
             © {currentYear} AuraOps, Inc. All rights reserved.
           </div>
 
@@ -187,7 +221,7 @@ export default function Footer(): React.ReactElement {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-xs md:text-sm text-white/40 hover:text-white/60 transition-colors"
+                className="text-system hover:text-white/60 transition-colors"
               >
                 {link.label}
               </a>

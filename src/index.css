@@ -1,12 +1,210 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://rsms.me/inter/inter.css');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
+
+/* ──────────────────────────────────────────────────────────────── */
+/* ROOT CUSTOM PROPERTIES (Linear-Inspired) */
+/* ──────────────────────────────────────────────────────────────── */
+:root {
+  /* Colors */
+  --color-primary: #E4F222;
+  --color-bg-main: #0A0A0A;
+  --color-bg-surface: #141414;
+  --color-text-main: #FFFFFF;
+  --color-text-muted: #A0A0A0;
+  
+  /* Spacing */
+  --space-unit: 4px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-4: 16px;
+  --space-8: 32px;
+  
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  
+  /* Typography */
+  --font-family-sans: 'Inter', system-ui, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
 
 html,
 body {
   width: 100%;
   height: 100%;
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  font-family: var(--font-family-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
   width: 100%;
+}
+
+/* ─── Typography Utilities ─── */
+
+/* Hero Heading: "We Make AI Work..." */
+@layer components {
+  /* Headings - Linear-Inspired (Major Third Scale) */
+  .h1 {
+    font-size: 39.06px;
+    line-height: 1.2;
+    letter-spacing: -0.022em;
+    font-weight: 600;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+  }
+
+  .h2 {
+    font-size: 31.25px;
+    line-height: 1.2;
+    letter-spacing: -0.022em;
+    font-weight: 600;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+  }
+
+  .h3 {
+    font-size: 25px;
+    line-height: 1.3;
+    letter-spacing: -0.021em;
+    font-weight: 500;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+  }
+
+  .h4 {
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.018em;
+    font-weight: 500;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+  }
+
+  /* Body Styles */
+  .body-lg {
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.014em;
+    font-weight: 400;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+  }
+
+  .body {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.011em;
+    font-weight: 400;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+  }
+
+  .body-sm {
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0em;
+    font-weight: 400;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+  }
+
+  .body-muted {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.011em;
+    font-weight: 400;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-muted);
+  }
+
+  /* Code/Mono */
+  .code {
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0em;
+    font-weight: 400;
+    font-family: var(--font-family-mono);
+    color: var(--color-text-main);
+  }
+
+  /* ──────────────────────────────────────────────────────────────── */
+  /* BACKWARD COMPATIBILITY (Legacy Geist Classes → Linear) */
+  /* ──────────────────────────────────────────────────────────────── */
+
+  .hero-heading {
+    font-size: 39.06px;
+    line-height: 1.2;
+    letter-spacing: -0.022em;
+    font-weight: 600;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+  }
+
+  .section-title {
+    font-size: 31.25px;
+    line-height: 1.2;
+    letter-spacing: -0.022em;
+    font-weight: 600;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+  }
+
+  .impact-metric {
+    font-size: 39.06px;
+    line-height: 1.2;
+    letter-spacing: -0.022em;
+    font-weight: 600;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+  }
+
+  .bento-heading {
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.018em;
+    font-weight: 500;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+  }
+
+  .body-copy {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.011em;
+    font-weight: 400;
+    font-family: var(--font-family-sans);
+    color: var(--color-text-main);
+  }
+
+  .system-label {
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    font-family: var(--font-family-mono);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+  }
+
+  .cli-data {
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0em;
+    font-weight: 400;
+    font-family: var(--font-family-mono);
+    color: var(--color-text-main);
+  }
+
+  .text-secondary {
+    color: var(--color-text-muted);
+  }
+
+  .text-system {
+    color: var(--color-text-muted);
+  }
 }

@@ -79,6 +79,20 @@
   opacity: 1;
 }
 
+/* ── MONOCHROME -> COLOR ON HOVER ── */
+.icon-chip svg {
+  transition: filter 0.3s ease;
+  filter: saturate(0%);
+}
+
+.icon-chip:hover svg {
+  filter: saturate(100%);
+}
+
+.icon-chip:hover {
+  animation-play-state: paused;
+}
+
 /* Background - clean black */
 .integration-hero::before {
   content: '';

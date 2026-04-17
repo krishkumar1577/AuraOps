@@ -5,20 +5,18 @@ import BottomMarqueeNotch from '../components/BottomMarqueeNotch'
 import BenefitsOrbital from '../components/BenefitsOrbital'
 import AIPipeline from '../components/AIPipeline'
 import IntegrationsPipeline from '../components/IntegrationsPipeline'
-import BentoGrid from '../components/BentoGrid'
+import BentoGrid from '../components/BentoGrid/BentoGrid'
+import SectionHeader from '../components/SectionHeader'
 import UseCaseComparison from '../components/UseCaseComparison'
 import TypewriterEffect from '../components/TypewriterEffect'
-import FAQSection from '../components/FAQSection'
+import CompactFAQ from '../components/CompactFAQ'
 import Footer from '../components/Footer'
+import AuraOpsLogoSvg from '../assets/auraops_true_vector.svg'
 import type { LogoItem } from '../components/BottomMarqueeNotch'
 
 // ────── Logo Icons ──────────────────────────────────────────────────────
-const AuraOpsIcon = () => (
-  <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-    <circle cx="13" cy="13" r="10" stroke="white" strokeWidth="1.5" />
-    <path d="M8 13c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="white" strokeWidth="1.3" strokeLinecap="round" />
-    <circle cx="13" cy="13" r="2" fill="white" />
-  </svg>
+const AuraOpsLogoIcon = () => (
+  <img src={AuraOpsLogoSvg} alt="AuraOps" className="w-6 h-6" style={{ filter: 'brightness(0) invert(1)' }} />
 )
 
 const VercelIcon = () => (
@@ -49,7 +47,7 @@ const NotionIcon = () => (
 
 // ────── Logo Data ────────────────────────────────────────────────────────
 const logos: LogoItem[] = [
-  { name: "AuraOps", italic: true, icon: <AuraOpsIcon /> },
+  { name: "AuraOps", italic: true, icon: <AuraOpsLogoIcon /> },
   { name: "Vercel", italic: false, icon: <VercelIcon /> },
   { name: "Linear", italic: false, icon: <LinearIcon /> },
   { name: "Framer", italic: false, icon: <FramerIcon /> },
@@ -58,17 +56,18 @@ const logos: LogoItem[] = [
 
 // ────── Navigation Links ─────────────────────────────────────────────────
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Features', href: '#features' },
+  { label: 'Workflow', href: '#workflow' },
+  { label: 'Ecosystem', href: '#ecosystem' },
+  { label: 'Docs', href: 'https://github.com/AuraOps/docs', target: '_blank' as const },
+  { label: 'Waitlist', href: '#waitlist' },
 ]
 
 export default function Home() {
   return (
     <>
-      {/* ════ SECTION 1: Hero ════ */}
-      <main className="w-screen h-screen overflow-hidden flex flex-col relative bg-black">
+      {/* ════ SECTION 1: Hero (Home) ════ */}
+      <main id="home" className="w-screen h-screen overflow-hidden flex flex-col relative bg-black">
         {/* ════ Light Pillar Background ════ */}
         {/* <div className="absolute inset-0">
           <LightPillar
@@ -96,30 +95,47 @@ export default function Home() {
         <div className="relative z-10 flex flex-col flex-1 w-full">
           {/* ── Hero Section ── */}
           <section className="flex-1 flex flex-col items-center justify-center text-center px-6 pb-6">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 mb-8 bg-white/5 border border-white/15 rounded-full px-4 py-2 backdrop-blur-sm">
-              <span className="px-3 py-1 bg-blue-600/80 text-white text-xs font-bold rounded-full">
-                Gen AI
-              </span>
-              <span className="text-sm font-medium text-white/80">Intelligent Automation</span>
+            <SectionHeader
+              badge={
+                <div className="inline-flex items-center gap-2 bg-white/5 border border-white/15 rounded-full px-4 py-2 backdrop-blur-sm">
+                  <span className="px-3 py-1 bg-blue-600/80 text-white text-xs font-bold rounded-full">
+                    Gen AI
+                  </span>
+                  <span className="system-label text-white/80">Intelligent Automation</span>
+                </div>
+              }
+              heading={
+                <>
+                  We Make AI Work
+                  <br />
+                  Not Against You
+                </>
+              }
+              subheading="Intelligent automation that saves time, cuts costs, and makes your business run smoother — powered by next-gen AI."
+              headingClassName="hero-heading mb-6 drop-shadow-lg tracking-tighter"
+              subheadingClassName="body-copy text-secondary mb-10 max-w-lg"
+            />
+
+            {/* Copyable Terminal Snippet */}
+            <div className="flex items-center gap-3 bg-[#0a0a0f] border border-[#1A1A1A] rounded-xl px-10 py-4 mb-8 max-w-2xl mx-auto">
+              <span className="text-green-400 text-xl">$</span>
+              <span className="cli-data">npx auraops init</span>
+              <button
+                onClick={() => navigator.clipboard.writeText('npx auraops init')}
+                className="flex-shrink-0 p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white/60 hover:text-white/80 transition-all"
+                title="Copy to clipboard"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+              </button>
             </div>
-
-            {/* Main Headline */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight tracking-tighter drop-shadow-lg">
-              We Make AI Work
-              <br />
-              Not Against You
-            </h1>
-
-            {/* Subheading */}
-            <p className="text-base md:text-lg text-white/60 mb-10 max-w-lg leading-relaxed">
-              Intelligent automation that saves time, cuts costs, and makes your business run smoother — powered by next-gen AI.
-            </p>
 
             {/* CTA Buttons */}
             <div className="flex gap-4 mb-16">
-              <RollingButton label="Book a call" variant="primary" href="#" />
-              <RollingButton label="Learn more" variant="ghost" href="#" />
+              <RollingButton label="Get Early Access" variant="primary" href="#waitlist" />
+              <RollingButton label="View Docs" variant="ghost" href="https://github.com/AuraOps/docs" />
             </div>
           </section>
 
@@ -130,54 +146,85 @@ export default function Home() {
         </div>
       </main>
 
-      {/* ════ SECTION 2: Impact (Scrollable) ════ */}
-      <div className="w-screen h-screen flex items-center justify-center bg-black">
-          <div className="text-center px-6">
-            <TypewriterEffect
-              phrases={[
-                "10M+ GPU Hours Optimized",
-                "10x Faster Rebuilds",
-                "10 Frameworks Supported"
-              ]}
-              typingSpeed={40}
-              deletingSpeed={25}
-              pauseDuration={2500}
-              style={{
-                fontSize: "clamp(60px, 15vw, 200px)",
-                fontWeight: 900,
-                background: "linear-gradient(135deg, #e8e8e8 0%, #c0c0c0 25%, #e8e8e8 50%, #c0c0c0 75%, #e8e8e8 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                textShadow: "0 20px 40px rgba(255,255,255,0.1), 0 0 60px rgba(200,200,200,0.15)",
-                filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.5))",
-                letterSpacing: "-0.02em",
-                display: "block",
-                lineHeight: "1.1",
-              }}
-            />
-          </div>
-        </div>
+      {/* ════ SECTION 2: Workflow - AuraOps Orchestration Pipeline ════ */}
+      <div id="workflow" className="w-screen bg-black py-16">
+        <AIPipeline />
+      </div>
 
       {/* ════ SECTION 3: Benefits Orbital ════ */}
       <BenefitsOrbital />
 
-      {/* ════ SECTION 4: AuraOps Orchestration Pipeline ════ */}
-      <div className="w-screen bg-black py-16">
-        <AIPipeline />
+      {/* ════ SECTION 4: Impact (Compact Stats) ════ */}
+      <div className="w-screen bg-black py-24 px-8 flex items-center justify-center">
+        <div className="text-center min-h-[220px] flex items-center">
+          <TypewriterEffect
+            phrases={[
+              "10x Faster Rebuilds",
+              "Zero Cold Starts",
+              "Instant Model Deploys",
+              "Zero Config Pipelines"
+            ]}
+            typingSpeed={40}
+            deletingSpeed={25}
+            pauseDuration={2500}
+            className="impact-metric"
+            style={{
+              background: "linear-gradient(135deg, #e8e8e8 0%, #c0c0c0 25%, #e8e8e8 50%, #c0c0c0 75%, #e8e8e8 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              textShadow: "0 20px 40px rgba(255,255,255,0.1), 0 0 60px rgba(200,200,200,0.15)",
+              filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.5))",
+              display: "block",
+              lineHeight: "1.25",
+              fontSize: "clamp(64px, 8vw, 110px)"
+            }}
+          />
+        </div>
       </div>
 
-      {/* ════ SECTION 5: Integrations Pipeline ════ */}
-      <IntegrationsPipeline />
+      {/* ════ SECTION 5: Ecosystem - Integrations Pipeline ════ */}
+      <div id="ecosystem">
+        <IntegrationsPipeline />
+      </div>
 
-      {/* ════ SECTION 6: Bento Grid Features ════ */}
-      <BentoGrid />
+      {/* ════ SECTION 6: Features - Bento Grid ════ */}
+      <section id="features" className="w-screen bg-black px-8 py-16">
+        <div className="max-w-7xl mx-auto mb-12">
+          <h2 className="h2 text-white mb-4">Powerful Features, Built Different</h2>
+          <p className="body-lg text-text-muted max-w-2xl">Everything you need to deploy AI models at scale, with zero infrastructure headaches.</p>
+        </div>
+        <BentoGrid />
+      </section>
 
       {/* ════ SECTION 7: Use Case Comparison ════ */}
-      <UseCaseComparison />
+      <div id="comparison">
+        <UseCaseComparison />
+      </div>
 
-      {/* ════ SECTION 8: FAQ ════ */}
-      <FAQSection />
+      {/* ════ SECTION 8: Waitlist + Compact FAQ ════ */}
+      <section id="waitlist" className="w-screen bg-gradient-to-b from-black to-[#0a0a0f] py-16 px-8">
+        <div className="max-w-3xl mx-auto">
+          {/* Waitlist Signup */}
+          <div className="text-center mb-16">
+            <h2 className="section-title mb-4">Join the Waitlist</h2>
+            <p className="body-copy text-secondary mb-8">Get early access to intelligent AI deployments.</p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+              <input
+                type="email"
+                placeholder="your@email.com"
+                className="px-4 py-2.5 bg-white/10 border border-white/20 rounded-lg text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-white/40 transition-colors flex-1 sm:flex-none"
+              />
+              <RollingButton label="Get Access" variant="primary" href="#" />
+            </div>
+          </div>
+
+          {/* Compact FAQ */}
+          <div className="border-t border-white/10 pt-8">
+            <CompactFAQ />
+          </div>
+        </div>
+      </section>
 
       {/* ════ FOOTER ════ */}
       <Footer />

@@ -67,7 +67,7 @@ const cardsData = [
   },
   {
     id: 'fa',
-    positionClasses: 'bottom-[4%] right-[10%]',
+    positionClasses: 'bottom-[2%] right-[10%]',
     hoverTranslate: 'translate(3px, 4px)',
     icon: (
       <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
@@ -96,7 +96,7 @@ const FeatureCard = ({ card }: { card: typeof cardsData[0] }) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`card-node absolute w-[200px] bg-[#0d0d10] border border-white/5 rounded-[20px] p-[20px_18px] z-10 cursor-default transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-white/20 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)] group overflow-hidden ${card.positionClasses}`}
+      className={`card-node absolute w-[200px] bg-[#0d0d10] border border-[#1A1A1A] rounded-[20px] p-[20px_18px] z-10 cursor-default transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#2A2A2A] hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)] group overflow-hidden ${card.positionClasses}`}
       style={{
         transform: isHovered ? card.hoverTranslate : 'translate(0,0)',
       }}
@@ -115,13 +115,13 @@ const FeatureCard = ({ card }: { card: typeof cardsData[0] }) => {
         }}
       />
 
-      <div className="w-[36px] h-[36px] rounded-[10px] bg-white/5 border border-white/5 flex items-center justify-center mb-[14px]">
+      <div className="w-[36px] h-[36px] rounded-[10px] bg-white/5 border border-[#1A1A1A] flex items-center justify-center mb-[14px]">
         {card.icon}
       </div>
-      <div className="text-[14.5px] font-bold text-white tracking-[-0.4px] mb-[4px]">
+      <div className="bento-heading text-white mb-[4px] tracking-[-0.4px]">
         {card.title}
       </div>
-      <div className="text-[12.5px] text-white/35 leading-tight tracking-[-0.1px]">
+      <div className="body-copy text-secondary leading-tight tracking-[-0.1px]" style={{ fontWeight: 300 }}>
         {card.desc}
       </div>
     </div>
@@ -170,12 +170,12 @@ export default function BenefitsOrbital() {
           <g key={card.id}>
             <path
               d={`M${fx},${fy} Q${cpx},${cpy} ${nx},${ny}`}
-              stroke="rgba(255,255,255,0.07)"
-              strokeWidth="1"
+              stroke="rgba(255,255,255,0.15)"
+              strokeWidth="1.2"
               fill="none"
               strokeDasharray="4 6"
             />
-            <circle cx={fx} cy={fy} r="2.5" fill="rgba(255,255,255,0.15)" />
+            <circle cx={fx} cy={fy} r="2.5" fill="rgba(255,255,255,0.25)" />
           </g>
         );
       });
@@ -255,22 +255,18 @@ export default function BenefitsOrbital() {
 
       {/* Header section */}
       <div className="relative z-10 mb-0">
-        <div className="inline-flex items-center gap-[6px] bg-white/5 border border-white/10 rounded-full px-[14px] py-[5px] text-[12px] font-medium text-white/50 mb-[16px]">
-          <span className="w-[5px] h-[5px] rounded-full bg-[#7c6af7] shadow-[0_0_6px_rgba(124,106,247,0.8)]" />
-          Benefits
-        </div>
-        <h1 className="text-[clamp(32px,4vw,52px)] font-black text-white tracking-[-2.2px] leading-[1.06]">
+        <h1 className="section-title text-white tracking-[-2.2px]" style={{ fontSize: 'clamp(32px, 4vw, 52px)' }}>
           What Makes Our AI<br />Better for Your Business
         </h1>
       </div>
 
       {/* Interactive stage */}
-      <div ref={stageRef} className="relative h-[520px] w-full max-w-[1040px] mx-auto z-10">
+      <div ref={stageRef} className="relative h-[750px] w-full max-w-[1040px] mx-auto z-10\">
         
         {/* SVG connectors layer */}
         <svg
           className="absolute inset-0 pointer-events-none z-0"
-          viewBox="0 0 1040 520"
+          viewBox="0 0 1040 750"
           preserveAspectRatio="none"
         >
           {connectors}
@@ -278,7 +274,7 @@ export default function BenefitsOrbital() {
 
         {/* Center Hero Orb */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 group">
-          <div className="w-[136px] h-[136px] rounded-[32px] bg-[#0e0e14] border border-white/10 flex items-center justify-center relative transition-transform duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-[1.06]">
+          <div className="w-[136px] h-[136px] rounded-[32px] bg-[#0e0e14] border border-[#1A1A1A] flex items-center justify-center relative transition-transform duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-[1.06]">
             
             {/* Pulsing gradient effect under the orb */}
             <div className="absolute inset-[-48px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.11)_0%,rgba(255,255,255,0.03)_45%,transparent_70%)] pointer-events-none animate-[orbPulse_3.5s_ease-in-out_infinite]" />

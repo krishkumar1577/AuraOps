@@ -11,7 +11,7 @@ const IntegrationsPipeline = () => {
       label: 'GitHub',
       bg: '#fff',
       icon: (
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="#24292e">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="#7B42BC">
           <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
         </svg>
       ),
@@ -109,9 +109,9 @@ const IntegrationsPipeline = () => {
       icon: (
         <svg width="34" height="34" viewBox="0 0 40 40" fill="none">
           <circle cx="20" cy="20" r="18" fill="#d97757" opacity="0.12"/>
-          <path d="M13 28 Q20 10 27 28" stroke="#d97757" strokeWidth="3" strokeLinecap="round" fill="none"/>
-          <path d="M10 22 Q20 8 30 22" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.5"/>
-          <circle cx="20" cy="20" r="3.5" fill="#d97757"/>
+          <path d="M13 28 Q20 10 27 28" stroke="#888888" strokeWidth="3" strokeLinecap="round" fill="none"/>
+          <path d="M10 22 Q20 8 30 22" stroke="#888888" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.5"/>
+          <circle cx="20" cy="20" r="3.5" fill="#888888"/>
         </svg>
       ),
     },
@@ -143,9 +143,9 @@ const IntegrationsPipeline = () => {
       bg: '#fffbf0',
       icon: (
         <svg width="34" height="34" viewBox="0 0 24 24" fill="#FFD21E">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 13.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm2 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-4c0 .55-.45 1-1 1H9c-.55 0-1-.45-1-1V8c0-.55.45-1 1-1h6c.55 0 1 .45 1 1v3.5z" fill="#FFD21E"/>
-          <circle cx="9.5" cy="14" r="1.5" fill="#ff9a00"/>
-          <circle cx="14.5" cy="14" r="1.5" fill="#ff9a00"/>
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 13.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm2 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-4c0 .55-.45 1-1 1H9c-.55 0-1-.45-1-1V8c0-.55.45-1 1-1h6c.55 0 1 .45 1 1v3.5z" fill="#888888"/>
+          <circle cx="9.5" cy="14" r="1.5" fill="#888888"/>
+          <circle cx="14.5" cy="14" r="1.5" fill="#888888"/>
           <path d="M9 10h2M13 10h2" stroke="#555" strokeWidth="1.5" strokeLinecap="round"/>
         </svg>
       ),
@@ -254,7 +254,7 @@ const IntegrationsPipeline = () => {
               {iconChips.filter(chip => chip.group === groupNum).map((chip) => (
                 <div
                   key={`${chip.group}-${chip.position}`}
-                  className={`icon-chip ${chip.size === 'large' ? 'w-[66px] h-[66px]' : chip.size === 'sm' ? 'w-[44px] h-[44px]' : 'w-[54px] h-[54px]'} rounded-full absolute flex items-center justify-center cursor-pointer transition-all hover:shadow-lg hover:scale-112 ${getPositionClass(chip.position)}`}
+                  className={`icon-chip ${chip.size === 'large' ? 'w-[56px] h-[56px]' : chip.size === 'sm' ? 'w-[40px] h-[40px]' : 'w-[48px] h-[48px]'} rounded-full absolute flex items-center justify-center cursor-pointer transition-all hover:shadow-lg hover:scale-112 ${getPositionClass(chip.position)}`}
                   style={{
                     background: chip.bg,
                     boxShadow: '0 4px 16px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.08)',
@@ -271,13 +271,13 @@ const IntegrationsPipeline = () => {
 
         {/* Right Text Column */}
         <div className="pl-5">
-          <span className="inline-block text-xs font-medium uppercase tracking-widest text-white border-[1.5px] border-white/30 px-4 py-1.5 rounded mb-7">
+          <span className="inline-block system-label text-white border-[1.5px] border-white/30 px-4 py-1.5 rounded mb-7">
             Work with your tools
           </span>
-          <h1 className="font-serif text-5xl font-light leading-tight mb-6 text-white">
+          <h1 className="section-title leading-tight mb-6 text-white" style={{ fontWeight: 400 }}>
             Seamless Integrations,<br/>Zero Hassle
           </h1>
-          <p className="text-base font-light leading-relaxed text-white/60 max-w-md mb-10">
+          <p className="body-copy text-secondary max-w-md mb-10" style={{ fontWeight: 300 }}>
             Connect your AI pipelines in seconds — from GitHub Actions to Kubernetes, our agents orchestrate wherever you ship.
           </p>
           <RollingButton label="Explore Features" />
@@ -287,15 +287,15 @@ const IntegrationsPipeline = () => {
       {/* Feature Cards Section */}
       <div className="px-20 pb-20 grid grid-cols-3 gap-4">
         {cards.map((card, idx) => (
-          <div key={idx} className="bg-white/8 border border-white/12 rounded-2xl p-6 flex gap-4.5 backdrop-blur-sm transition-all hover:bg-white/12 hover:border-white/20 hover:-translate-y-0.5"
+          <div key={idx} className="bg-white/8 border border-[#1A1A1A] rounded-2xl p-6 flex gap-4.5 backdrop-blur-sm transition-all hover:bg-white/12 hover:border-[#2A2A2A] hover:-translate-y-0.5"
             style={{ background: 'rgba(255,255,255,0.08)' }}>
             <div className="w-[46px] h-[46px] rounded-full flex-shrink-0 flex items-center justify-center"
               style={{ background: card.bg }}>
               {card.icon}
             </div>
             <div>
-              <div className="text-sm font-semibold text-white mb-1">{card.title}</div>
-              <div className="text-xs font-light text-white/60 leading-relaxed">{card.desc}</div>
+              <div className="bento-heading text-white mb-1">{card.title}</div>
+              <div className="body-copy text-secondary leading-relaxed" style={{ fontWeight: 300 }}>{card.desc}</div>
             </div>
           </div>
         ))}

@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import AuraOpsLogoSvg from "../assets/auraops_true_vector.svg";
 
 interface NavLink {
   label: string;
   href: string;
+  target?: '_blank' | '_self';
 }
 
 interface TopNotchNavProps {
@@ -12,31 +14,12 @@ interface TopNotchNavProps {
   logo?: React.ReactNode;
 }
 
-const DefaultLogo = ({ collapsed }: { collapsed: boolean }) => (
-  <svg 
-    viewBox="0 0 512 512" 
-    className={`${collapsed ? 'w-10 h-10' : 'w-8 h-8'} transition-all duration-500`}
-    fill="none"
-  >
-    <defs>
-      <style>
-        {`.stroke { fill: none; stroke: white; stroke-width: 28; stroke-linecap: round; stroke-linejoin: round; }`}
-      </style>
-    </defs>
-    {/* Triangle-like A */}
-    <path className="stroke" d="M120 340 L256 120 L392 340" />
-    {/* Cross/loop forming O */}
-    <circle className="stroke" cx="300" cy="300" r="90" />
-    {/* Connecting loop stroke */}
-    <path className="stroke" d="M180 320 C240 260, 340 260, 380 320" />
-  </svg>
-);
-
 const defaultLinks: NavLink[] = [
-  { label: "Home", href: "#" },
-  { label: "About", href: "#" },
-  { label: "Blog", href: "#" },
-  { label: "Contact", href: "#" },
+  { label: "Features", href: "#features" },
+  { label: "Workflow", href: "#workflow" },
+  { label: "Ecosystem", href: "#ecosystem" },
+  { label: "Docs", href: "https://github.com/AuraOps/docs", target: "_blank" },
+  { label: "Waitlist", href: "#waitlist" },
 ];
 
 export default function TopNotchNav({
@@ -75,22 +58,28 @@ export default function TopNotchNav({
                 : 'opacity-100 scale-100'
             }`}
           >
-            <DefaultLogo collapsed={!open} />
+            <img
+              src={AuraOpsLogoSvg}
+              alt="AuraOps"
+              className="w-8 h-8 hover:scale-110 transition-transform duration-300"
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
           </div>
 
           {/* Navigation (expand state) */}
           <nav
-            className={`flex items-center gap-16 transition-all duration-500 w-full justify-center ${
+            className={`flex items-center gap-8 transition-all duration-500 w-full justify-center ${
               open
                 ? 'opacity-100 scale-100 pointer-events-auto'
                 : 'opacity-0 scale-95 pointer-events-none'
             }`}
           >
-            {links.slice(0, Math.floor(links.length / 2)).map((link) => (
+            {/* Left nav items (before logo) */}
+            {links.slice(0, 2).map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
+                className="system-label hover:text-white transition-colors duration-200 whitespace-nowrap"
               >
                 {link.label}
               </a>
@@ -98,14 +87,22 @@ export default function TopNotchNav({
 
             {/* Center logo in nav */}
             <div className="flex items-center justify-center w-10 h-10 flex-shrink-0">
-              <DefaultLogo collapsed={false} />
+              <img
+                src={AuraOpsLogoSvg}
+                alt="AuraOps"
+                className="w-8 h-8 hover:scale-110 transition-transform duration-300"
+                style={{ filter: 'brightness(0) invert(1)' }}
+              />
             </div>
 
-            {links.slice(Math.floor(links.length / 2)).map((link) => (
+            {/* Right nav items (after logo) */}
+            {links.slice(2).map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
+                target={link.target}
+                rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
+                className="system-label hover:text-white transition-colors duration-200 whitespace-nowrap"
               >
                 {link.label}
               </a>
