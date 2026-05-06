@@ -71,8 +71,8 @@ export default function PipelinePaths({
         {edges.filter(e => e.isActive).map(e => {
           const gradId = `bg_${e.key}`
           const { curve: c, isAgentEdge } = e
-          const mid1 = isAgentEdge ? '#c4b5fd' : '#86efac'
-          const mid2 = isAgentEdge ? 'rgba(230,220,255,1)' : 'rgba(220,255,230,1)'
+          const mid1 = isAgentEdge ? '#828fff' : '#828fff'
+          const mid2 = isAgentEdge ? 'rgba(130,143,255,1)' : 'rgba(130,143,255,1)'
           return (
             <linearGradient
               key={gradId}
@@ -102,8 +102,8 @@ export default function PipelinePaths({
 
       {edges.map(e => {
         const { curve: c, isActive, isAgentEdge, key } = e
-        const gCol = isAgentEdge ? 'rgba(167,139,250,' : 'rgba(74,222,128,'
-        const brightCol = isAgentEdge ? 'rgba(210,195,255,0.95)' : 'rgba(167,243,185,0.95)'
+        const gCol = isAgentEdge ? 'rgba(94,106,210,' : 'rgba(94,106,210,'
+        const brightCol = isAgentEdge ? 'rgba(130,143,255,0.95)' : 'rgba(130,143,255,0.95)'
         const L = approxPathLength(c)
         const segLen = Math.min(32, L * 0.18)
         const aName = `ba_${key}`.replace(/[^a-z0-9_]/gi, '_')
@@ -113,7 +113,7 @@ export default function PipelinePaths({
             {/* dim dashed base */}
             <path
               d={c.d} fill="none"
-              stroke={isAgentEdge ? 'rgba(167,139,250,0.06)' : 'rgba(255,255,255,0.05)'}
+              stroke={isAgentEdge ? 'rgba(94,106,210,0.06)' : 'rgba(247,248,248,0.05)'}
               strokeWidth="1.5"
               strokeDasharray="3 6"
             />

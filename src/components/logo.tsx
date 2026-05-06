@@ -1,20 +1,27 @@
-// Logo.tsx
-// Drop-in loading screen / logo component for AuraOps.
-// Animations are 1-to-1 with the original HTML — same paths, same keyframes,
-// same cubic-bezier easings, same delays and durations.
-//
-// Usage (loading screen):  <Logo mode="screen" />
-// Usage (navbar logo):     <Logo mode="mark" />
-// Usage (mark + wordmark): <Logo mode="full" />   ← default
+/**
+ * AuraOps Brand Mark & Wordmark Animation Component
+ * 
+ * Renders the AuraOps logo with deterministic SVG path animations.
+ * Uses CSS-in-JS keyframes for precise timing control and easing curves.
+ * 
+ * @param mode - 'screen' (full animation), 'mark' (icon only), 'full' (mark + wordmark, default)
+ * 
+ * @design
+ * - Path animations timed for visual rhythm: main draw (1.4s) → slash (0.6s @ 1.1s) → wordmark (0.6s @ 1.6s)
+ * - Idle pulse starts at 1.8s to avoid animation overlap during load
+ * - Uses cubic-bezier(0.65,0,0.35,1) for smooth draw effect matching brand motion language
+ */
 
 import React from "react";
 import AuraOpsVectorSvg from "../assets/auraops_true_vector.svg";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// 1.  Keyframe CSS injected once into <head>.
-//     Tailwind cannot express pathLength-based stroke-dash animations or
-//     the exact cubic-bezier values, so we use a <style> tag approach.
-// ─────────────────────────────────────────────────────────────────────────────
+/**
+ * SVG Path Animation Configuration
+ * 
+ * Keyframes use stroke-dasharray/stroke-dashoffset for deterministic
+ * path drawing effect. Tailwind cannot express these CSS properties
+ * or the exact cubic-bezier timing, so CSS-in-JS injection is required.
+ */
 const KEYFRAMES = `
   @keyframes aura-draw-main {
     to { stroke-dashoffset: 0; }
@@ -40,18 +47,19 @@ function injectKeyframes() {
   document.head.appendChild(style);
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// 2.  Inline style objects — exact values from original CSS.
-// ─────────────────────────────────────────────────────────────────────────────
+/**
+ * Inline SVG Animation Styles
+ * 
+ * Specifies stroke-dash parameters and animation timing for each logo element.
+ * Values extracted from original design spec to maintain pixel-perfect consistency.
+ */
 const styles = {
-  /** #main path */
   mainPath: {
     strokeDasharray: 1,
     strokeDashoffset: 1,
     animation: "aura-draw-main 1.4s cubic-bezier(0.65,0,0.35,1) forwards",
   } as React.CSSProperties,
 
-  /** #slash path */
   slashPath: {
     strokeDasharray: 1,
     strokeDashoffset: 1,
@@ -59,7 +67,6 @@ const styles = {
       "aura-draw-slash 0.6s cubic-bezier(0.65,0,0.35,1) 1.1s forwards",
   } as React.CSSProperties,
 
-  /** WORDMARK text */
   wordmark: {
     fontFamily: "'DM Mono', monospace",
     fontSize: "13px",
@@ -71,7 +78,6 @@ const styles = {
     animation: "aura-fade-word 0.6s ease 1.6s forwards",
   } as React.CSSProperties,
 
-  /** SVG logo — idle pulse (starts after 1.8s) */
   logoSvg: {
     width: "220px",
     height: "260px",
@@ -81,7 +87,7 @@ const styles = {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 3.  Sub-components
+// Sub-components
 // ─────────────────────────────────────────────────────────────────────────────
 
 /** The dot-grid background — identical to the original .grid SVG */
@@ -146,7 +152,7 @@ function Wordmark() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4.  Main exported component
+// Main Component
 // ─────────────────────────────────────────────────────────────────────────────
 
 type LogoMode =

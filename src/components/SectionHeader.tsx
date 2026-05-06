@@ -24,12 +24,10 @@ export default function SectionHeader({
   const renderBadge = () => {
     if (!badge) return null
 
-    // If badge is a React node, render it directly
     if (React.isValidElement(badge)) {
       return <div className="mb-8">{badge}</div>
     }
 
-    // If badge is an object with label and variant
     if (typeof badge === 'object' && 'label' in badge) {
       return (
         <div className="mb-8">

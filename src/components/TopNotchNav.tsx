@@ -39,12 +39,12 @@ export default function TopNotchNav({
           open ? 'w-full md:w-[800px]' : 'w-16'
         }`}
       >
-        {/* Background with dark solid color */}
-        <div className="absolute inset-0 bg-[#0e0e14] border border-white/10 rounded-full" />
+        {/* Background with Linear canvas color */}
+        <div className="absolute inset-0 bg-canvas border border-hairline rounded-full" />
 
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none rounded-full" />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/8 via-transparent to-pink-600/8 pointer-events-none rounded-full" />
+        {/* Gradient overlay — subtle blue tint glow */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none rounded-full" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 pointer-events-none rounded-full" />
 
         {/* Content container */}
         <div className={`relative h-full flex items-center transition-all duration-700 ease-out ${
@@ -66,7 +66,7 @@ export default function TopNotchNav({
             />
           </div>
 
-          {/* Navigation (expand state) */}
+          {/* Navigation (expand state) — using Linear typography */}
           <nav
             className={`flex items-center gap-8 transition-all duration-500 w-full justify-center ${
               open
@@ -79,7 +79,7 @@ export default function TopNotchNav({
               <a
                 key={link.label}
                 href={link.href}
-                className="system-label hover:text-white transition-colors duration-200 whitespace-nowrap"
+                className="text-body-sm text-ink-subtle hover:text-ink transition-colors duration-200 whitespace-nowrap"
               >
                 {link.label}
               </a>
@@ -102,7 +102,7 @@ export default function TopNotchNav({
                 href={link.href}
                 target={link.target}
                 rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
-                className="system-label hover:text-white transition-colors duration-200 whitespace-nowrap"
+                className="text-body-sm text-ink-subtle hover:text-ink transition-colors duration-200 whitespace-nowrap"
               >
                 {link.label}
               </a>
@@ -110,7 +110,7 @@ export default function TopNotchNav({
           </nav>
 
           {/* Shine effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none rounded-full" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/3 to-transparent pointer-events-none rounded-full" />
         </div>
       </div>
     </div>

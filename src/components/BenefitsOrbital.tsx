@@ -7,8 +7,8 @@ const cardsData = [
     hoverTranslate: 'translate(-3px, -4px)',
     icon: (
       <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
-        <circle cx="8.5" cy="8.5" r="7" stroke="rgba(255,255,255,0.7)" strokeWidth="1.3" />
-        <path d="M8.5 4.5v8M6.2 7C6.2 5.78 7.23 4.8 8.5 4.8s2.3.98 2.3 2.2S9.77 9.2 8.5 9.2s-2.3.98-2.3 2.2S7.23 14 8.5 14" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2" strokeLinecap="round" />
+        <circle cx="8.5" cy="8.5" r="7" stroke="rgba(247,248,248,0.7)" strokeWidth="1.3" />
+        <path d="M8.5 4.5v8M6.2 7C6.2 5.78 7.23 4.8 8.5 4.8s2.3.98 2.3 2.2S9.77 9.2 8.5 9.2s-2.3.98-2.3 2.2S7.23 14 8.5 14" stroke="rgba(247,248,248,0.7)" strokeWidth="1.2" strokeLinecap="round" />
       </svg>
     ),
     title: 'Zero-Config.',
@@ -20,8 +20,8 @@ const cardsData = [
     hoverTranslate: 'translate(3px, -4px)',
     icon: (
       <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
-        <path d="M8.5 2a5 5 0 015 5c0 2.1-1.3 3.9-3.1 4.7V13H5.6v-1.3A5 5 0 018.5 2z" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2" strokeLinejoin="round" />
-        <path d="M6.5 14.2h4M7.2 15.5h2.6" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2" strokeLinecap="round" />
+        <path d="M8.5 2a5 5 0 015 5c0 2.1-1.3 3.9-3.1 4.7V13H5.6v-1.3A5 5 0 018.5 2z" stroke="rgba(247,248,248,0.7)" strokeWidth="1.2" strokeLinejoin="round" />
+        <path d="M6.5 14.2h4M7.2 15.5h2.6" stroke="rgba(247,248,248,0.7)" strokeWidth="1.2" strokeLinecap="round" />
       </svg>
     ),
     title: 'Model Separation.',
@@ -33,8 +33,8 @@ const cardsData = [
     hoverTranslate: 'translate(-4px, 0px)',
     icon: (
       <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
-        <circle cx="8.5" cy="8.5" r="7" stroke="rgba(255,255,255,0.7)" strokeWidth="1.3" />
-        <path d="M8.5 5.5V8.5l2.2 2.2" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="8.5" cy="8.5" r="7" stroke="rgba(247,248,248,0.7)" strokeWidth="1.3" />
+        <path d="M8.5 5.5V8.5l2.2 2.2" stroke="rgba(247,248,248,0.7)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     title: 'CUDA Native.',
@@ -46,7 +46,7 @@ const cardsData = [
     hoverTranslate: 'translate(4px, 0px)',
     icon: (
       <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
-        <path d="M2.5 13V9.5M5.5 13V6.5M8.5 13V3.5M11.5 13V7M14.5 13V5" stroke="rgba(255,255,255,0.7)" strokeWidth="1.3" strokeLinecap="round" />
+        <path d="M2.5 13V9.5M5.5 13V6.5M8.5 13V3.5M11.5 13V7M14.5 13V5" stroke="rgba(247,248,248,0.7)" strokeWidth="1.3" strokeLinecap="round" />
       </svg>
     ),
     title: 'AI Framework Aware.',
@@ -58,8 +58,8 @@ const cardsData = [
     hoverTranslate: 'translate(-3px, 4px)',
     icon: (
       <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
-        <path d="M2 8.5h5M4 6l3 2.5L4 11" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M8.5 8.5h5M10.5 6l3 2.5-3 2.5" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M2 8.5h5M4 6l3 2.5L4 11" stroke="rgba(247,248,248,0.7)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M8.5 8.5h5M10.5 6l3 2.5-3 2.5" stroke="rgba(247,248,248,0.7)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     title: 'Deterministic.',
@@ -71,9 +71,9 @@ const cardsData = [
     hoverTranslate: 'translate(3px, 4px)',
     icon: (
       <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
-        <circle cx="8.5" cy="8.5" r="7" stroke="rgba(255,255,255,0.7)" strokeWidth="1.3" />
-        <circle cx="8.5" cy="8.5" r="3" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2" />
-        <circle cx="8.5" cy="8.5" r="1.1" fill="rgba(255,255,255,0.7)" />
+        <circle cx="8.5" cy="8.5" r="7" stroke="rgba(247,248,248,0.7)" strokeWidth="1.3" />
+        <circle cx="8.5" cy="8.5" r="3" stroke="rgba(247,248,248,0.7)" strokeWidth="1.2" />
+        <circle cx="8.5" cy="8.5" r="1.1" fill="rgba(247,248,248,0.7)" />
       </svg>
     ),
     title: 'GPU Cloud Ready.',
@@ -96,17 +96,17 @@ const FeatureCard = ({ card }: { card: typeof cardsData[0] }) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`card-node absolute w-[200px] bg-[#0d0d10] border border-[#1A1A1A] rounded-[20px] p-[20px_18px] z-10 cursor-default transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#2A2A2A] hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)] group overflow-hidden ${card.positionClasses}`}
+      className={`card-node absolute w-[200px] bg-[#0d0d14] border border-[#23252a] rounded-[20px] p-[20px_18px] z-10 cursor-default transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#3b3f47] hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)] group overflow-hidden ${card.positionClasses}`}
       style={{
         transform: isHovered ? card.hoverTranslate : 'translate(0,0)',
       }}
     >
       {/* Top reflection line */}
-      <div className="absolute top-0 left-[20%] right-[20%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute top-0 left-[20%] right-[20%] h-[1px] bg-gradient-to-r from-transparent via-[rgba(247,248,248,0.1)] to-transparent" />
       
       {/* Hover glow effect */}
       <div
-        className="absolute w-[200px] h-[200px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.06)_0%,transparent_65%)] pointer-events-none transition-opacity duration-200"
+        className="absolute w-[200px] h-[200px] rounded-full bg-[radial-gradient(circle,rgba(247,248,248,0.06)_0%,transparent_65%)] pointer-events-none transition-opacity duration-200"
         style={{
           opacity: isHovered ? 1 : 0,
           left: `${mousePos.x}px`,
@@ -115,10 +115,10 @@ const FeatureCard = ({ card }: { card: typeof cardsData[0] }) => {
         }}
       />
 
-      <div className="w-[36px] h-[36px] rounded-[10px] bg-white/5 border border-[#1A1A1A] flex items-center justify-center mb-[14px]">
+      <div className="w-[36px] h-[36px] rounded-[10px] bg-[rgba(247,248,248,0.05)] border border-[#23252a] flex items-center justify-center mb-[14px]">
         {card.icon}
       </div>
-      <div className="bento-heading text-white mb-[4px] tracking-[-0.4px]">
+      <div className="bento-heading text-[#f7f8f8] mb-[4px] tracking-[-0.4px]">
         {card.title}
       </div>
       <div className="body-copy text-secondary leading-tight tracking-[-0.1px]" style={{ fontWeight: 300 }}>
@@ -133,7 +133,6 @@ export default function BenefitsOrbital() {
   const stageRef = useRef<HTMLDivElement>(null);
   const [connectors, setConnectors] = useState<React.ReactNode[]>([]);
 
-  // Draw SVG Connectors
   useEffect(() => {
     const drawConnectors = () => {
       if (!stageRef.current) return;
@@ -148,7 +147,6 @@ export default function BenefitsOrbital() {
         if (!el) return;
         const r = el.getBoundingClientRect();
         
-        // Exact element center relative to stage
         const ex = (r.left - sr.left) + r.width / 2;
         const ey = (r.top - sr.top) + r.height / 2;
 
@@ -162,7 +160,6 @@ export default function BenefitsOrbital() {
         const fx = ex + dx * (90 / dist);
         const fy = ey + dy * (90 / dist);
 
-        // Control points for curving
         const cpx = (ex + cx) / 2 + (cy - ey) * 0.12;
         const cpy = (ey + cy) / 2 + (cx - ex) * 0.12;
 
@@ -193,7 +190,6 @@ export default function BenefitsOrbital() {
     };
   }, []);
 
-  // Floating particles canvas logic
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -225,7 +221,7 @@ export default function BenefitsOrbital() {
         if (p.y > canvas.height) p.y = 0;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${p.a})`;
+        ctx.fillStyle = `rgba(247, 248, 248, ${p.a})`;
         ctx.fill();
       });
       animationFrameId = requestAnimationFrame(draw);
@@ -239,7 +235,7 @@ export default function BenefitsOrbital() {
   }, []);
 
   return (
-    <div className="bg-black font-['Inter',sans-serif] px-[44px] py-[64px] pt-[52px] relative overflow-hidden min-h-[700px]">
+    <div className="bg-[#010102] font-['Inter',sans-serif] px-[44px] py-[64px] pt-[52px] relative overflow-hidden min-h-[700px]">
       <style>
         {`
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -254,8 +250,8 @@ export default function BenefitsOrbital() {
       <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-0 w-full h-full" />
 
       {/* Header section */}
-      <div className="relative z-10 mb-0">
-        <h1 className="section-title text-white tracking-[-2.2px]" style={{ fontSize: 'clamp(32px, 4vw, 52px)' }}>
+      <div className="relative z-10 mb-12 flex flex-col items-center justify-center text-center">
+        <h1 className="text-display-lg text-ink" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
           What Makes Our AI<br />Better for Your Business
         </h1>
       </div>
@@ -274,20 +270,20 @@ export default function BenefitsOrbital() {
 
         {/* Center Hero Orb */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 group">
-          <div className="w-[136px] h-[136px] rounded-[32px] bg-[#0e0e14] border border-[#1A1A1A] flex items-center justify-center relative transition-transform duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-[1.06]">
+          <div className="w-[136px] h-[136px] rounded-[32px] bg-[#0d0d14] border border-[#23252a] flex items-center justify-center relative transition-transform duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-[1.06]">
             
             {/* Pulsing gradient effect under the orb */}
-            <div className="absolute inset-[-48px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.11)_0%,rgba(255,255,255,0.03)_45%,transparent_70%)] pointer-events-none animate-[orbPulse_3.5s_ease-in-out_infinite]" />
+            <div className="absolute inset-[-48px] rounded-full bg-[radial-gradient(circle,rgba(247,248,248,0.11)_0%,rgba(247,248,248,0.03)_45%,transparent_70%)] pointer-events-none animate-[orbPulse_3.5s_ease-in-out_infinite]" />
             
             <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-              <circle cx="30" cy="30" r="24" stroke="white" strokeWidth="1.8" />
+              <circle cx="30" cy="30" r="24" stroke="#f7f8f8" strokeWidth="1.8" />
               <path
                 d="M18 30c0-6.63 5.37-12 12-12s12 5.37 12 12"
-                stroke="white"
+                stroke="#f7f8f8"
                 strokeWidth="2"
                 strokeLinecap="round"
               />
-              <circle cx="30" cy="30" r="4" fill="white" />
+              <circle cx="30" cy="30" r="4" fill="#f7f8f8" />
             </svg>
 
           </div>

@@ -1,5 +1,4 @@
 import './IntegrationsPipeline.css';
-import RollingButton from './RollingButton';
 
 const IntegrationsPipeline = () => {
   const iconChips = [
@@ -227,78 +226,101 @@ const IntegrationsPipeline = () => {
   return (
     <section className="bg-black text-white relative">
       {/* Hero Section */}
-      <div className="integration-hero relative grid grid-cols-2 items-center min-h-[72vh] px-20 py-20 gap-10 overflow-hidden">
-        {/* Orbit Container */}
-        <div className="relative w-[420px] h-[420px] mx-auto flex-shrink-0">
-          {/* Dashed Rings */}
-          <div className="absolute top-1/2 left-1/2 w-[170px] h-[170px] border-[1.5px] border-dashed border-white/12 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] border-[1.5px] border-dashed border-white/12 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute top-1/2 left-1/2 w-[410px] h-[410px] border-[1.5px] border-dashed border-white/12 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+      {/* Intro Section */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-center mb-16 px-8">
+        <span className="inline-block system-label text-white border-[1.5px] border-white/30 px-4 py-1.5 rounded mb-6">
+          Work with your tools
+        </span>
+        <h1 className="text-display-lg text-ink mb-4" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
+          Seamless Integrations, Zero Hassle
+        </h1>
+        <p className="body-copy text-white/60 leading-relaxed max-w-2xl">
+          Connect your AI pipelines in seconds — from GitHub Actions to Kubernetes, our agents orchestrate wherever you ship.
+        </p>
+      </div>
 
-          {/* Central Hub */}
-          <div className="absolute top-1/2 left-1/2 w-[72px] h-[72px] bg-black rounded-full flex items-center justify-center z-20 transform -translate-x-1/2 -translate-y-1/2"
-            style={{
-              boxShadow: '0 0 0 3px rgba(255,255,255,0.9), 0 0 0 5px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.18)'
-            }}>
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
-              <circle cx="16" cy="16" r="14" fill="none" stroke="#fff" strokeWidth="1.5" opacity="0.3"/>
-              <path d="M10 20 Q16 8 22 20" stroke="#e8976a" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
-              <path d="M8 16 Q16 6 24 16" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.6"/>
-              <circle cx="16" cy="16" r="2.5" fill="#e8976a"/>
+      {/* Orbit Visualization */}
+      <div className="relative flex justify-center px-8 pb-20">
+        <div className="grid grid-cols-2 gap-8 max-w-7xl w-full">
+          
+          {/* Left Column - Orbital UI in Gradient Box */}
+          <div className="relative p-12 rounded-2xl border border-[#1A1A1A] flex items-center justify-center min-h-[600px]" style={{
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)',
+            backdropFilter: 'blur(20px)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
+          }}>
+            {/* Orbit Container */}
+            <div className="relative w-[380px] h-[380px]">
+                {/* Dashed Rings */}
+                <div className="absolute top-1/2 left-1/2 w-[170px] h-[170px] border-[1.5px] border-dashed border-white/12 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+                <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] border-[1.5px] border-dashed border-white/12 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+                <div className="absolute top-1/2 left-1/2 w-[410px] h-[410px] border-[1.5px] border-dashed border-white/12 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+
+                {/* Central Hub */}
+                <div className="absolute top-1/2 left-1/2 w-[72px] h-[72px] bg-black rounded-full flex items-center justify-center z-20 transform -translate-x-1/2 -translate-y-1/2"
+                  style={{
+                    boxShadow: '0 0 0 3px rgba(255,255,255,0.9), 0 0 0 5px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.18)'
+                  }}>
+                  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
+                    <circle cx="16" cy="16" r="14" fill="none" stroke="#fff" strokeWidth="1.5" opacity="0.3"/>
+                    <path d="M10 20 Q16 8 22 20" stroke="#e8976a" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
+                    <path d="M8 16 Q16 6 24 16" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.6"/>
+                    <circle cx="16" cy="16" r="2.5" fill="#e8976a"/>
+                  </svg>
+                </div>
+
+                {/* Orbit Groups */}
+                {[1, 2, 3].map((groupNum) => (
+                  <div key={`orbit-group-${groupNum}`} className={`orbit-group-${groupNum} absolute top-1/2 left-1/2 w-0 h-0`}>
+                    {iconChips.filter(chip => chip.group === groupNum).map((chip) => (
+                      <div
+                        key={`${chip.group}-${chip.position}`}
+                        className={`icon-chip ${chip.size === 'large' ? 'w-[56px] h-[56px]' : chip.size === 'sm' ? 'w-[40px] h-[40px]' : 'w-[48px] h-[48px]'} rounded-full absolute flex items-center justify-center cursor-pointer transition-all hover:shadow-lg hover:scale-112 ${getPositionClass(chip.position)}`}
+                        style={{
+                          background: chip.bg,
+                          boxShadow: '0 4px 16px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.08)',
+                          transform: 'translate(-50%, -50%)',
+                        }}
+                        data-tooltip={chip.label}
+                      >
+                        {chip.icon}
+                      </div>
+                    ))}
+                  </div>
+                ))}
+            </div>
+
+            {/* SVG connectors layer */}
+            <svg
+              className="absolute inset-0 pointer-events-none z-0 w-full h-full rounded-2xl"
+              viewBox="0 0 1040 750"
+              preserveAspectRatio="none"
+              style={{ opacity: 0.3 }}
+            >
             </svg>
           </div>
 
-          {/* Orbit Groups */}
-          {[1, 2, 3].map((groupNum) => (
-            <div key={`orbit-group-${groupNum}`} className={`orbit-group-${groupNum} absolute top-1/2 left-1/2 w-0 h-0`}>
-              {iconChips.filter(chip => chip.group === groupNum).map((chip) => (
-                <div
-                  key={`${chip.group}-${chip.position}`}
-                  className={`icon-chip ${chip.size === 'large' ? 'w-[56px] h-[56px]' : chip.size === 'sm' ? 'w-[40px] h-[40px]' : 'w-[48px] h-[48px]'} rounded-full absolute flex items-center justify-center cursor-pointer transition-all hover:shadow-lg hover:scale-112 ${getPositionClass(chip.position)}`}
-                  style={{
-                    background: chip.bg,
-                    boxShadow: '0 4px 16px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.08)',
-                    transform: 'translate(-50%, -50%)',
-                  }}
-                  data-tooltip={chip.label}
-                >
-                  {chip.icon}
+          {/* Right Column - Feature Cards in Gradient Box */}
+          <div className="relative p-8 rounded-2xl border border-[#1A1A1A] flex flex-col gap-4" style={{
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)',
+            backdropFilter: 'blur(20px)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
+          }}>
+            {cards.map((card, idx) => (
+              <div key={idx} className="bg-white/8 border border-[#1A1A1A] rounded-2xl p-6 flex gap-4.5 backdrop-blur-sm transition-all hover:bg-white/12 hover:border-[#2A2A2A] hover:-translate-y-0.5"
+                style={{ background: 'rgba(255,255,255,0.08)' }}>
+                <div className="w-[46px] h-[46px] rounded-full flex-shrink-0 flex items-center justify-center"
+                  style={{ background: card.bg }}>
+                  {card.icon}
                 </div>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        {/* Right Text Column */}
-        <div className="pl-5">
-          <span className="inline-block system-label text-white border-[1.5px] border-white/30 px-4 py-1.5 rounded mb-7">
-            Work with your tools
-          </span>
-          <h1 className="section-title leading-tight mb-6 text-white" style={{ fontWeight: 400 }}>
-            Seamless Integrations,<br/>Zero Hassle
-          </h1>
-          <p className="body-copy text-secondary max-w-md mb-10" style={{ fontWeight: 300 }}>
-            Connect your AI pipelines in seconds — from GitHub Actions to Kubernetes, our agents orchestrate wherever you ship.
-          </p>
-          <RollingButton label="Explore Features" />
-        </div>
-      </div>
-
-      {/* Feature Cards Section */}
-      <div className="px-20 pb-20 grid grid-cols-3 gap-4">
-        {cards.map((card, idx) => (
-          <div key={idx} className="bg-white/8 border border-[#1A1A1A] rounded-2xl p-6 flex gap-4.5 backdrop-blur-sm transition-all hover:bg-white/12 hover:border-[#2A2A2A] hover:-translate-y-0.5"
-            style={{ background: 'rgba(255,255,255,0.08)' }}>
-            <div className="w-[46px] h-[46px] rounded-full flex-shrink-0 flex items-center justify-center"
-              style={{ background: card.bg }}>
-              {card.icon}
-            </div>
-            <div>
-              <div className="bento-heading text-white mb-1">{card.title}</div>
-              <div className="body-copy text-secondary leading-relaxed" style={{ fontWeight: 300 }}>{card.desc}</div>
-            </div>
+                <div>
+                  <div className="bento-heading text-white mb-1">{card.title}</div>
+                  <div className="body-copy text-secondary leading-relaxed" style={{ fontWeight: 300 }}>{card.desc}</div>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );

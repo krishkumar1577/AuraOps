@@ -85,7 +85,7 @@ export default function Footer(): React.ReactElement {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-black border-t border-white/10">
+    <footer className="bg-canvas border-t border-hairline">
       {/* ── Main Footer Content ── */}
       <div className="max-w-7xl mx-auto px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-12 mb-12">
@@ -98,22 +98,22 @@ export default function Footer(): React.ReactElement {
                 className="w-10 h-10 flex-shrink-0"
                 style={{ filter: 'brightness(0) invert(1)' }}
               />
-              <span className="text-lg font-bold text-white">AuraOps</span>
+              <span className="text-lg font-semibold text-ink">AuraOps</span>
             </div>
-            <p className="text-system body-copy">
+            <p className="text-ink-subtle caption">
               Eliminate the Infrastructure Tax. Automate AI deployments at scale.
             </p>
           </div>
 
           {/* ── Features Links ── */}
           <div>
-            <h4 className="system-label mb-4">FEATURES</h4>
+            <h4 className="eyebrow mb-4">FEATURES</h4>
             <ul className="space-y-2.5">
               {navigationLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-system body-copy hover:text-white/80 transition-colors"
+                    className="text-ink-subtle caption hover:text-ink transition-colors"
                   >
                     {link.label}
                   </a>
@@ -124,13 +124,13 @@ export default function Footer(): React.ReactElement {
 
           {/* ── Company Links ── */}
           <div>
-            <h4 className="system-label mb-4">COMPANY</h4>
+            <h4 className="eyebrow mb-4">COMPANY</h4>
             <ul className="space-y-2.5">
               {companyLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-system body-copy hover:text-white/80 transition-colors"
+                    className="text-ink-subtle caption hover:text-ink transition-colors"
                   >
                     {link.label}
                   </a>
@@ -141,13 +141,13 @@ export default function Footer(): React.ReactElement {
 
           {/* ── Resources Links ── */}
           <div>
-            <h4 className="system-label mb-4">RESOURCES</h4>
+            <h4 className="eyebrow mb-4">RESOURCES</h4>
             <ul className="space-y-2.5">
               {resourceLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-system body-copy hover:text-white/80 transition-colors"
+                    className="text-ink-subtle caption hover:text-ink transition-colors"
                   >
                     {link.label}
                   </a>
@@ -158,12 +158,12 @@ export default function Footer(): React.ReactElement {
 
           {/* ── More Links ── */}
           <div>
-            <h4 className="system-label mb-4">MORE</h4>
+            <h4 className="eyebrow mb-4">MORE</h4>
             <ul className="space-y-2.5">
               <li>
                 <a
                   href="#blog"
-                  className="text-system body-copy hover:text-white/80 transition-colors"
+                  className="text-ink-subtle caption hover:text-ink transition-colors"
                 >
                   Blog
                 </a>
@@ -171,7 +171,7 @@ export default function Footer(): React.ReactElement {
               <li>
                 <a
                   href="#changelog"
-                  className="text-system body-copy hover:text-white/80 transition-colors"
+                  className="text-ink-subtle caption hover:text-ink transition-colors"
                 >
                   Changelog
                 </a>
@@ -179,7 +179,7 @@ export default function Footer(): React.ReactElement {
               <li>
                 <a
                   href="#status"
-                  className="text-system body-copy hover:text-white/80 transition-colors"
+                  className="text-ink-subtle caption hover:text-ink transition-colors"
                 >
                   Status
                 </a>
@@ -189,14 +189,14 @@ export default function Footer(): React.ReactElement {
 
           {/* ── Social Links ── */}
           <div>
-            <h4 className="system-label mb-4">CONNECT</h4>
+            <h4 className="eyebrow mb-4">CONNECT</h4>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
                   title={social.name}
-                  className="w-10 h-10 rounded-lg bg-white/5 border border-[#1A1A1A] flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all"
+                  className="w-10 h-10 rounded-lg bg-surface-1 border border-hairline flex items-center justify-center text-ink-subtle hover:text-ink hover:bg-surface-2 transition-all"
                 >
                   {social.icon}
                 </a>
@@ -206,12 +206,12 @@ export default function Footer(): React.ReactElement {
         </div>
 
         {/* ── Divider ── */}
-        <div className="border-t border-white/10 my-12" />
+        <div className="border-t border-hairline my-12" />
 
         {/* ── Bottom Footer ── */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* ── Copyright ── */}
-          <div className="text-system">
+          <div className="text-ink-subtle caption">
             © {currentYear} AuraOps, Inc. All rights reserved.
           </div>
 
@@ -221,7 +221,7 @@ export default function Footer(): React.ReactElement {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-system hover:text-white/60 transition-colors"
+                className="text-ink-subtle caption hover:text-ink transition-colors"
               >
                 {link.label}
               </a>

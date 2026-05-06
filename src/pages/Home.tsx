@@ -14,7 +14,7 @@ import Footer from '../components/Footer'
 import AuraOpsLogoSvg from '../assets/auraops_true_vector.svg'
 import type { LogoItem } from '../components/BottomMarqueeNotch'
 
-// ────── Logo Icons ──────────────────────────────────────────────────────
+// Logo Icons
 const AuraOpsLogoIcon = () => (
   <img src={AuraOpsLogoSvg} alt="AuraOps" className="w-6 h-6" style={{ filter: 'brightness(0) invert(1)' }} />
 )
@@ -45,7 +45,7 @@ const NotionIcon = () => (
   </svg>
 )
 
-// ────── Logo Data ────────────────────────────────────────────────────────
+// Logo Data
 const logos: LogoItem[] = [
   { name: "AuraOps", italic: true, icon: <AuraOpsLogoIcon /> },
   { name: "Vercel", italic: false, icon: <VercelIcon /> },
@@ -54,7 +54,7 @@ const logos: LogoItem[] = [
   { name: "Notion", italic: false, icon: <NotionIcon /> },
 ]
 
-// ────── Navigation Links ─────────────────────────────────────────────────
+// Navigation Links 
 const navLinks = [
   { label: 'Features', href: '#features' },
   { label: 'Workflow', href: '#workflow' },
@@ -66,11 +66,9 @@ const navLinks = [
 export default function Home() {
   return (
     <>
-      {/* ════ SECTION 1: Hero (Home) ════ */}
       <main id="home" className="w-screen h-screen overflow-hidden flex flex-col relative bg-black">
-        {/* ════ Light Pillar Background ════ */}
-        {/* <div className="absolute inset-0">
-          <LightPillar
+        <div className="absolute inset-0">
+          {/* <LightPillar
             topColor="#5227FF"
             bottomColor="#FF9FFC"
             intensity={1.5}
@@ -83,17 +81,14 @@ export default function Home() {
             interactive={false}
             mixBlendMode="screen"
             quality="high"
-          />
-        </div> */}
+          /> */}
+        </div>
 
-        {/* ════ Top Navigation ════ */}
         <div className="relative z-20 pt-4 flex justify-center">
           <TopNotchNav links={navLinks} />
         </div>
 
-        {/* ════ Content Layer ════ */}
         <div className="relative z-10 flex flex-col flex-1 w-full">
-          {/* ── Hero Section ── */}
           <section className="flex-1 flex flex-col items-center justify-center text-center px-6 pb-6">
             <SectionHeader
               badge={
@@ -101,22 +96,21 @@ export default function Home() {
                   <span className="px-3 py-1 bg-blue-600/80 text-white text-xs font-bold rounded-full">
                     Gen AI
                   </span>
-                  <span className="system-label text-white/80">Intelligent Automation</span>
+                  <span className="system-label text-white/80">Zero-Config Deployments</span>
                 </div>
               }
               heading={
                 <>
-                  We Make AI Work
+                 The High-Performance Engine for 
                   <br />
-                  Not Against You
+                  Deploying AI Agents at Scale
                 </>
               }
-              subheading="Intelligent automation that saves time, cuts costs, and makes your business run smoother — powered by next-gen AI."
+              subheading="Deploy AI in seconds, not hours. AuraOps is the deterministic orchestration layer for the agentic era."
               headingClassName="hero-heading mb-6 drop-shadow-lg tracking-tighter"
               subheadingClassName="body-copy text-secondary mb-10 max-w-lg"
             />
 
-            {/* Copyable Terminal Snippet */}
             <div className="flex items-center gap-3 bg-[#0a0a0f] border border-[#1A1A1A] rounded-xl px-10 py-4 mb-8 max-w-2xl mx-auto">
               <span className="text-green-400 text-xl">$</span>
               <span className="cli-data">npx auraops init</span>
@@ -132,29 +126,24 @@ export default function Home() {
               </button>
             </div>
 
-            {/* CTA Buttons */}
             <div className="flex gap-4 mb-16">
               <RollingButton label="Get Early Access" variant="primary" href="#waitlist" />
               <RollingButton label="View Docs" variant="ghost" href="https://github.com/AuraOps/docs" />
             </div>
           </section>
 
-          {/* ── Bottom Marquee ── */}
           <div className="flex justify-center pb-0">
             <BottomMarqueeNotch logos={logos} speed={26} maxWidth={800} />
           </div>
         </div>
       </main>
 
-      {/* ════ SECTION 2: Workflow - AuraOps Orchestration Pipeline ════ */}
       <div id="workflow" className="w-screen bg-black py-16">
         <AIPipeline />
       </div>
 
-      {/* ════ SECTION 3: Benefits Orbital ════ */}
       <BenefitsOrbital />
 
-      {/* ════ SECTION 4: Impact (Compact Stats) ════ */}
       <div className="w-screen bg-black py-24 px-8 flex items-center justify-center">
         <div className="text-center min-h-[220px] flex items-center">
           <TypewriterEffect
@@ -183,29 +172,24 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ════ SECTION 5: Ecosystem - Integrations Pipeline ════ */}
       <div id="ecosystem">
         <IntegrationsPipeline />
       </div>
 
-      {/* ════ SECTION 6: Features - Bento Grid ════ */}
       <section id="features" className="w-screen bg-black px-8 py-16">
-        <div className="max-w-7xl mx-auto mb-12">
-          <h2 className="h2 text-white mb-4">Powerful Features, Built Different</h2>
-          <p className="body-lg text-text-muted max-w-2xl">Everything you need to deploy AI models at scale, with zero infrastructure headaches.</p>
+        <div className="flex flex-col items-center justify-center text-center mb-12">
+          <h2 className="text-display-lg text-ink mb-4" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>Powerful Features, Built Different</h2>
+          <p className="body-lg text-white/60 max-w-2xl">Everything you need to deploy AI models at scale, with zero infrastructure headaches.</p>
         </div>
         <BentoGrid />
       </section>
 
-      {/* ════ SECTION 7: Use Case Comparison ════ */}
       <div id="comparison">
         <UseCaseComparison />
       </div>
 
-      {/* ════ SECTION 8: Waitlist + Compact FAQ ════ */}
       <section id="waitlist" className="w-screen bg-gradient-to-b from-black to-[#0a0a0f] py-16 px-8">
         <div className="max-w-3xl mx-auto">
-          {/* Waitlist Signup */}
           <div className="text-center mb-16">
             <h2 className="section-title mb-4">Join the Waitlist</h2>
             <p className="body-copy text-secondary mb-8">Get early access to intelligent AI deployments.</p>
@@ -219,14 +203,12 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Compact FAQ */}
           <div className="border-t border-white/10 pt-8">
             <CompactFAQ />
           </div>
         </div>
       </section>
 
-      {/* ════ FOOTER ════ */}
       <Footer />
     </>
   )

@@ -4,8 +4,8 @@ interface IconProps {
   isAgent?: boolean
 }
 
-const s = (opacity = 0.6) => `rgba(255,255,255,${opacity})`
-const a = (opacity = 0.85) => `rgba(167,139,250,${opacity})`
+const s = (opacity = 0.6) => `rgba(247,248,248,${opacity})`
+const a = (opacity = 0.85) => `rgba(94,106,210,${opacity})`
 
 export const NodeIcons: Record<string, FC<IconProps>> = {
   git: () => (

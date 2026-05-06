@@ -37,13 +37,13 @@ export default function UseCaseComparison(): React.ReactElement {
       <SectionHeader
         badge={{ label: 'Infrastructure Comparison', variant: 'muted' }}
         heading={
-          <>
-            The <span className="text-white">Infrastructure Tax</span>
+          <span style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
+            The <span className="text-ink">Infrastructure Tax</span>
             <br />
-            <span className="text-white/40">vs</span> <span className="text-white">AuraOps</span>
-          </>
+            <span className="text-ink/40">vs</span> <span className="text-ink">AuraOps</span>
+          </span>
         }
-        headingClassName="section-title text-center max-w-4xl mb-24"
+        headingClassName="text-display-lg text-center max-w-4xl mb-24"
       />
 
       {/* Comparison Grid */}

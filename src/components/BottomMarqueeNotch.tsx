@@ -25,8 +25,8 @@ export default function BottomMarqueeNotch({
       <div className="relative w-full flex justify-center items-end">
         {/* Left curve */}
         <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style={{ flexShrink: 0 }}>
-          <path d="M0 56 Q0 0 56 0 L56 56 Z" fill="#000" />
-          <path d="M56 0 Q0 0 0 56" stroke="rgba(255,255,255,0.07)" strokeWidth="1" fill="none" />
+          <path d="M0 56 Q0 0 56 0 L56 56 Z" fill="#010102" />
+          <path d="M56 0 Q0 0 0 56" stroke="rgba(247,248,248,0.07)" strokeWidth="1" fill="none" />
         </svg>
 
         {/* Pill */}
@@ -35,11 +35,11 @@ export default function BottomMarqueeNotch({
             flex: 1,
             maxWidth,
             height: 57,
-            background: "#0e0e14",
+            background: "#0d0d14",
             borderRadius: "0",
             position: "relative",
             overflow: "hidden",
-            // border: "1px solid rgba(255,255,255,0.1)",
+            // border: "1px solid rgba(247,248,248,0.1)",
             borderBottom: "none",
             boxShadow:
               "inset 0 3px 12px rgba(0,0,0,1), inset 0 10px 40px rgba(0,0,0,0.7), inset 6px 0 28px rgba(0,0,0,0.7), inset -6px 0 28px rgba(0,0,0,0.7)",
@@ -52,7 +52,7 @@ export default function BottomMarqueeNotch({
               inset: 0,
               borderRadius: "20px 20px 0 0",
               background:
-                "linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, transparent 28%), linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 14%, transparent 30%, transparent 70%, rgba(0,0,0,0.2) 86%, rgba(0,0,0,0.75) 100%)",
+                "linear-gradient(to bottom, rgba(247,248,248,0.05) 0%, transparent 28%), linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 14%, transparent 30%, transparent 70%, rgba(0,0,0,0.2) 86%, rgba(0,0,0,0.75) 100%)",
               pointerEvents: "none",
               zIndex: 10,
             }}
@@ -96,7 +96,7 @@ export default function BottomMarqueeNotch({
                     opacity: 0.5,
                     transition: "opacity 0.3s ease",
                     cursor: "default",
-                    borderRight: "1px solid rgba(255,255,255,0.06)",
+                    borderRight: "1px solid rgba(247,248,248,0.06)",
                   }}
                   onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
                   onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.5")}
@@ -106,7 +106,7 @@ export default function BottomMarqueeNotch({
                     style={{
                       fontSize: logo.italic ? 17 : 15,
                       fontWeight: 700,
-                      color: "#fff",
+                      color: "#f7f8f8",
                       letterSpacing: logo.italic ? "-0.6px" : "-0.3px",
                       fontStyle: logo.italic ? "italic" : "normal",
                       whiteSpace: "nowrap",
@@ -123,8 +123,8 @@ export default function BottomMarqueeNotch({
 
         {/* Right curve */}
         <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style={{ flexShrink: 0 }}>
-          <path d="M56 56 Q56 0 0 0 L0 56 Z" fill="#000" />
-          <path d="M0 0 Q56 0 56 56" stroke="rgba(255,255,255,0.07)" strokeWidth="1" fill="none" />
+          <path d="M56 56 Q56 0 0 0 L0 56 Z" fill="#010102" />
+          <path d="M0 0 Q56 0 56 56" stroke="rgba(247,248,248,0.07)" strokeWidth="1" fill="none" />
         </svg>
       </div>
 

@@ -12,7 +12,7 @@ interface PipelineNodeProps {
 
 const CHECK_ICON = (
   <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-    <path d="M1.5 4l2 2L6.5 2" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M1.5 4l2 2L6.5 2" stroke="#f7f8f8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 )
 
@@ -27,26 +27,26 @@ export default function PipelineNode({ node, state, canvasWidth, canvasHeight }:
   const boxStateStyle = (): React.CSSProperties => {
     if (state === 'running') {
       return isAgent
-        ? { borderColor: 'rgba(167,139,250,0.85)', boxShadow: '0 0 0 4px rgba(167,139,250,0.12),0 0 32px rgba(167,139,250,0.32)' }
-        : { borderColor: 'rgba(74,222,128,0.75)',  boxShadow: '0 0 0 3px rgba(74,222,128,0.1),0 0 28px rgba(74,222,128,0.28)' }
+        ? { borderColor: 'rgba(94,106,210,0.85)', boxShadow: '0 0 0 4px rgba(94,106,210,0.12),0 0 32px rgba(94,106,210,0.32)' }
+        : { borderColor: 'rgba(94,106,210,0.75)',  boxShadow: '0 0 0 3px rgba(94,106,210,0.1),0 0 28px rgba(94,106,210,0.28)' }
     }
     if (state === 'done') {
       return isAgent
-        ? { borderColor: 'rgba(167,139,250,0.45)', boxShadow: '0 0 12px rgba(167,139,250,0.18)' }
-        : { borderColor: 'rgba(74,222,128,0.4)',   boxShadow: '0 0 0 2px rgba(74,222,128,0.07),0 0 14px rgba(74,222,128,0.14)' }
+        ? { borderColor: 'rgba(94,106,210,0.45)', boxShadow: '0 0 12px rgba(94,106,210,0.18)' }
+        : { borderColor: 'rgba(94,106,210,0.4)',   boxShadow: '0 0 0 2px rgba(94,106,210,0.07),0 0 14px rgba(94,106,210,0.14)' }
     }
-    return { borderColor: isAgent ? 'rgba(167,139,250,0.25)' : 'rgba(255,255,255,0.09)' }
+    return { borderColor: isAgent ? 'rgba(94,106,210,0.25)' : 'rgba(247,248,248,0.09)' }
   }
 
   const labelColor = () => {
-    if (state === 'running') return isAgent ? 'rgba(200,180,255,0.95)' : 'rgba(74,222,128,0.85)'
-    if (state === 'done')    return isAgent ? 'rgba(167,139,250,0.6)'  : 'rgba(74,222,128,0.5)'
-    return isAgent ? 'rgba(167,139,250,0.4)' : 'rgba(255,255,255,0.28)'
+    if (state === 'running') return isAgent ? 'rgba(94,106,210,0.95)' : 'rgba(94,106,210,0.85)'
+    if (state === 'done')    return isAgent ? 'rgba(94,106,210,0.6)'  : 'rgba(94,106,210,0.5)'
+    return isAgent ? 'rgba(94,106,210,0.4)' : 'rgba(247,248,248,0.28)'
   }
 
   const subColor = () => {
-    if (state === 'done') return isAgent ? 'rgba(167,139,250,0.35)' : 'rgba(74,222,128,0.32)'
-    return 'rgba(255,255,255,0.14)'
+    if (state === 'done') return isAgent ? 'rgba(94,106,210,0.35)' : 'rgba(94,106,210,0.32)'
+    return 'rgba(247,248,248,0.14)'
   }
 
   return (
@@ -59,7 +59,7 @@ export default function PipelineNode({ node, state, canvasWidth, canvasHeight }:
         className="relative flex items-center justify-center transition-all duration-300"
         style={{
           width: 58, height: 58,
-          background: 'linear-gradient(145deg,#0e0e18,#07070f)',
+          background: 'linear-gradient(145deg,#0d0d14,#010102)',
           border: '1.5px solid',
           borderRadius: isAgent ? 12 : 14,
           transform: isAgent ? 'rotate(45deg)' : undefined,
@@ -74,7 +74,7 @@ export default function PipelineNode({ node, state, canvasWidth, canvasHeight }:
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'linear-gradient(145deg,rgba(255,255,255,0.04),transparent 60%)',
+            background: 'linear-gradient(145deg,rgba(247,248,248,0.04),transparent 60%)',
             borderRadius: 'inherit',
             clipPath: 'inherit',
           }}
@@ -87,7 +87,7 @@ export default function PipelineNode({ node, state, canvasWidth, canvasHeight }:
             style={{
               inset: -6, borderRadius: '50%',
               border: '1.5px solid transparent',
-              borderTopColor: isAgent ? 'rgba(167,139,250,0.9)' : 'rgba(74,222,128,0.9)',
+              borderTopColor: isAgent ? 'rgba(94,106,210,0.9)' : 'rgba(94,106,210,0.9)',
               animation: 'spin 0.75s linear infinite',
             }}
           />
@@ -101,7 +101,7 @@ export default function PipelineNode({ node, state, canvasWidth, canvasHeight }:
               top: 4, right: 1,
               width: 16, height: 16,
               borderRadius: '50%',
-              background: '#22c55e',
+              background: '#5e6ad2',
               border: '1.5px solid #000',
               transform: isAgent ? 'scale(1) rotate(-45deg)' : 'scale(1)',
               zIndex: 20,

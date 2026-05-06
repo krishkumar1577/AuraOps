@@ -10,12 +10,12 @@ import type { NodeState } from './types'
 const GLOBAL_STYLES = `
   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
   @keyframes nodePulse {
-    0%,100% { box-shadow: 0 0 0 3px rgba(74,222,128,0.08), 0 0 20px rgba(74,222,128,0.2); }
-    50%      { box-shadow: 0 0 0 6px rgba(74,222,128,0.16), 0 0 40px rgba(74,222,128,0.38); }
+    0%,100% { box-shadow: 0 0 0 3px rgba(247,248,248,0.08), 0 0 20px rgba(247,248,248,0.2); }
+    50%      { box-shadow: 0 0 0 6px rgba(247,248,248,0.16), 0 0 40px rgba(247,248,248,0.38); }
   }
   @keyframes agentPulse {
-    0%,100% { box-shadow: 0 0 0 4px rgba(167,139,250,0.1), 0 0 24px rgba(167,139,250,0.25); }
-    50%      { box-shadow: 0 0 0 8px rgba(167,139,250,0.18), 0 0 44px rgba(167,139,250,0.42); }
+    0%,100% { box-shadow: 0 0 0 4px rgba(94,106,210,0.1), 0 0 24px rgba(94,106,210,0.25); }
+    50%      { box-shadow: 0 0 0 8px rgba(94,106,210,0.18), 0 0 44px rgba(94,106,210,0.42); }
   }
   @keyframes spin {
     from { transform: rotate(0deg); }
@@ -107,13 +107,13 @@ export default function AIPipeline() {
 
       <div
         className="relative w-full min-h-screen overflow-hidden"
-        style={{ background: '#000', padding: '32px 28px 44px', fontFamily: 'Inter, sans-serif' }}
+        style={{ background: '#010102', padding: '32px 28px 44px', fontFamily: 'Inter, sans-serif' }}
       >
         {/* faint grid */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px)',
+            backgroundImage: 'linear-gradient(rgba(247,248,248,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(247,248,248,0.018) 1px,transparent 1px)',
             backgroundSize: '52px 52px',
             maskImage: 'radial-gradient(ellipse 90% 80% at 50% 40%,black 40%,transparent 90%)',
             zIndex: 0,
@@ -121,27 +121,20 @@ export default function AIPipeline() {
         />
 
         {/* ── INTRO SECTION WITH BUTTON ── */}
-          <div className="relative z-10 mb-6">
-            <h1 className="section-title text-white tracking-[-2.2px]" style={{ fontSize: 'clamp(32px, 4vw, 52px)' }}>
-              AuraOps Orchestration Engine
-            </h1>
-          </div>
-        <div className="relative max-w-7xl mx-auto px-8 mb-8" style={{ zIndex: 2 }}>
-          <div className="relative flex items-start justify-between gap-8 mb-6">
-            <div className="flex-1 max-w-2xl">
-              <p className="body-copy text-secondary leading-relaxed">
-                Watch as AuraOps analyzes your repository, optimizes dependencies, separates model weights from logic, and orchestrates a deterministic deployment pipeline to GPU clouds. From code to production in one command.
-              </p>
-            </div>
-            
-            <div className="flex-shrink-0 pt-2">
-              <RollingButton 
-                label={isRunning ? 'Running...' : done.length === EXEC_ORDER.length ? 'Relaunch' : 'Launch'}
-                variant="primary"
-                onClick={launch}
-                disabled={isRunning}
-              />
-            </div>
+        <div className="relative z-10 flex flex-col items-center justify-center text-center mb-12">
+          <h1 className="text-display-lg text-ink mb-4" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
+            The Workflow Orchestration
+          </h1>
+          <p className="body-copy text-[rgba(247,248,248,0.6)] leading-relaxed max-w-2xl mb-8">
+            Watch as AuraOps synchronizes your logic, optimizes model layers, and locks your environment. From local commit to global agent deployment in one movement.
+          </p>
+          <div>
+            <RollingButton 
+              label={isRunning ? 'Running...' : done.length === EXEC_ORDER.length ? 'Relaunch' : 'Launch Demo'}
+              variant="primary"
+              onClick={launch}
+              disabled={isRunning}
+            />
           </div>
         </div>
 
@@ -177,16 +170,16 @@ export default function AIPipeline() {
           className="relative flex items-center gap-3 rounded-xl"
           style={{
             zIndex: 2, marginTop: 16,
-            background: '#06060e',
-            border: '1px solid rgba(255,255,255,0.07)',
+            background: '#0d0d14',
+            border: '1px solid #23252a',
             padding: '12px 18px',
           }}
         >
           <span
             className="w-[6px] h-[6px] rounded-full flex-shrink-0 transition-all duration-300"
             style={{
-              background: statusActive ? '#4ade80' : done.length === EXEC_ORDER.length ? '#22c55e' : 'rgba(255,255,255,0.18)',
-              boxShadow: statusActive ? '0 0 8px rgba(74,222,128,0.55)' : done.length === EXEC_ORDER.length ? '0 0 8px rgba(34,197,94,0.6)' : undefined,
+              background: statusActive ? '#5e6ad2' : done.length === EXEC_ORDER.length ? '#5e6ad2' : 'rgba(247,248,248,0.18)',
+              boxShadow: statusActive ? '0 0 8px rgba(94,106,210,0.55)' : done.length === EXEC_ORDER.length ? '0 0 8px rgba(94,106,210,0.6)' : undefined,
               animation: statusActive ? 'sdotPulse 0.9s ease-in-out infinite' : undefined,
             }}
           />
@@ -195,7 +188,7 @@ export default function AIPipeline() {
             style={{
               fontFamily: "'JetBrains Mono',monospace",
               fontSize: 11,
-              color: statusActive ? 'rgba(74,222,128,0.85)' : done.length === EXEC_ORDER.length ? 'rgba(74,222,128,0.7)' : 'rgba(255,255,255,0.35)',
+              color: statusActive ? 'rgba(94,106,210,0.85)' : done.length === EXEC_ORDER.length ? 'rgba(94,106,210,0.7)' : 'rgba(247,248,248,0.35)',
             }}
           >
             {statusText}
@@ -205,7 +198,7 @@ export default function AIPipeline() {
             style={{
               fontFamily: "'JetBrains Mono',monospace",
               fontSize: 10,
-              color: 'rgba(255,255,255,0.18)',
+              color: 'rgba(247,248,248,0.18)',
               letterSpacing: '0.06em',
             }}
           >

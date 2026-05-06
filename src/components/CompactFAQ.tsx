@@ -35,8 +35,8 @@ export default function CompactFAQ(): React.ReactElement {
             onClick={() => setOpenId(openId === item.id ? null : item.id)}
             className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-white/5 transition-colors"
           >
-            <span className="body-copy font-semibold text-white/80">{item.q}</span>
-            <span className="text-white/50 text-lg leading-none">
+            <span className="body-copy font-semibold text-[#f7f8f8]/80">{item.q}</span>
+            <span className="text-[#f7f8f8]/50 text-lg leading-none">
               {openId === item.id ? '−' : '+'}
             </span>
           </button>

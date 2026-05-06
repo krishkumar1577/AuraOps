@@ -26,25 +26,21 @@ const TypewriterEffect = ({
     let timeoutId: ReturnType<typeof setTimeout>
 
     if (!isDeleting) {
-      // Typing phase
       if (displayedText.length < currentPhrase.length) {
         timeoutId = setTimeout(() => {
           setDisplayedText(currentPhrase.substring(0, displayedText.length + 1))
         }, typingSpeed)
       } else {
-        // Pause before deleting
         timeoutId = setTimeout(() => {
           setIsDeleting(true)
         }, pauseDuration)
       }
     } else {
-      // Deleting phase
       if (displayedText.length > 0) {
         timeoutId = setTimeout(() => {
           setDisplayedText(displayedText.substring(0, displayedText.length - 1))
         }, deletingSpeed)
       } else {
-        // Move to next phrase with a small delay
         timeoutId = setTimeout(() => {
           setIsDeleting(false)
           setPhraseIndex((prev) => (prev + 1) % phrases.length)
