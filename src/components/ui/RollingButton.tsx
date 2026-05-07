@@ -15,32 +15,32 @@ interface RollingButtonProps {
 
 const variantStyles: Record<Variant, React.CSSProperties> = {
   primary: {
-    background: "#ffffff",
-    color: "#000000",
-    boxShadow: "0 2px 20px rgba(255,255,255,0.18)",
+    background: "var(--color-ink)",
+    color: "var(--color-canvas)",
+    boxShadow: "0 2px 20px rgba(255,255,255,0.1)",
   },
   ghost: {
-    background: "rgba(255,255,255,0.06)",
-    color: "rgba(255,255,255,0.9)",
-    boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.22)",
+    background: "var(--color-surface-1)",
+    color: "var(--color-ink-muted)",
+    boxShadow: "inset 0 0 0 1px var(--color-hairline)",
   },
   outline: {
     background: "transparent",
-    color: "rgba(255,255,255,0.85)",
-    boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.25)",
+    color: "var(--color-ink)",
+    boxShadow: "inset 0 0 0 1px var(--color-hairline-strong)",
   },
   violet: {
-    background: "#7c6af7",
-    color: "#ffffff",
-    boxShadow: "0 0 0 1px rgba(124,106,247,0.4), 0 6px 28px rgba(124,106,247,0.3)",
+    background: "var(--color-primary)",
+    color: "var(--color-ink)",
+    boxShadow: "0 6px 28px rgba(124,106,247,0.3)",
   },
 };
 
 const hoverStyles: Record<Variant, React.CSSProperties> = {
-  primary: { boxShadow: "0 4px 32px rgba(255,255,255,0.28), 0 0 0 1px rgba(255,255,255,0.4)" },
-  ghost: { background: "rgba(255,255,255,0.10)", boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.4)" },
-  outline: { boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.45)" },
-  violet: { boxShadow: "0 0 0 1px rgba(124,106,247,0.6), 0 8px 36px rgba(124,106,247,0.45)" },
+  primary: { boxShadow: "0 4px 32px rgba(255,255,255,0.2), 0 0 0 1px rgba(255,255,255,0.4)" },
+  ghost: { background: "var(--color-surface-2)", color: "var(--color-ink)", boxShadow: "inset 0 0 0 1px var(--color-hairline-strong)" },
+  outline: { boxShadow: "inset 0 0 0 1px var(--color-ink)" },
+  violet: { background: "var(--color-primary-hover)", boxShadow: "0 8px 36px rgba(124,106,247,0.45)" },
 };
 
 export default function RollingButton({
@@ -51,13 +51,10 @@ export default function RollingButton({
   className = "",
   disabled = false,
 }: RollingButtonProps) {
-  useRef<HTMLButtonElement | HTMLAnchorElement>(null);
-
   const chars = label.split("");
 
   const innerContent = (
     <>
-      {/* Top row — slides up on hover */}
       <span
         className="rolling-top"
         style={{ display: "flex", overflow: "hidden", lineHeight: "1.2em" }}
@@ -71,7 +68,7 @@ export default function RollingButton({
               flexShrink: 0,
               lineHeight: "1.2em",
               willChange: "transform",
-              transition: `transform 0.48s cubic-bezier(0.22,1,0.36,1) ${i * 16}ms`,
+              transition: `transform 0.5s var(--ease-out-expo) ${i * 12}ms`,
             }}
           >
             {ch === " " ? "\u00a0" : ch}
@@ -79,7 +76,6 @@ export default function RollingButton({
         ))}
       </span>
 
-      {/* Bottom shadow row — rises up on hover */}
       <span
         className="rolling-shadow"
         style={{
@@ -103,7 +99,7 @@ export default function RollingButton({
               lineHeight: "1.2em",
               willChange: "transform",
               transform: "translateY(100%)",
-              transition: `transform 0.48s cubic-bezier(0.22,1,0.36,1) ${i * 16}ms`,
+              transition: `transform 0.5s var(--ease-out-expo) ${i * 12}ms`,
             }}
           >
             {ch === " " ? "\u00a0" : ch}
@@ -126,26 +122,33 @@ export default function RollingButton({
     justifyContent: "center",
     height: 44,
     padding: "0 24px",
-    borderRadius: 10,
-    fontFamily: "Inter, sans-serif",
-    fontSize: 13.5,
-    fontWeight: 600,
-    letterSpacing: "-0.2px",
+    borderRadius: "var(--radius-md)",
+    fontFamily: "var(--font-family-mono)",
+    fontSize: 12.5,
+    fontWeight: 500,
+    letterSpacing: "-0.01em",
     cursor: disabled ? "default" : "pointer",
     border: "none",
     overflow: "hidden",
     position: "relative",
-    transition: "transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease",
+    transition: "all 0.3s var(--ease-soft)",
     textDecoration: "none",
     opacity: disabled ? 0.5 : 1,
     pointerEvents: disabled ? "none" : "auto",
+  };
+
+  const variantClasses: Record<Variant, string> = {
+    primary: "text-canvas",
+    ghost: "text-ink-muted",
+    outline: "text-ink",
+    violet: "text-white",
   };
 
   if (href) {
     return (
       <a
         href={href}
-        className={`rolling-btn ${className}`}
+        className={`rolling-btn ${variantClasses[variant]} ${className}`}
         style={baseStyle}
         onMouseEnter={(e) => Object.assign((e.currentTarget as HTMLElement).style, hoverStyles[variant])}
         onMouseLeave={(e) => Object.assign((e.currentTarget as HTMLElement).style, variantStyles[variant])}
@@ -159,7 +162,7 @@ export default function RollingButton({
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`rolling-btn ${className}`}
+      className={`rolling-btn ${variantClasses[variant]} ${className}`}
       style={baseStyle}
       onMouseEnter={(e) => !disabled && Object.assign((e.currentTarget as HTMLElement).style, hoverStyles[variant])}
       onMouseLeave={(e) => !disabled && Object.assign((e.currentTarget as HTMLElement).style, variantStyles[variant])}

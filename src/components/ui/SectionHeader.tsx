@@ -43,9 +43,16 @@ export default function SectionHeader({
     <div className={centered ? 'flex flex-col items-center text-center' : ''}>
       {renderBadge()}
 
-      <h2 className={headingClassName}>{heading}</h2>
+      <h2 className={`${headingClassName} reveal`}>{heading}</h2>
 
-      {subheading && <p className={subheadingClassName}>{subheading}</p>}
+      {subheading && (
+        <p 
+          className={`${subheadingClassName} reveal`}
+          style={{ animationDelay: '0.2s' }}
+        >
+          {subheading}
+        </p>
+      )}
     </div>
   )
 }

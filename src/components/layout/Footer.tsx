@@ -1,5 +1,5 @@
 import React from 'react'
-import AuraOpsLogoSvg from '../assets/auraops_true_vector.svg'
+import AuraOpsLogoSvg from '../../assets/auraops_true_vector.svg'
 
 interface NavLink {
   label: string
@@ -95,8 +95,7 @@ export default function Footer(): React.ReactElement {
               <img
                 src={AuraOpsLogoSvg}
                 alt="AuraOps Logo"
-                className="w-10 h-10 flex-shrink-0"
-                style={{ filter: 'brightness(0) invert(1)' }}
+                className="w-10 h-10 flex-shrink-0 brightness-0 invert"
               />
               <span className="text-lg font-semibold text-ink">AuraOps</span>
             </div>

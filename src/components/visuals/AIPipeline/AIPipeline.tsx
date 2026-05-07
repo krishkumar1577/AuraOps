@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import PipelinePaths from './PipelinePaths'
 import PipelineNodeEl from './PipelineNode'
-import RollingButton from '../RollingButton'
+import RollingButton from '../../ui/RollingButton'
 import { NODES, EXEC_ORDER, DURATIONS, STATUS_MSGS, CANVAS_HEIGHT } from './constants'
 import type { NodeState } from './types'
 
@@ -106,8 +106,8 @@ export default function AIPipeline() {
       <style>{GLOBAL_STYLES}</style>
 
       <div
-        className="relative w-full min-h-screen overflow-hidden"
-        style={{ background: '#010102', padding: '32px 28px 44px', fontFamily: 'Inter, sans-serif' }}
+        className="relative w-full min-h-screen overflow-hidden bg-black px-7 py-11 font-sans"
+        style={{ paddingBottom: '44px', fontFamily: 'Inter, sans-serif' }}
       >
         {/* faint grid */}
         <div
@@ -167,28 +167,25 @@ export default function AIPipeline() {
 
         {/* ── STATUS BAR ── */}
         <div
-          className="relative flex items-center gap-3 rounded-xl"
+          className="relative flex items-center gap-3 rounded-xl bg-surface-1 border border-hairline mt-4 px-4.5 py-3 z-20"
           style={{
-            zIndex: 2, marginTop: 16,
-            background: '#0d0d14',
-            border: '1px solid #23252a',
-            padding: '12px 18px',
+            marginTop: 16,
           }}
         >
           <span
             className="w-[6px] h-[6px] rounded-full flex-shrink-0 transition-all duration-300"
             style={{
-              background: statusActive ? '#5e6ad2' : done.length === EXEC_ORDER.length ? '#5e6ad2' : 'rgba(247,248,248,0.18)',
-              boxShadow: statusActive ? '0 0 8px rgba(94,106,210,0.55)' : done.length === EXEC_ORDER.length ? '0 0 8px rgba(94,106,210,0.6)' : undefined,
+              background: statusActive ? 'var(--color-primary)' : done.length === EXEC_ORDER.length ? 'var(--color-primary)' : 'var(--color-hairline)',
+              boxShadow: statusActive ? '0 0 8px var(--color-primary)' : done.length === EXEC_ORDER.length ? '0 0 8px var(--color-primary)' : undefined,
               animation: statusActive ? 'sdotPulse 0.9s ease-in-out infinite' : undefined,
             }}
           />
           <span
             className="flex-1 overflow-hidden whitespace-nowrap text-ellipsis transition-colors duration-300"
             style={{
-              fontFamily: "'JetBrains Mono',monospace",
+              fontFamily: "var(--font-family-mono)",
               fontSize: 11,
-              color: statusActive ? 'rgba(94,106,210,0.85)' : done.length === EXEC_ORDER.length ? 'rgba(94,106,210,0.7)' : 'rgba(247,248,248,0.35)',
+              color: statusActive ? 'var(--color-primary)' : done.length === EXEC_ORDER.length ? 'var(--color-ink-muted)' : 'var(--color-ink-tertiary)',
             }}
           >
             {statusText}
@@ -196,9 +193,9 @@ export default function AIPipeline() {
           <span
             className="flex-shrink-0"
             style={{
-              fontFamily: "'JetBrains Mono',monospace",
+              fontFamily: "var(--font-family-mono)",
               fontSize: 10,
-              color: 'rgba(247,248,248,0.18)',
+              color: 'var(--color-ink-tertiary)',
               letterSpacing: '0.06em',
             }}
           >
