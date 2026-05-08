@@ -1,4 +1,10 @@
+import { useEffect } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useCardHover } from '../../lib/useCardHover'
 import RollingButton from "../ui/RollingButton";
+
+gsap.registerPlugin(ScrollTrigger)
 
 const plans = [
   {
@@ -43,8 +49,66 @@ const plans = [
 ];
 
 export function PricingUrgencySection() {
+  // Hover effects for pricing cards
+  useCardHover('.pricing-card')
+
+  // GSAP: Pricing cards scale-up entrance + Pro card lift
+  useEffect(() => {
+    const cards = document.querySelectorAll('.pricing-card');
+    if (cards && cards.length > 0) {
+      // Set initial state
+      gsap.set(cards, {
+        opacity: 0,
+        scale: 0.85,
+      });
+    }
+
+    const timer = setTimeout(() => {
+      try {
+        const cards = document.querySelectorAll('.pricing-card');
+        if (cards && cards.length > 0) {
+          gsap.to(cards, {
+            scrollTrigger: {
+              trigger: '[data-pricing-section]',
+              start: 'top 75%',
+              toggleActions: 'play none none none',
+            },
+            duration: 0.35,
+            opacity: 1,
+            scale: 1,
+            stagger: {
+              amount: 0.15,
+              from: 'center',
+            },
+            ease: 'power3.out',
+          });
+          console.log('Pricing cards animation started');
+        }
+
+        const proCard = document.querySelector('.pricing-card.pro');
+        if (proCard) {
+          gsap.to(proCard, {
+            scrollTrigger: {
+              trigger: '[data-pricing-section]',
+              start: 'top 75%',
+              toggleActions: 'play none none none',
+            },
+            yPercent: -5,
+            duration: 0.6,
+            ease: 'power3.inOut',
+            delay: 0.05,
+          });
+        }
+      } catch (e) {
+        console.warn('Pricing animation error:', e);
+      }
+    }, 200);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <section className="w-screen bg-black py-24 px-8">
+    <section data-pricing-section className="w-screen bg-black pb-16 pt-8 px-8">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-20">
@@ -57,7 +121,7 @@ export function PricingUrgencySection() {
           {plans.map((plan, idx) => (
             <div
               key={idx}
-              className={`relative rounded-2xl transition-all duration-300 flex flex-col h-full bg-zinc-900/40 border ${
+              className={`pricing-card ${plan.highlight ? 'pro' : ''} relative rounded-2xl transition-all duration-300 flex flex-col h-full bg-zinc-900/40 border ${
                 plan.highlight
                   ? 'border-zinc-400'
                   : 'border-zinc-800'

@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+import gsap from 'gsap'
+
+gsap.registerPlugin()
 
 interface FAQItem {
   id: string
@@ -26,6 +29,31 @@ const FAQItems: FAQItem[] = [
 
 export default function CompactFAQ(): React.ReactElement {
   const [openId, setOpenId] = useState<string | null>(FAQItems[0].id)
+  const contentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
+
+  // GSAP: Smooth accordion height transitions
+  useEffect(() => {
+    FAQItems.forEach((item) => {
+      const contentDiv = contentRefs.current[item.id];
+      if (contentDiv) {
+        if (openId === item.id) {
+          gsap.to(contentDiv, {
+            height: 'auto',
+            opacity: 1,
+            duration: 0.3,
+            ease: 'power2.out',
+          });
+        } else {
+          gsap.to(contentDiv, {
+            height: 0,
+            opacity: 0,
+            duration: 0.3,
+            ease: 'power2.inOut',
+          });
+        }
+      }
+    });
+  }, [openId]);
 
   return (
     <div className="space-y-2">
@@ -36,15 +64,20 @@ export default function CompactFAQ(): React.ReactElement {
             className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-white/5 transition-colors"
           >
             <span className="body-copy font-semibold text-[#f7f8f8]/80">{item.q}</span>
-            <span className="text-[#f7f8f8]/50 text-lg leading-none">
+            <span className={`text-[#f7f8f8]/50 text-lg leading-none transition-transform duration-300 ${openId === item.id ? 'rotate-180' : ''}`}>
               {openId === item.id ? '−' : '+'}
             </span>
           </button>
-          {openId === item.id && (
+          <div
+            ref={(el) => {
+              if (el) contentRefs.current[item.id] = el;
+            }}
+            style={{ height: 0, overflow: 'hidden', opacity: 0 }}
+          >
             <div className="px-4 py-3 bg-white/5 border-t border-white/10">
               <p className="body-copy text-secondary">{item.a}</p>
             </div>
-          )}
+          </div>
         </div>
       ))}
     </div>

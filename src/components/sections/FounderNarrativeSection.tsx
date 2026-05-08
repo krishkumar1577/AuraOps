@@ -8,7 +8,7 @@ interface FounderNarrativeSectionProps {
 
 export function FounderNarrativeSection({ onCtaClick }: FounderNarrativeSectionProps) {
   return (
-    <section className="relative w-screen bg-black py-32 px-8 overflow-hidden">
+    <section className="relative w-screen bg-black pb-16 pt-8 px-8 overflow-hidden">
       {/* Background Accent */}
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
 

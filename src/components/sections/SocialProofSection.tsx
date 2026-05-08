@@ -1,6 +1,41 @@
+import { useEffect } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useCardHover } from '../../lib/useCardHover'
 import Badge from '../ui/Badge'
 
+gsap.registerPlugin(ScrollTrigger)
+
 export function SocialProofSection() {
+  // Hover effects for integration badges
+  useCardHover('[data-integration-badge]')
+
+  // GSAP: Integration badges scroll reveal
+  useEffect(() => {
+    const badges = document.querySelectorAll('[data-integration-badge]');
+    if (badges && badges.length > 0) {
+      gsap.set(badges, {
+        opacity: 0,
+        scale: 0.9,
+      });
+
+      const timer = setTimeout(() => {
+        gsap.to(badges, {
+          scrollTrigger: {
+            trigger: '[data-social-proof-section]',
+            start: 'top 75%',
+            toggleActions: 'play none none none',
+          },
+          duration: 0.35,
+          opacity: 1,
+          scale: 1,
+          stagger: 0.04,
+          ease: 'power3.out',
+        });
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, []);
   const integrations = [
     { 
       name: 'PyTorch', 
@@ -37,7 +72,7 @@ export function SocialProofSection() {
   ]
 
   return (
-    <section id="ecosystem" className="relative w-screen bg-black py-32 px-8 overflow-hidden">
+    <section data-social-proof-section id="ecosystem" className="relative w-screen bg-black pb-16 pt-8 px-8 overflow-hidden">
       {/* Background Grid Accent */}
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
       
@@ -59,6 +94,7 @@ export function SocialProofSection() {
           {integrations.map((item, idx) => (
             <div 
               key={item.name} 
+              data-integration-badge
               className="group bg-surface-1 border border-hairline rounded-xl p-6 flex flex-col items-center text-center transition-all duration-500 hover:border-secondary/40 reveal"
               style={{ animationDelay: `${idx * 100}ms` }}
             >

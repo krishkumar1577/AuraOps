@@ -1,3 +1,10 @@
+import { useEffect } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useCardHover } from '../../lib/useCardHover'
+
+gsap.registerPlugin(ScrollTrigger)
+
 interface BenefitCardProps {
   feature: string
   before: string
@@ -7,6 +14,35 @@ interface BenefitCardProps {
 }
 
 export function BenefitsBeforeAfterCards() {
+  // Hover effects
+  useCardHover('[data-benefit-card]')
+
+  // GSAP: Card entrance animations on scroll
+  useEffect(() => {
+    const cards = document.querySelectorAll('[data-benefit-card]');
+    if (cards && cards.length > 0) {
+      gsap.set(cards, {
+        opacity: 0,
+        y: 50,
+      });
+
+      const timer = setTimeout(() => {
+        gsap.to(cards, {
+          scrollTrigger: {
+            trigger: '[data-benefits-section]',
+            start: 'top 70%',
+            toggleActions: 'play none none none',
+          },
+          duration: 0.35,
+          opacity: 1,
+          y: 0,
+          stagger: 0.06,
+          ease: 'power3.out',
+        });
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, []);
   const benefits: BenefitCardProps[] = [
     {
       feature: '11 Second Deploy',
@@ -119,7 +155,7 @@ export function BenefitsBeforeAfterCards() {
   ]
 
   return (
-    <section className="w-screen bg-black py-24 px-8">
+    <section data-benefits-section className="w-screen bg-black pb-16 pt-8 px-8">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -145,7 +181,7 @@ export function BenefitsBeforeAfterCards() {
 
 function BeforeAfterCard({ feature, before, after, metric, icon }: BenefitCardProps) {
   return (
-    <div className="bg-surface-1 border border-hairline rounded-2xl group transition-all duration-500 hover:border-primary/20 hover:shadow-[0_0_40px_rgba(124,137,248,0.05)] reveal">
+    <div data-benefit-card className="bg-surface-1 border border-hairline rounded-2xl group transition-all duration-500 hover:border-primary/20 hover:shadow-[0_0_40px_rgba(124,137,248,0.05)] reveal">
       {/* Card Content */}
       <div className="p-8">
         {/* Icon */}

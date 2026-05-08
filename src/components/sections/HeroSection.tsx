@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import RollingButton from '../ui/RollingButton'
 import LightPillar from '../visuals/LightPillar'
 import Badge from '../ui/Badge'
 import BottomMarqueeNotch from '../layout/BottomMarqueeNotch'
 import type { LogoItem } from '../layout/BottomMarqueeNotch'
 import AuraOpsLogoSvg from '../../assets/auraops_true_vector.svg'
+
+gsap.registerPlugin(ScrollTrigger)
 
 // Logo Icons
 const AuraOpsLogoIcon = () => (
@@ -55,7 +59,67 @@ export function HeroSection({ onVideoClick, onTryClick }: HeroSectionProps) {
   const [visibleWords, setVisibleWords] = useState<number[]>([])
   const [statsVisible, setStatsVisible] = useState(false)
 
-  // Staggered headline animation
+  // GSAP: Staggered headline animation - Animate IN from hidden state
+  useEffect(() => {
+    // Set initial state
+    const titleSpans = document.querySelectorAll('.hero-title-word');
+    if (titleSpans && titleSpans.length > 0) {
+      gsap.set(titleSpans, {
+        opacity: 0,
+        yPercent: 120,
+      });
+    }
+
+    const timer = setTimeout(() => {
+      const titleSpans = document.querySelectorAll('.hero-title-word');
+      console.log('Hero animation check:', titleSpans.length, 'elements found');
+      if (titleSpans && titleSpans.length > 0) {
+        try {
+          gsap.to(titleSpans, {
+            duration: 0.35,
+            opacity: 1,
+            yPercent: 0,
+            stagger: 0.05,
+            ease: 'power3.out',
+            delay: 0.05,
+          });
+          console.log('Hero title animation started');
+        } catch (e) {
+          console.warn('Hero title animation error:', e);
+        }
+      }
+    }, 30);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // GSAP: Background parallax effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const heroBg = document.querySelector('.hero-light-pillar');
+      if (heroBg) {
+        try {
+          gsap.to(heroBg, {
+            yPercent: -10,
+            ease: 'sine.inOut',
+            scrollTrigger: {
+              trigger: '#home',
+              start: 'top top',
+              end: 'bottom top',
+              scrub: 1,
+              markers: false,
+            },
+          });
+        } catch (e) {
+          console.warn('Hero parallax animation error:', e);
+        }
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Staggered headline animation (fallback state)
   useEffect(() => {
     const words = ['Your AI Agent Works Locally.', 'Breaks in Production.', 'Not Anymore.']
     words.forEach((_, index) => {
@@ -88,7 +152,7 @@ export function HeroSection({ onVideoClick, onTryClick }: HeroSectionProps) {
 
   return (
     <section id="home" className="relative w-screen h-screen overflow-hidden flex flex-col items-center justify-center bg-black px-8">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 hero-light-pillar">
         <LightPillar
           topColor="#5227FF"
           bottomColor="#FF9FFC"
@@ -114,11 +178,11 @@ export function HeroSection({ onVideoClick, onTryClick }: HeroSectionProps) {
         </div>
 
         {/* Main Headline - Orchestrated Staggered Reveal */}
-        <h1 className="text-[48px] md:text-[64px] mb-8 max-w-4xl font-bold leading-[1.1] font-display tracking-tightest">
+        <h1 className="hero-title text-[48px] md:text-[64px] mb-8 max-w-4xl font-bold leading-[1.1] font-display tracking-tightest">
           {headlineWords.map((word, idx) => (
             <div
               key={idx}
-              className={`transition-all duration-1000 ease-[var(--ease-out-expo)] ${visibleWords.includes(idx) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+              className={`hero-title-word transition-all duration-1000 ease-[var(--ease-out-expo)] ${visibleWords.includes(idx) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                 }`}
               style={{ transitionDelay: `${idx * 200}ms` }}
             >

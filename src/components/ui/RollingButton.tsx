@@ -1,7 +1,5 @@
 "use client";
 
-import { useRef } from "react";
-
 type Variant = "primary" | "ghost" | "outline" | "violet" | "secondary";
 
 interface RollingButtonProps {

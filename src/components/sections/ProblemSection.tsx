@@ -1,11 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useCardHover } from '../../lib/useCardHover'
 import Badge from '../ui/Badge'
+
+gsap.registerPlugin(ScrollTrigger)
 
 interface ProblemSectionProps {
   onLearnMore?: () => void
 }
 
 export function ProblemSection({}: ProblemSectionProps) {
+  // Hover effects for problem cards
+  useCardHover('.problem-card')
+
   const containerRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -19,6 +27,45 @@ export function ProblemSection({}: ProblemSectionProps) {
     if (containerRef.current) observer.observe(containerRef.current)
     return () => observer.disconnect()
   }, [])
+
+  // GSAP: Problem cards cascade reveal on scroll
+  useEffect(() => {
+    const cards = document.querySelectorAll('.problem-card');
+    if (cards && cards.length > 0) {
+      // Set initial hidden state
+      gsap.set(cards, {
+        opacity: 0,
+        x: -100,
+        rotation: -2,
+      });
+    }
+
+    const timer = setTimeout(() => {
+      const cards = document.querySelectorAll('.problem-card');
+      if (cards && cards.length > 0) {
+        try {
+          gsap.to(cards, {
+            scrollTrigger: {
+              trigger: '#problems',
+              start: 'top 75%',
+              toggleActions: 'play none none none',
+            },
+            duration: 0.35,
+            opacity: 1,
+            x: 0,
+            rotation: 0,
+            stagger: 0.05,
+            ease: 'power3.out',
+          });
+          console.log('Problem cards animation started');
+        } catch (e) {
+          console.warn('Problem cards animation error:', e);
+        }
+      }
+    }, 150);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const painPoints = [
     {
@@ -45,7 +92,7 @@ export function ProblemSection({}: ProblemSectionProps) {
   ]
 
   return (
-    <section ref={containerRef} id="problems" className="relative w-screen bg-black py-32 px-8 overflow-hidden">
+    <section ref={containerRef} id="problems" className="relative w-screen bg-black pb-16 pt-8 px-8 overflow-hidden">
       {/* Decorative Atmosphere */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
 
@@ -68,7 +115,7 @@ export function ProblemSection({}: ProblemSectionProps) {
           {painPoints.map((point, idx) => (
             <div 
               key={point.id}
-              className={`group relative bg-surface-1 border border-hairline rounded-xl p-8 transition-all duration-700 hover:border-primary/40 ${
+              className={`problem-card group relative bg-surface-1 border border-hairline rounded-xl p-8 transition-all duration-700 hover:border-primary/40 ${
                 visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${idx * 200}ms` }}
