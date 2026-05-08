@@ -12,6 +12,7 @@ import { ComparisonSection } from '../components/sections/ComparisonSection'
 import { PricingUrgencySection } from '../components/sections/PricingUrgencySection'
 import { EarlySignupBar } from '../components/sections/EarlySignupBar'
 import { FinalCTASection } from '../components/sections/FinalCTASection'
+import StatusTicker from '../components/layout/StatusTicker'
 
 // Navigation Links 
 const navLinks = [
@@ -48,9 +49,7 @@ export default function Home() {
       />
 
       {/* SECTION 4: SOCIAL PROOF */}
-      <SocialProofSection
-        onCtaClick={() => window.location.hash = '#waitlist'}
-      />
+      <SocialProofSection />
 
       {/* SECTION 5: SOLUTION */}
       <SolutionSection
@@ -96,8 +95,8 @@ export default function Home() {
       </section>
 
       {/* SECTION 12: FOOTER */}
+      <StatusTicker />
       <Footer />
     </>
   )
 }
-

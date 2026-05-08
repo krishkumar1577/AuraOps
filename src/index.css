@@ -1,46 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
-/* ──────────────────────────────────────────────────────────────── */
-/* ROOT CUSTOM PROPERTIES (Linear Canvas Design System) */
-/* ──────────────────────────────────────────────────────────────── */
 :root {
   /* Colors: Brand & Accent */
-  --color-primary: #7c89f8;
-  --color-primary-hover: #8fa4ff;
-  --color-primary-focus: #7c88f7;
-  --color-brand-secure: #8a97c8;
-  
+  --color-primary: #FFFFFF;
+  --color-primary-hover: #F5F5F5;
+  --color-primary-focus: #FFFFFF;
+  --color-secondary: #E4FF9C;
+  --color-secondary-hover: #D8F58E;
+
   /* Colors: Surface Ladder */
-  --color-canvas: #010103;
-  --color-surface-1: #111111;
-  --color-surface-2: #0f0f15;
-  --color-surface-3: #161620;
-  --color-surface-4: #20202a;
-  
+  --color-canvas: #0A0A0A;
+  --color-surface-1: #121212;
+  --color-surface-2: #1A1A1A;
+  --color-surface-3: #242424;
+  --color-surface-4: #2D2D2D;
+
   /* Colors: Hairline/Borders */
-  --color-hairline: rgb(72, 72, 72);
-  --color-hairline-strong: rgba(255, 255, 255, 0.12);
-  --color-hairline-tertiary: rgba(255, 255, 255, 0.05);
-  --color-border-light: rgba(255, 255, 255, 0.15);
-  --color-border-primary: #7c89f8;
-  
+  --color-hairline: rgba(255, 255, 255, 0.16);
+  --color-hairline-strong: rgba(255, 255, 255, 0.24);
+  --color-hairline-tertiary: rgba(255, 255, 255, 0.08);
+  --color-border-light: rgba(255, 255, 255, 0.12);
+  --color-border-primary: #FFFFFF;
+  --color-border-raised: #FFFFFF;
+
   /* Colors: Text */
-  --color-ink: #ffffff;
-  --color-ink-muted: #d1d5db;
-  --color-ink-subtle: #9ca3af;
-  --color-ink-tertiary: #6b7280;
-  
+  --color-ink: #FFFFFF;
+  --color-ink-muted: #858585;
+  --color-ink-subtle: #666666;
+  --color-ink-tertiary: #4D4D4D;
+
   /* Colors: Inverse */
-  --color-inverse-canvas: #ffffff;
-  --color-inverse-surface-1: #f5f5f5;
-  --color-inverse-surface-2: #ececec;
+  --color-inverse-canvas: #FFFFFF;
+  --color-inverse-surface-1: #F5F5F5;
   --color-inverse-ink: #000000;
-  
+
   /* Colors: Semantic */
   --color-semantic-success: #27a644;
   --color-semantic-overlay: #000000;
-  
+
   /* Colors: Extended Palette (Zinc, Emerald) */
   --color-zinc-400: #a1a1aa;
   --color-zinc-500: #71717a;
@@ -48,7 +46,7 @@
   --color-zinc-900: #18181b;
   --color-auraops-bg: #09090b;
   --color-emerald-600: #10b981;
-  
+
   /* Spacing (4px base unit) */
   --space-xxs: 4px;
   --space-xs: 8px;
@@ -58,7 +56,7 @@
   --space-xl: 32px;
   --space-xxl: 48px;
   --space-section: 96px;
-  
+
   /* Border Radii */
   --radius-xs: 4px;
   --radius-sm: 6px;
@@ -68,7 +66,7 @@
   --radius-xxl: 24px;
   --radius-pill: 9999px;
   --radius-full: 9999px;
-  
+
   /* Typography Families - Editorial & Technical Pairing */
   --font-family-display: 'JetBrains Mono', monospace;
   --font-family-text: 'Inter', system-ui, sans-serif;
@@ -85,9 +83,6 @@
   --animation-fade: fadeIn 0.8s var(--ease-soft) forwards;
 }
 
-/* ──────────────────────────────────────────────────────────────── */
-/* GLOBAL GRAIN & ATMOSPHERE */
-/* ──────────────────────────────────────────────────────────────── */
 body::before {
   content: "";
   position: fixed;
@@ -110,17 +105,31 @@ body::after {
 }
 
 @keyframes reveal {
-  from { opacity: 0; transform: translateY(30px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes shimmer {
-  to { background-position: 200% center; }
+  to {
+    background-position: 200% center;
+  }
 }
 
 .animate-shimmer {
@@ -153,9 +162,8 @@ body {
   width: 100%;
 }
 
-/* ─── Typography Utilities (Linear Canvas Hierarchy) ─── */
-
 @layer components {
+
   /* Display XL - Hero headline (80px, 600wt, -0.04em tracking) */
   .display-xl {
     font-size: 80px;

@@ -24,7 +24,7 @@ export function FounderNarrativeSection({ onCtaClick }: FounderNarrativeSectionP
 
             {/* Headline */}
             <h2 className="text-[48px] md:text-[64px] font-display font-bold mb-10 leading-[1.1] tracking-tightest reveal" style={{ animationDelay: '200ms' }}>
-              Solving the <span className="text-primary italic underline decoration-primary/20 underline-offset-8">Deployment Paradox</span>
+              Solving the <span className="text-secondary italic underline decoration-secondary/20 underline-offset-8">Deployment Paradox</span>
             </h2>
 
             {/* Narrative with Highlighting */}
@@ -39,7 +39,7 @@ export function FounderNarrativeSection({ onCtaClick }: FounderNarrativeSectionP
                   It's always the same technical debt: <span className="highlight-technical">CUDA mismatches</span>, missing Docker dependencies,
                   and <span className="highlight-technical">15GB model downloads</span> taking forever.
                 </p>
-                <p className="text-lg md:text-xl text-ink-subtle leading-relaxed italic border-l-2 border-primary/20 pl-6">
+                <p className="text-lg md:text-xl text-ink-subtle leading-relaxed italic border-l-2 border-secondary/20 pl-6">
                   "You ship something, it fails silently, and you're debugging at <span className="text-ink font-bold">2AM</span> trying to figure out what's different between your laptop and the cloud."
                 </p>
               </div>
@@ -64,7 +64,7 @@ export function FounderNarrativeSection({ onCtaClick }: FounderNarrativeSectionP
           <div className="lg:col-span-5 relative reveal" style={{ animationDelay: '1.2s' }}>
             <div className="relative group">
               {/* Decorative Frame */}
-              <div className="absolute -inset-4 border border-primary/10 rounded-[32px] group-hover:border-primary/20 transition-colors duration-500" />
+              <div className="absolute -inset-4 border border-secondary/10 rounded-[32px] group-hover:border-secondary/20 transition-colors duration-500" />
 
               {/* Image Container */}
               <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden border border-hairline shadow-2xl">
@@ -77,15 +77,15 @@ export function FounderNarrativeSection({ onCtaClick }: FounderNarrativeSectionP
                 {/* Overlay Signature/Tag */}
                 <div className="absolute bottom-6 left-6 right-6 p-4 bg-surface-1/40 backdrop-blur-md border border-white/10 rounded-xl">
                   <div className="flex flex-col">
-                    <span className="text-xs font-mono text-primary uppercase tracking-widest mb-1">Founder & CEO</span>
+                    <span className="text-xs font-mono text-secondary uppercase tracking-widest mb-1">Founder & CEO</span>
                     <span className="text-lg font-display font-bold text-ink tracking-tight">Krish.dev</span>
                   </div>
                 </div>
               </div>
 
               {/* Technical Detail Badge */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 bg-primary/10 border border-primary/20 backdrop-blur-xl rounded-full flex items-center justify-center p-4 text-center">
-                <span className="text-[10px] font-mono text-primary font-bold leading-none">BUILDING IN PUBLIC</span>
+              <div className="absolute -top-6 -right-6 w-24 h-24 bg-secondary/10 border border-secondary/20 backdrop-blur-xl rounded-full flex items-center justify-center p-4 text-center">
+                <span className="text-[10px] font-mono text-secondary font-bold leading-none">BUILDING IN PUBLIC</span>
               </div>
             </div>
           </div>
@@ -96,25 +96,25 @@ export function FounderNarrativeSection({ onCtaClick }: FounderNarrativeSectionP
       <style dangerouslySetInnerHTML={{
         __html: `
         .highlight-text {
-          background: linear-gradient(90deg, rgba(124,137,248,0.1) 0%, rgba(124,137,248,0.05) 100%);
+          background: linear-gradient(90deg, rgba(228, 255, 156, 0.15) 0%, rgba(228, 255, 156, 0.05) 100%);
           color: white;
           padding: 2px 6px;
           border-radius: 4px;
           font-weight: 600;
         }
         .highlight-technical {
-          color: #7c89f8;
+          color: var(--color-secondary);
           font-family: var(--font-family-mono);
           font-size: 0.9em;
           letter-spacing: -0.02em;
         }
         .highlight-success {
-          background: linear-gradient(90deg, rgba(39,166,68,0.15) 0%, rgba(39,166,68,0.05) 100%);
-          color: #4ade80;
+          background: linear-gradient(90deg, rgba(228, 255, 156, 0.2) 0%, rgba(228, 255, 156, 0.05) 100%);
+          color: var(--color-secondary);
           padding: 2px 6px;
           border-radius: 4px;
           font-weight: 600;
-          border: 1px solid rgba(39,166,68,0.2);
+          border: 1px solid rgba(228, 255, 156, 0.3);
         }
       `}} />
     </section>

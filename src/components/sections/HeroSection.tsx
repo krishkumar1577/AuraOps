@@ -123,7 +123,7 @@ export function HeroSection({ onVideoClick, onTryClick }: HeroSectionProps) {
               style={{ transitionDelay: `${idx * 200}ms` }}
             >
               {idx === 2 ? (
-                <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-white via-primary to-white bg-[length:200%_auto] animate-shimmer">
+                <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-white via-secondary to-white bg-[length:200%_auto] animate-shimmer">
                   {word}
                 </span>
               ) : (

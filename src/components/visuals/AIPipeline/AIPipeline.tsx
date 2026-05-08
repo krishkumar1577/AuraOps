@@ -175,8 +175,8 @@ export default function AIPipeline() {
           <span
             className="w-[6px] h-[6px] rounded-full flex-shrink-0 transition-all duration-300"
             style={{
-              background: statusActive ? 'var(--color-primary)' : done.length === EXEC_ORDER.length ? 'var(--color-primary)' : 'var(--color-hairline)',
-              boxShadow: statusActive ? '0 0 8px var(--color-primary)' : done.length === EXEC_ORDER.length ? '0 0 8px var(--color-primary)' : undefined,
+              background: statusActive ? 'var(--color-secondary)' : done.length === EXEC_ORDER.length ? 'var(--color-secondary)' : 'var(--color-hairline)',
+              boxShadow: statusActive ? '0 0 8px var(--color-secondary)' : done.length === EXEC_ORDER.length ? '0 0 8px var(--color-secondary)' : undefined,
               animation: statusActive ? 'sdotPulse 0.9s ease-in-out infinite' : undefined,
             }}
           />
@@ -185,7 +185,7 @@ export default function AIPipeline() {
             style={{
               fontFamily: "var(--font-family-mono)",
               fontSize: 11,
-              color: statusActive ? 'var(--color-primary)' : done.length === EXEC_ORDER.length ? 'var(--color-ink-muted)' : 'var(--color-ink-tertiary)',
+              color: statusActive ? 'var(--color-secondary)' : done.length === EXEC_ORDER.length ? 'var(--color-ink-muted)' : 'var(--color-ink-tertiary)',
             }}
           >
             {statusText}
