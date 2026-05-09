@@ -13,6 +13,7 @@ import { PricingUrgencySection } from '../components/sections/PricingUrgencySect
 import { EarlySignupBar } from '../components/sections/EarlySignupBar'
 import { FinalCTASection } from '../components/sections/FinalCTASection'
 import StatusTicker from '../components/layout/StatusTicker'
+import { Analytics } from "@vercel/analytics/react"
 
 const navLinks = [
   { label: 'Features', href: '#features' },
@@ -89,6 +90,8 @@ export default function Home() {
 
       <StatusTicker />
       <Footer />
+
+      <Analytics />
     </>
   )
 }
