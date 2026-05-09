@@ -7,10 +7,8 @@ import Badge from '../ui/Badge'
 gsap.registerPlugin(ScrollTrigger)
 
 export function SocialProofSection() {
-  // Hover effects for integration badges
   useCardHover('[data-integration-badge]')
 
-  // GSAP: Integration badges scroll reveal
   useEffect(() => {
     const badges = document.querySelectorAll('[data-integration-badge]');
     if (badges && badges.length > 0) {
@@ -65,15 +63,13 @@ export function SocialProofSection() {
     { 
       name: 'Lambda', 
       description: 'Instant Node Sync',
-      // Using a generic server/lambda icon or text since Lambda Cloud isn't standard in simpleicons
       logo: null,
       customIcon: 'λ'
     },
   ]
 
   return (
-    <section data-social-proof-section id="ecosystem" className="relative w-screen bg-black pb-16 pt-8 px-8 overflow-hidden">
-      {/* Background Grid Accent */}
+    <section data-social-proof-section id="ecosystem" className="relative w-screen bg-canvas pb-16 pt-8 px-8 overflow-hidden" style={{ backgroundImage: 'linear-gradient(135deg, rgba(255, 159, 252, 0.05), rgba(82, 39, 255, 0.05))' }}>
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
       
       <div className="max-w-7xl mx-auto relative z-10">
@@ -89,7 +85,6 @@ export function SocialProofSection() {
           </p>
         </div>
 
-        {/* Integration Grid - High End Technical Cards */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-24">
           {integrations.map((item, idx) => (
             <div 
@@ -111,7 +106,6 @@ export function SocialProofSection() {
           ))}
         </div>
 
-        {/* Trust Footnote */}
         <div className="flex flex-wrap justify-center items-center gap-12 pt-12 border-t border-hairline reveal" style={{ animationDelay: '800ms' }}>
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-secondary" />

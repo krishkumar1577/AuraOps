@@ -10,7 +10,6 @@ interface FinalCTASectionProps {
 }
 
 export function FinalCTASection({ onCtaClick }: FinalCTASectionProps) {
-  // GSAP: Text and buttons fade in on scroll
   useEffect(() => {
     const headline = document.querySelector('[data-final-cta-headline]');
     const subheading = document.querySelector('[data-final-cta-subheading]');
@@ -42,19 +41,20 @@ export function FinalCTASection({ onCtaClick }: FinalCTASectionProps) {
     }
   }, []);
   return (
-    <section data-final-cta-section className="w-screen bg-gradient-to-b from-canvas to-black pb-16 pt-0 px-8">
+    <section
+      data-final-cta-section
+      className="w-screen bg-canvas pb-16 pt-0 px-8"
+      style={{ backgroundImage: 'linear-gradient(135deg, rgba(255, 159, 252, 0.05), rgba(82, 39, 255, 0.05))' }}
+    >
       <div className="max-w-3xl mx-auto text-center">
-        {/* Main Headline */}
         <h2 data-final-cta-headline className="display-lg mb-6 leading-tight">
           Ready to ship AI agents in seconds?
         </h2>
 
-        {/* Subheading */}
         <p data-final-cta-subheading className="body-lg text-ink-muted mb-12 max-w-2xl mx-auto leading-relaxed">
           Stop wasting weeks on deployment infrastructure. AuraOps handles it. You focus on building.
         </p>
 
-        {/* CTA Buttons */}
         <div data-final-cta-buttons className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <RollingButton
             label="Try Free (No Credit Card)"
@@ -67,7 +67,6 @@ export function FinalCTASection({ onCtaClick }: FinalCTASectionProps) {
           />
         </div>
 
-        {/* Trust Badge */}
         <p data-final-cta-badge className="body-copy text-ink-muted">
           Used by 16 founders. 47 agents deployed. Join the waitlist.
         </p>

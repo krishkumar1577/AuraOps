@@ -31,7 +31,6 @@ export default function CompactFAQ(): React.ReactElement {
   const [openId, setOpenId] = useState<string | null>(FAQItems[0].id)
   const contentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
 
-  // GSAP: Smooth accordion height transitions
   useEffect(() => {
     FAQItems.forEach((item) => {
       const contentDiv = contentRefs.current[item.id];

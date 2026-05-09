@@ -49,14 +49,11 @@ const plans = [
 ];
 
 export function PricingUrgencySection() {
-  // Hover effects for pricing cards
   useCardHover('.pricing-card')
 
-  // GSAP: Pricing cards scale-up entrance + Pro card lift
   useEffect(() => {
     const cards = document.querySelectorAll('.pricing-card');
     if (cards && cards.length > 0) {
-      // Set initial state
       gsap.set(cards, {
         opacity: 0,
         scale: 0.85,
@@ -108,15 +105,13 @@ export function PricingUrgencySection() {
   }, []);
 
   return (
-    <section data-pricing-section className="w-screen bg-black pb-16 pt-8 px-8">
+    <section data-pricing-section className="w-screen bg-canvas pb-16 pt-8 px-8" style={{ backgroundImage: 'linear-gradient(135deg, rgba(255, 159, 252, 0.05), rgba(82, 39, 255, 0.05))' }}>
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
         <div className="text-center mb-20">
           <h2 className="display-lg mb-4">Simple, Transparent Pricing</h2>
           <p className="subhead text-ink-muted">Start free. Scale as you grow.</p>
         </div>
 
-        {/* Pricing Cards Grid */}
         <div className="grid grid-cols-4 gap-6 mb-16">
           {plans.map((plan, idx) => (
             <div
@@ -132,7 +127,6 @@ export function PricingUrgencySection() {
                 padding: '32px'
               }}
             >
-              {/* Badge - Absolutely positioned, doesn't affect layout */}
               {plan.badge && (
                 <div 
                   className="absolute left-1/2 -translate-x-1/2 px-4 py-1 text-xs font-bold rounded-full whitespace-nowrap bg-white text-black"
@@ -144,9 +138,7 @@ export function PricingUrgencySection() {
                 </div>
               )}
 
-              {/* Content Container - Flex column layout */}
               <div className="flex flex-col h-full">
-                {/* Fixed Height Header Section - Ensures price/specs align across cards */}
                 <div className="h-40 mb-6">
                   <h3 className="font-semibold text-lg mb-3 text-white">
                     {plan.name}
@@ -163,7 +155,6 @@ export function PricingUrgencySection() {
                     )}
                   </div>
 
-                  {/* Specs - Fixed position in header */}
                   <div className="space-y-2">
                     <div className="flex gap-2 text-sm">
                       <span className="text-zinc-500">Agents:</span>
@@ -176,7 +167,6 @@ export function PricingUrgencySection() {
                   </div>
                 </div>
 
-                {/* Features - Flex-grow to push button down */}
                 <div className="border-t border-zinc-900 pt-6 flex-grow">
                   <ul className="space-y-3">
                     {plan.features.map((feature, featureIdx) => (
@@ -201,7 +191,6 @@ export function PricingUrgencySection() {
                   </ul>
                 </div>
 
-                {/* Button - Locked at bottom */}
                 <div className="border-t border-t-zinc-900 pt-6 mt-8">
                   <RollingButton
                     label={plan.cta}

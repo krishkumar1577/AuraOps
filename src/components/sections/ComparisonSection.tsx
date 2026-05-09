@@ -39,7 +39,7 @@ export function ComparisonSection({ onCtaClick }: ComparisonSectionProps) {
   ]
 
   return (
-    <section className="w-screen bg-canvas py-24 px-8 overflow-x-auto">
+    <section className="w-screen bg-canvas pb-16 pt-8 px-8 overflow-x-auto" style={{ backgroundImage: 'linear-gradient(135deg, rgba(255, 159, 252, 0.05), rgba(82, 39, 255, 0.05))' }}>
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -118,7 +118,7 @@ export function ComparisonSection({ onCtaClick }: ComparisonSectionProps) {
 
         {/* Summary */}
         <div className="bg-primary/10 border border-primary/30 rounded-2xl p-8 text-center mb-12">
-          <p className="body-lg text-ink">
+          <p className="body-lg text-ink-muted">
             Other platforms solve <span className="font-semibold">part</span> of the problem.
             <br />
             <span className="text-primary font-semibold">AuraOps solves all of it.</span>

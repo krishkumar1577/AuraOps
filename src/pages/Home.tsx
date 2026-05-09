@@ -14,7 +14,6 @@ import { EarlySignupBar } from '../components/sections/EarlySignupBar'
 import { FinalCTASection } from '../components/sections/FinalCTASection'
 import StatusTicker from '../components/layout/StatusTicker'
 
-// Navigation Links 
 const navLinks = [
   { label: 'Features', href: '#features' },
   { label: 'Workflow', href: '#workflow' },
@@ -26,11 +25,10 @@ const navLinks = [
 export default function Home() {
   return (
     <>
-      <div className="absolute top-0 left-0 right-0 z-50 pt-20 flex justify-center">
+      <div className="absolute top-0 left-0 right-0 z-50 pt-16 flex justify-center">
         <TopNotchNav links={navLinks} />
       </div>
 
-      {/* SECTION 1: HERO */}
       <HeroSection
         onVideoClick={() => {
           window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -38,50 +36,45 @@ export default function Home() {
         onTryClick={() => window.location.hash = '#waitlist'}
       />
 
-      {/* SECTION 2: FOUNDER NARRATIVE */}
       <FounderNarrativeSection
         onCtaClick={() => window.location.hash = '#story'}
       />
 
-      {/* SECTION 3: PROBLEM DEEP DIVE */}
-      <ProblemSection
-        onLearnMore={() => window.scrollTo({ top: document.querySelector('#solution')?.getBoundingClientRect().top ?? 0, behavior: 'smooth' })}
-      />
+      <ProblemSection />
 
-      {/* SECTION 4: SOCIAL PROOF */}
       <SocialProofSection />
 
-      {/* SECTION 5: SOLUTION */}
       <SolutionSection
         onLearnMore={() => window.scrollTo({ top: document.querySelector('#workflow')?.getBoundingClientRect().top ?? 0, behavior: 'smooth' })}
       />
 
-      {/* SECTION 6: PIPELINE VISUALIZATION (existing AIPipeline) */}
-      <div id="workflow" className="w-screen bg-black py-16">
+      <div
+        id="workflow"
+        className="w-screen bg-canvas py-16"
+        style={{ backgroundImage: 'linear-gradient(135deg, rgba(82, 39, 255, 0.04), rgba(255, 159, 252, 0.03))' }}
+      >
         <AIPipeline />
       </div>
 
-      {/* SECTION 7: BENEFITS BEFORE/AFTER */}
       <BenefitsBeforeAfterCards />
 
-      {/* SECTION 8: COMPARISON */}
       <ComparisonSection
         onCtaClick={() => window.location.hash = '#waitlist'}
       />
 
-      {/* SECTION 9: PRICING + URGENCY */}
       <PricingUrgencySection />
 
-      {/* EARLY SIGNUP BAR - High-contrast email capture */}
       <EarlySignupBar />
 
-      {/* SECTION 10: FINAL CTA */}
       <FinalCTASection
         onCtaClick={() => window.location.hash = '#waitlist'}
       />
 
-      {/* SECTION 11: FAQ */}
-      <section id="waitlist" className="w-screen bg-gradient-to-b from-black to-[#0a0a0f] py-16 px-8">
+      <section
+        id="waitlist"
+        className="w-screen bg-canvas py-16 px-8"
+        style={{ backgroundImage: 'linear-gradient(135deg, rgba(82, 39, 255, 0.05), rgba(255, 159, 252, 0.04))' }}
+      >
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="section-title mb-4">Questions? We Have Answers</h2>
@@ -94,7 +87,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 12: FOOTER */}
       <StatusTicker />
       <Footer />
     </>

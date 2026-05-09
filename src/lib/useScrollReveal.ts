@@ -16,22 +16,21 @@ interface ScrollRevealOptions {
 }
 
 export function useScrollReveal(options: ScrollRevealOptions) {
-  useEffect(() => {
-    const {
-      selector,
-      triggerSelector,
-      duration = 0.35,
-      stagger = 0.05,
-      delay = 0,
-      fromX = 0,
-      fromY = 50,
-      ease = 'power3.out',
-    } = options
+  const {
+    selector,
+    triggerSelector,
+    duration = 0.35,
+    stagger = 0.05,
+    delay = 0,
+    fromX = 0,
+    fromY = 50,
+    ease = 'power3.out',
+  } = options
 
+  useEffect(() => {
     const elements = document.querySelectorAll(selector)
     if (!elements || elements.length === 0) return
 
-    // Set initial state
     gsap.set(elements, {
       opacity: 0,
       x: fromX,
@@ -56,11 +55,10 @@ export function useScrollReveal(options: ScrollRevealOptions) {
     }, 150)
 
     return () => clearTimeout(timer)
-  }, [options.selector, options.triggerSelector])
+  }, [selector, triggerSelector, duration, stagger, delay, fromX, fromY, ease])
 }
 
-// Card hover effects
-export function setupCardHoverEffects(selector: string) {
+export function useCardHoverEffects(selector: string) {
   useEffect(() => {
     const cards = document.querySelectorAll(selector)
     cards.forEach((card) => {

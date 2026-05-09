@@ -23,7 +23,6 @@ export default function PipelineNode({ node, state, canvasWidth, canvasHeight }:
 
   const Icon = NodeIcons[node.id]
 
-  /* box border/shadow based on state */
   const boxStateStyle = (): React.CSSProperties => {
     if (state === 'running') {
       return isAgent
@@ -54,7 +53,6 @@ export default function PipelineNode({ node, state, canvasWidth, canvasHeight }:
       className="absolute flex flex-col items-center"
       style={{ left: cx - 29, top: cy - 29, zIndex: 10 }}
     >
-      {/* ── box ── */}
       <div
         className="relative flex items-center justify-center transition-all duration-300"
         style={{
@@ -70,7 +68,6 @@ export default function PipelineNode({ node, state, canvasWidth, canvasHeight }:
           ...boxStateStyle(),
         }}
       >
-        {/* inner sheen */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -80,7 +77,6 @@ export default function PipelineNode({ node, state, canvasWidth, canvasHeight }:
           }}
         />
 
-        {/* spinner */}
         {state === 'running' && (
           <div
             className="absolute pointer-events-none"
@@ -93,7 +89,6 @@ export default function PipelineNode({ node, state, canvasWidth, canvasHeight }:
           />
         )}
 
-        {/* check badge */}
         {state === 'done' && (
           <div
             className="absolute flex items-center justify-center"
@@ -111,13 +106,11 @@ export default function PipelineNode({ node, state, canvasWidth, canvasHeight }:
           </div>
         )}
 
-        {/* icon — counter-rotate for agent diamond */}
         <div style={{ transform: isAgent ? 'rotate(-45deg)' : undefined, position: 'relative', zIndex: 1 }}>
           {Icon ? <Icon isAgent={isAgent} /> : null}
         </div>
       </div>
 
-      {/* label */}
       <div
         className="mt-2 text-center whitespace-nowrap transition-colors duration-300"
         style={{
@@ -131,7 +124,6 @@ export default function PipelineNode({ node, state, canvasWidth, canvasHeight }:
         {node.label}
       </div>
 
-      {/* sublabel */}
       <div
         className="text-center transition-colors duration-300"
         style={{

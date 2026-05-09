@@ -7,6 +7,11 @@ import gsap from 'gsap'
  */
 export function useCardHover(selector: string) {
   useEffect(() => {
+    const hoverHandlers = new WeakMap<Element, {
+      handleMouseEnter: () => void
+      handleMouseLeave: () => void
+    }>()
+
     const timer = setTimeout(() => {
       const cards = document.querySelectorAll(selector)
       
@@ -18,7 +23,6 @@ export function useCardHover(selector: string) {
       console.log(`[useCardHover] Attached to ${cards.length} card(s) with selector: ${selector}`)
 
       cards.forEach((card, idx) => {
-        // Mouse enter: scale up + glow
         const handleMouseEnter = () => {
           console.log(`[useCardHover] Hover on card ${idx}`)
           gsap.to(card, {
@@ -29,7 +33,6 @@ export function useCardHover(selector: string) {
           })
         }
 
-        // Mouse leave: scale back + remove glow
         const handleMouseLeave = () => {
           gsap.to(card, {
             scale: 1,
@@ -42,23 +45,20 @@ export function useCardHover(selector: string) {
         card.addEventListener('mouseenter', handleMouseEnter)
         card.addEventListener('mouseleave', handleMouseLeave)
 
-        // Store handlers for cleanup
-        ;(card as any).__hoverHandlers = { handleMouseEnter, handleMouseLeave }
+        hoverHandlers.set(card, { handleMouseEnter, handleMouseLeave })
       })
-
-      // Cleanup function
-      return () => {
-        cards.forEach((card) => {
-          const handlers = (card as any).__hoverHandlers
-          if (handlers) {
-            card.removeEventListener('mouseenter', handlers.handleMouseEnter)
-            card.removeEventListener('mouseleave', handlers.handleMouseLeave)
-            delete (card as any).__hoverHandlers
-          }
-        })
-      }
     }, 100) // Wait for DOM to settle
 
-    return () => clearTimeout(timer)
+    return () => {
+      clearTimeout(timer)
+      const cards = document.querySelectorAll(selector)
+      cards.forEach((card) => {
+        const handlers = hoverHandlers.get(card)
+        if (handlers) {
+          card.removeEventListener('mouseenter', handlers.handleMouseEnter)
+          card.removeEventListener('mouseleave', handlers.handleMouseLeave)
+        }
+      })
+    }
   }, [selector])
 }

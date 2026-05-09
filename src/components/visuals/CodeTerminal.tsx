@@ -28,7 +28,6 @@ export default function CodeTerminal() {
       }, SEQUENCE[visibleLines].delay - (visibleLines > 0 ? SEQUENCE[visibleLines - 1].delay : 0))
       return () => clearTimeout(timer)
     } else {
-      // Loop with a long delay
       const loopTimer = setTimeout(() => {
         setVisibleLines(0)
       }, 5000)
@@ -38,7 +37,6 @@ export default function CodeTerminal() {
 
   return (
     <div className="w-full max-w-2xl mx-auto bg-surface-1 border border-hairline rounded-xl overflow-hidden shadow-2xl reveal" style={{ animationDelay: '1.4s' }}>
-      {/* Terminal Header */}
       <div className="flex items-center justify-between px-4 py-3 bg-black/40 border-b border-hairline">
         <div className="flex gap-1.5">
           <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
@@ -51,7 +49,6 @@ export default function CodeTerminal() {
         <div className="w-12" /> {/* spacer */}
       </div>
 
-      {/* Terminal Body */}
       <div className="p-6 font-mono text-[13px] leading-relaxed h-[280px] overflow-hidden">
         <div className="flex flex-col gap-2">
           {SEQUENCE.slice(0, visibleLines).map((line, idx) => (
@@ -78,7 +75,6 @@ export default function CodeTerminal() {
         </div>
       </div>
 
-      {/* Background Glow */}
       <div className="absolute inset-0 bg-secondary/5 pointer-events-none blur-[60px]" />
     </div>
   )

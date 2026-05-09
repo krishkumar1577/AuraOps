@@ -2,15 +2,13 @@ import { useEffect, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import RollingButton from '../ui/RollingButton'
-import LightPillar from '../visuals/LightPillar'
-import Badge from '../ui/Badge'
 import BottomMarqueeNotch from '../layout/BottomMarqueeNotch'
 import type { LogoItem } from '../layout/BottomMarqueeNotch'
 import AuraOpsLogoSvg from '../../assets/auraops_true_vector.svg'
+import LightPillar from '../visuals/LightPillar'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// Logo Icons
 const AuraOpsLogoIcon = () => (
   <img src={AuraOpsLogoSvg} alt="AuraOps" className="w-6 h-6" style={{ filter: 'brightness(0) invert(1)' }} />
 )
@@ -41,7 +39,6 @@ const NotionIcon = () => (
   </svg>
 )
 
-// Logo Data
 const logos: LogoItem[] = [
   { name: "AuraOps", italic: true, icon: <AuraOpsLogoIcon /> },
   { name: "Vercel", italic: false, icon: <VercelIcon /> },
@@ -59,9 +56,7 @@ export function HeroSection({ onVideoClick, onTryClick }: HeroSectionProps) {
   const [visibleWords, setVisibleWords] = useState<number[]>([])
   const [statsVisible, setStatsVisible] = useState(false)
 
-  // GSAP: Staggered headline animation - Animate IN from hidden state
   useEffect(() => {
-    // Set initial state
     const titleSpans = document.querySelectorAll('.hero-title-word');
     if (titleSpans && titleSpans.length > 0) {
       gsap.set(titleSpans, {
@@ -93,7 +88,6 @@ export function HeroSection({ onVideoClick, onTryClick }: HeroSectionProps) {
     return () => clearTimeout(timer);
   }, []);
 
-  // GSAP: Background parallax effect
   useEffect(() => {
     const timer = setTimeout(() => {
       const heroBg = document.querySelector('.hero-light-pillar');
@@ -119,7 +113,6 @@ export function HeroSection({ onVideoClick, onTryClick }: HeroSectionProps) {
     return () => clearTimeout(timer);
   }, []);
 
-  // Staggered headline animation (fallback state)
   useEffect(() => {
     const words = ['Your AI Agent Works Locally.', 'Breaks in Production.', 'Not Anymore.']
     words.forEach((_, index) => {
@@ -129,7 +122,6 @@ export function HeroSection({ onVideoClick, onTryClick }: HeroSectionProps) {
     })
   }, [])
 
-  // Stats count-up animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -169,15 +161,16 @@ export function HeroSection({ onVideoClick, onTryClick }: HeroSectionProps) {
         />
       </div>
 
-      {/* Content Container */}
       <div className="relative z-10 flex flex-col items-center justify-center max-w-7xl mx-auto text-center">
 
-        {/* Eyebrow - Refined Detail */}
         <div className="mb-8 reveal">
-          <Badge label="AI Deployment Infrastructure" variant="default" />
+          <div className="inline-flex items-center justify-center rounded-full bg-white/10 border border-white/25 px-4 py-1.5 backdrop-blur-md shadow-[0_0_24px_rgba(255,255,255,0.12)]">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] font-display text-white/90">
+              AI Deployment Infrastructure
+            </span>
+          </div>
         </div>
 
-        {/* Main Headline - Orchestrated Staggered Reveal */}
         <h1 className="hero-title text-[48px] md:text-[64px] mb-8 max-w-4xl font-bold leading-[1.1] font-display tracking-tightest">
           {headlineWords.map((word, idx) => (
             <div
@@ -197,14 +190,12 @@ export function HeroSection({ onVideoClick, onTryClick }: HeroSectionProps) {
           ))}
         </h1>
 
-        {/* Subheading */}
-        <p className="text-lg md:text-xl text-ink-muted max-w-2xl mb-10 leading-relaxed reveal" style={{ animationDelay: '1.2s' }}>
+        <p className="text-lg md:text-xl text-white/85 max-w-2xl mb-10 leading-relaxed reveal" style={{ animationDelay: '1.2s', textShadow: '0 0 16px rgba(0,0,0,0.35)' }}>
           Deploy from laptop to live GPU in 30 seconds. Same code. Same behavior everywhere.
           <br />
           No CUDA conflicts. No environment drift. No surprises.
         </p>
 
-        {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-6 mb-12 justify-center reveal" style={{ animationDelay: '1.4s' }}>
           <RollingButton
             label="See It Live (2 min video)"
@@ -218,7 +209,6 @@ export function HeroSection({ onVideoClick, onTryClick }: HeroSectionProps) {
           />
         </div>
 
-        {/* Social Proof Stats */}
         <div
           id="hero-stats"
           className="flex flex-col sm:flex-row gap-6 justify-center text-center"
@@ -246,12 +236,10 @@ export function HeroSection({ onVideoClick, onTryClick }: HeroSectionProps) {
         </div>
       </div>
 
-      {/* Bottom Marquee - Logo showcase */}
       <div className="absolute bottom-0 w-full flex justify-center">
         <BottomMarqueeNotch logos={logos} speed={26} maxWidth={800} />
       </div>
 
-      {/* Bottom scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <svg
           width="24"

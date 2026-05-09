@@ -6,12 +6,7 @@ import Badge from '../ui/Badge'
 
 gsap.registerPlugin(ScrollTrigger)
 
-interface ProblemSectionProps {
-  onLearnMore?: () => void
-}
-
-export function ProblemSection({}: ProblemSectionProps) {
-  // Hover effects for problem cards
+export function ProblemSection() {
   useCardHover('.problem-card')
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -28,11 +23,9 @@ export function ProblemSection({}: ProblemSectionProps) {
     return () => observer.disconnect()
   }, [])
 
-  // GSAP: Problem cards cascade reveal on scroll
   useEffect(() => {
     const cards = document.querySelectorAll('.problem-card');
     if (cards && cards.length > 0) {
-      // Set initial hidden state
       gsap.set(cards, {
         opacity: 0,
         x: -100,
@@ -92,12 +85,10 @@ export function ProblemSection({}: ProblemSectionProps) {
   ]
 
   return (
-    <section ref={containerRef} id="problems" className="relative w-screen bg-black pb-16 pt-8 px-8 overflow-hidden">
-      {/* Decorative Atmosphere */}
+    <section ref={containerRef} id="problems" className="relative w-screen bg-canvas pb-16 pt-8 px-8 overflow-hidden" style={{ backgroundImage: 'linear-gradient(135deg, rgba(255, 159, 252, 0.05), rgba(82, 39, 255, 0.05))' }}>
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
         <div className="mb-20 reveal">
           <div className="mb-8">
             <Badge label="The Infrastructure Tax" variant="muted" />
@@ -110,7 +101,6 @@ export function ProblemSection({}: ProblemSectionProps) {
           </p>
         </div>
 
-        {/* Problem Grid - Diagnostic Style */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {painPoints.map((point, idx) => (
             <div 
@@ -120,7 +110,6 @@ export function ProblemSection({}: ProblemSectionProps) {
               }`}
               style={{ transitionDelay: `${idx * 200}ms` }}
             >
-              {/* Technical Code Label */}
               <div className="mb-6 flex justify-between items-center">
                 <span className="font-mono text-[10px] text-primary/60 uppercase tracking-widest">{point.code}</span>
                 <div className="w-2 h-2 rounded-full bg-primary/20 group-hover:bg-primary transition-colors" />
@@ -131,19 +120,16 @@ export function ProblemSection({}: ProblemSectionProps) {
                 {point.description}
               </p>
 
-              {/* Impact Footer */}
               <div className="pt-6 border-t border-hairline flex flex-col gap-1">
                 <span className="text-[10px] font-mono text-ink-tertiary uppercase tracking-tighter">Resulting in</span>
                 <span className="text-sm font-bold text-primary italic">{point.impact}</span>
               </div>
 
-              {/* Decorative Corner */}
               <div className="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-br from-transparent to-primary/5 rounded-br-xl pointer-events-none" />
             </div>
           ))}
         </div>
         
-        {/* Bottom Stat Ticker */}
         <div className="mt-20 py-8 border-t border-hairline flex flex-col md:flex-row justify-between items-center gap-8 reveal" style={{ animationDelay: '800ms' }}>
           <div className="flex items-center gap-4">
             <span className="text-[11px] font-mono text-ink-tertiary uppercase tracking-widest">Average developer waste:</span>

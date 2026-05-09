@@ -1,6 +1,5 @@
 import React from 'react'
 
-// ════ CARD FOOTER ════
 export function CardFooter({ title, desc }: { title: string; desc: string }): React.ReactElement {
   const getIcon = () => {
     if (title.includes('/=')) return <IconSlash />
@@ -22,7 +21,6 @@ export function CardFooter({ title, desc }: { title: string; desc: string }): Re
   )
 }
 
-// ════ DEPLOY ROW ════
 export function DeployRow({ icon, bg, name, ref, status, statusColor, time, branch, opacity }: {
   icon: React.ReactElement
   bg: string
@@ -53,7 +51,6 @@ export function DeployRow({ icon, bg, name, ref, status, statusColor, time, bran
   )
 }
 
-// ════ REGISTRY ITEM ════
 export function RegistryItem({ name, size, checked, opacity }: {
   name: string
   size: string
@@ -71,7 +68,6 @@ export function RegistryItem({ name, size, checked, opacity }: {
   )
 }
 
-// ════ CODE LINE ════
 export function CodeLine({ num, code, highlight, tag }: {
   num: string | number
   code: React.ReactElement
@@ -88,7 +84,6 @@ export function CodeLine({ num, code, highlight, tag }: {
   )
 }
 
-// ════ MESSAGE ════
 export function Message({ avatar, bg, name, time, text, opacity }: {
   avatar: string
   bg: string
@@ -113,7 +108,6 @@ export function Message({ avatar, bg, name, time, text, opacity }: {
   )
 }
 
-// ════ CARD FOOTER ICONS ════
 function IconSlash() {
   return <svg className="w-3.25 h-3.25 flex-shrink-0" style={{ opacity: 0.45 }} viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M2 6.5l3-3M2 6.5l3 3" stroke="rgba(255,255,255,0.6)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
 }

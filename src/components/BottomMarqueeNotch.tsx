@@ -21,15 +21,12 @@ export default function BottomMarqueeNotch({
 
   return (
     <div className="relative w-full flex flex-col items-center z-10">
-      {/* Notch row */}
       <div className="relative w-full flex justify-center items-end">
-        {/* Left curve */}
         <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style={{ flexShrink: 0 }}>
           <path d="M0 56 Q0 0 56 0 L56 56 Z" fill="#010102" />
           <path d="M56 0 Q0 0 0 56" stroke="rgba(247,248,248,0.07)" strokeWidth="1" fill="none" />
         </svg>
 
-        {/* Pill */}
         <div
           style={{
             flex: 1,
@@ -39,13 +36,11 @@ export default function BottomMarqueeNotch({
             borderRadius: "0",
             position: "relative",
             overflow: "hidden",
-            // border: "1px solid rgba(247,248,248,0.1)",
             borderBottom: "none",
             boxShadow:
               "inset 0 3px 12px rgba(0,0,0,1), inset 0 10px 40px rgba(0,0,0,0.7), inset 6px 0 28px rgba(0,0,0,0.7), inset -6px 0 28px rgba(0,0,0,0.7)",
           }}
         >
-          {/* Inner sheen overlay */}
           <div
             style={{
               position: "absolute",
@@ -58,7 +53,6 @@ export default function BottomMarqueeNotch({
             }}
           />
 
-          {/* Fade mask + scrolling track */}
           <div
             style={{
               position: "absolute",
@@ -121,7 +115,6 @@ export default function BottomMarqueeNotch({
           </div>
         </div>
 
-        {/* Right curve */}
         <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style={{ flexShrink: 0 }}>
           <path d="M56 56 Q56 0 0 0 L0 56 Z" fill="#010102" />
           <path d="M0 0 Q56 0 56 56" stroke="rgba(247,248,248,0.07)" strokeWidth="1" fill="none" />

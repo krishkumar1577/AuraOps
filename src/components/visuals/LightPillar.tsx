@@ -43,7 +43,6 @@ const LightPillar: React.FC<LightPillarProps> = ({
   const timeRef = useRef(0);
   const rotationSpeedRef = useRef(rotationSpeed);
 
-  // Check WebGL support (computed value, not state)
   const webGLSupported = (() => {
     if (typeof window === 'undefined') return true;
     try {
@@ -83,7 +82,6 @@ const LightPillar: React.FC<LightPillarProps> = ({
 
     const settings = qualitySettings[effectiveQuality] || qualitySettings.medium;
 
-    // Scene setup
     const scene = new THREE.Scene();
     sceneRef.current = scene;
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
@@ -109,13 +107,11 @@ const LightPillar: React.FC<LightPillarProps> = ({
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // Convert hex colors to RGB
     const parseColor = (hex: string): THREE.Vector3 => {
       const color = new THREE.Color(hex);
       return new THREE.Vector3(color.r, color.g, color.b);
     };
 
-    // Shader material
     const vertexShader = `
       varying vec2 vUv;
       void main() {
@@ -158,7 +154,6 @@ const LightPillar: React.FC<LightPillarProps> = ({
         vec2 fragCoord = vUv * uResolution;
         vec2 uv = (fragCoord * 2.0 - uResolution) / uResolution.y;
         
-        // Apply 2D rotation to UV coordinates using pre-computed values
         uv = vec2(
           uv.x * uPillarRotCos - uv.y * uPillarRotSin,
           uv.x * uPillarRotSin + uv.y * uPillarRotCos
@@ -170,7 +165,6 @@ const LightPillar: React.FC<LightPillarProps> = ({
         float maxDepth = 50.0;
         float depth = 0.1;
 
-        // Use pre-computed rotation values (or mouse-based)
         float rotCos = uRotCos;
         float rotSin = uRotSin;
         if(uInteractive && length(uMouse) > 0.0) {
@@ -188,22 +182,18 @@ const LightPillar: React.FC<LightPillarProps> = ({
         for(int i = 0; i < ITERATIONS; i++) {
           vec3 pos = origin + direction * depth;
           
-          // Inline rotation: pos.xz *= rotMat
           float newX = pos.x * rotCos - pos.z * rotSin;
           float newZ = pos.x * rotSin + pos.z * rotCos;
           pos.x = newX;
           pos.z = newZ;
 
-          // Apply vertical scaling and wave deformation
           vec3 deformed = pos;
           deformed.y *= uPillarHeight;
           deformed = deformed + vec3(0.0, uTime, 0.0);
           
-          // Inlined wave deformation
           float frequency = 1.0;
           float amplitude = 1.0;
           for(int j = 0; j < WAVE_ITERATIONS; j++) {
-            // Inline rotation: deformed.xz *= rot(0.4) using pre-computed
             float wx = deformed.x * uWaveCos[j] - deformed.z * uWaveSin[j];
             float wz = deformed.x * uWaveSin[j] + deformed.z * uWaveCos[j];
             deformed.x = wx;
@@ -216,11 +206,9 @@ const LightPillar: React.FC<LightPillarProps> = ({
             amplitude *= 0.5;
           }
           
-          // Calculate distance field using cosine pattern
           vec2 cosinePair = cos(deformed.xz);
           float fieldDistance = length(cosinePair) - 0.2;
           
-          // Radial boundary constraint (inlined blendMax)
           float radialBound = length(pos.xz) - uPillarWidth;
           float k = 4.0;
           float h = max(k - abs(-radialBound - (-fieldDistance)), 0.0);
@@ -235,11 +223,9 @@ const LightPillar: React.FC<LightPillarProps> = ({
           depth += fieldDistance * STEP_MULT;
         }
 
-        // Normalize by pillar width to maintain consistent glow regardless of size
         float widthNormalization = uPillarWidth / 3.0;
         color = tanh(color * uGlowAmount / widthNormalization);
         
-        // Add noise postprocessing
         float rnd = noise(gl_FragCoord.xy);
         color -= rnd / 15.0 * uNoiseIntensity;
         
@@ -247,7 +233,6 @@ const LightPillar: React.FC<LightPillarProps> = ({
       }
     `;
 
-    // Pre-compute wave rotation values
     const waveAngle = 0.4;
     const waveSinValues = new Float32Array(4);
     const waveCosValues = new Float32Array(4);
@@ -256,7 +241,6 @@ const LightPillar: React.FC<LightPillarProps> = ({
       waveCosValues[i] = Math.cos(waveAngle);
     }
 
-    // Pre-compute pillar rotation
     const pillarRotRad = (pillarRotation * Math.PI) / 180.0;
     const pillarRotCos = Math.cos(pillarRotRad);
     const pillarRotSin = Math.sin(pillarRotRad);
@@ -295,7 +279,6 @@ const LightPillar: React.FC<LightPillarProps> = ({
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
-    // Mouse interaction - throttled for performance
     let mouseMoveTimeout: number | null = null;
     const handleMouseMove = (event: MouseEvent) => {
       if (!interactive) return;
@@ -316,7 +299,6 @@ const LightPillar: React.FC<LightPillarProps> = ({
       container.addEventListener('mousemove', handleMouseMove, { passive: true });
     }
 
-    // Animation loop with fixed timestep
     let lastTime = performance.now();
     const targetFPS = effectiveQuality === 'low' ? 30 : 60;
     const frameTime = 1000 / targetFPS;
@@ -330,7 +312,6 @@ const LightPillar: React.FC<LightPillarProps> = ({
         timeRef.current += 0.016 * rotationSpeedRef.current;
         materialRef.current.uniforms.uTime.value = timeRef.current;
 
-        // Pre-compute rotation on CPU
         const rotAngle = timeRef.current * 0.3;
         materialRef.current.uniforms.uRotCos.value = Math.cos(rotAngle);
         materialRef.current.uniforms.uRotSin.value = Math.sin(rotAngle);
@@ -343,7 +324,6 @@ const LightPillar: React.FC<LightPillarProps> = ({
     };
     rafRef.current = requestAnimationFrame(animate);
 
-    // Handle resize with debouncing
     let resizeTimeout: number | null = null;
     const handleResize = () => {
       if (resizeTimeout) {
@@ -361,7 +341,6 @@ const LightPillar: React.FC<LightPillarProps> = ({
 
     window.addEventListener('resize', handleResize, { passive: true });
 
-    // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
       if (interactive) {

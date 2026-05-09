@@ -14,10 +14,8 @@ interface BenefitCardProps {
 }
 
 export function BenefitsBeforeAfterCards() {
-  // Hover effects
   useCardHover('[data-benefit-card]')
 
-  // GSAP: Card entrance animations on scroll
   useEffect(() => {
     const cards = document.querySelectorAll('[data-benefit-card]');
     if (cards && cards.length > 0) {
@@ -155,9 +153,8 @@ export function BenefitsBeforeAfterCards() {
   ]
 
   return (
-    <section data-benefits-section className="w-screen bg-black pb-16 pt-8 px-8">
+    <section data-benefits-section className="w-screen bg-canvas pb-16 pt-8 px-8" style={{ backgroundImage: 'linear-gradient(135deg, rgba(255, 159, 252, 0.10), rgba(82, 39, 255, 0.08))' }}>
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="display-lg mb-6 leading-tight">
             What Changes
@@ -168,7 +165,6 @@ export function BenefitsBeforeAfterCards() {
           </p>
         </div>
 
-        {/* Benefits Grid - 3 columns on desktop, 1 on mobile */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {benefits.map((benefit, idx) => (
             <BeforeAfterCard key={idx} {...benefit} />
@@ -182,19 +178,15 @@ export function BenefitsBeforeAfterCards() {
 function BeforeAfterCard({ feature, before, after, metric, icon }: BenefitCardProps) {
   return (
     <div data-benefit-card className="bg-surface-1 border border-hairline rounded-2xl group transition-all duration-500 hover:border-primary/20 hover:shadow-[0_0_40px_rgba(124,137,248,0.05)] reveal">
-      {/* Card Content */}
       <div className="p-8">
-        {/* Icon */}
         <div className="mb-8 w-12 h-12 flex items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary/20 transition-all duration-500">
           {icon}
         </div>
 
-        {/* Feature Title */}
         <h3 className="text-[17px] font-bold text-ink mb-8 group-hover:text-primary transition-colors">
           {feature}
         </h3>
 
-        {/* Before */}
         <div className="mb-6 pb-6 border-b border-hairline">
           <div className="text-[10px] font-bold text-red-500/50 uppercase tracking-[0.2em] mb-3">Before</div>
           <p className="text-sm leading-relaxed text-ink-muted">
@@ -202,7 +194,6 @@ function BeforeAfterCard({ feature, before, after, metric, icon }: BenefitCardPr
           </p>
         </div>
 
-        {/* After */}
         <div className="mb-8 pb-8 border-b border-hairline">
           <div className="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-3">After</div>
           <p className="text-sm font-semibold leading-relaxed text-primary">
@@ -210,7 +201,6 @@ function BeforeAfterCard({ feature, before, after, metric, icon }: BenefitCardPr
           </p>
         </div>
 
-        {/* Metric */}
         <div className="flex items-center justify-between">
           <span className="caption text-ink-tertiary uppercase tracking-widest font-bold">Impact</span>
           <p className="text-sm font-bold text-ink bg-surface-2 px-3 py-1 rounded-full border border-hairline group-hover:border-primary/30 transition-colors">

@@ -12,7 +12,6 @@ interface SolutionSectionProps {
 }
 
 export function SolutionSection({ onLearnMore }: SolutionSectionProps) {
-  // GSAP: Counter animation (30min/1800s → 11s) + progress bar + glow
   useEffect(() => {
     const timer = setTimeout(() => {
       try {
@@ -77,14 +76,12 @@ export function SolutionSection({ onLearnMore }: SolutionSectionProps) {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <section id="workflow" className="relative w-screen bg-black pb-16 pt-8 px-8 overflow-hidden">
-      {/* Background Atmosphere */}
+    <section id="workflow" className="relative w-screen bg-canvas pb-16 pt-8 px-8 overflow-hidden" style={{ backgroundImage: 'linear-gradient(135deg, rgba(255, 159, 252, 0.05), rgba(82, 39, 255, 0.05))' }}>
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
           
-          {/* Left Column: Technical Narrative (60%) */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             <div className="mb-8 reveal">
               <Badge label="Deployment Workflow" variant="muted" />
@@ -137,16 +134,13 @@ export function SolutionSection({ onLearnMore }: SolutionSectionProps) {
             </div>
           </div>
 
-          {/* Right Column: The Terminal (40%) */}
           <div className="lg:col-span-5 relative">
-            {/* Visual Depth Background */}
             <div className="absolute inset-0 bg-secondary/10 blur-[100px] opacity-30 -z-10" />
             
             <div className="reveal" style={{ animationDelay: '800ms' }}>
               <CodeTerminal />
             </div>
             
-            {/* Context Floating Badge */}
             <div className="absolute -bottom-6 -right-6 px-4 py-2 bg-surface-1/80 backdrop-blur-md border border-hairline rounded-lg shadow-xl reveal" style={{ animationDelay: '2.5s' }}>
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-secondary" />
@@ -154,7 +148,6 @@ export function SolutionSection({ onLearnMore }: SolutionSectionProps) {
               </div>
             </div>
 
-            {/* Decorative Grid Element */}
             <div className="absolute -top-12 -left-12 w-24 h-24 border border-hairline rounded-full opacity-20 pointer-events-none" />
           </div>
 

@@ -8,7 +8,7 @@ interface FounderNarrativeSectionProps {
 
 export function FounderNarrativeSection({ onCtaClick }: FounderNarrativeSectionProps) {
   return (
-    <section className="relative w-screen bg-black pb-16 pt-8 px-8 overflow-hidden">
+    <section className="relative w-screen bg-canvas pb-16 pt-8 px-8 overflow-hidden" style={{ backgroundImage: 'linear-gradient(135deg, rgba(255, 159, 252, 0.05), rgba(82, 39, 255, 0.05))' }}>
       {/* Background Accent */}
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -75,13 +75,21 @@ export function FounderNarrativeSection({ onCtaClick }: FounderNarrativeSectionP
                 />
 
                 {/* Overlay Signature/Tag */}
-                <div className="absolute bottom-6 left-6 right-6 p-4 bg-surface-1/40 backdrop-blur-md border border-white/10 rounded-xl">
-                  <div className="flex flex-col">
-                    <span className="text-xs font-mono text-secondary uppercase tracking-widest mb-1">Founder & CEO</span>
-                    <span className="text-lg font-display font-bold text-ink tracking-tight">Krish.dev</span>
-                  </div>
-                </div>
-              </div>
+                 <div className="absolute bottom-6 left-6 right-6 p-4 bg-surface-1/40 backdrop-blur-md border border-white/10 rounded-xl">
+                   <div className="flex flex-col">
+                     <span className="text-xs font-mono text-secondary uppercase tracking-widest mb-1">Founder & CEO</span>
+                     <span className="text-lg font-display font-bold text-ink tracking-tight">Krish.dev</span>
+                     <a
+                       href="https://www.linkedin.com/in/krishdevx/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="mt-2 text-xs font-mono uppercase tracking-wider text-white/70 hover:text-white transition-colors"
+                     >
+                       View LinkedIn
+                     </a>
+                   </div>
+                 </div>
+               </div>
 
               {/* Technical Detail Badge */}
               <div className="absolute -top-6 -right-6 w-24 h-24 bg-secondary/10 border border-secondary/20 backdrop-blur-xl rounded-full flex items-center justify-center p-4 text-center">

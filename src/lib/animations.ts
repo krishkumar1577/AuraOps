@@ -3,9 +3,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ============================================================================
-// EASING FUNCTIONS
-// ============================================================================
 
 export const easings = {
   outExpo: 'power2.out',
@@ -16,9 +13,6 @@ export const easings = {
   sine: 'sine.inOut',
 };
 
-// ============================================================================
-// ENTRANCE ANIMATIONS (Page Load)
-// ============================================================================
 
 export const heroTitleReveal = (selector: string, delay = 0.2) => {
   gsap.from(selector, {
@@ -50,9 +44,6 @@ export const heroBackgroundParallax = (selector: string) => {
   });
 };
 
-// ============================================================================
-// SCROLL TRIGGER ANIMATIONS
-// ============================================================================
 
 export const cardCascadeReveal = (selector: string, fromX = -100) => {
   gsap.utils.toArray<HTMLElement>(selector).forEach((card, i) => {
@@ -119,9 +110,6 @@ export const proCardLift = (selector: string) => {
   });
 };
 
-// ============================================================================
-// COUNTER ANIMATIONS
-// ============================================================================
 
 export interface CounterOptions {
   from: number;
@@ -185,9 +173,6 @@ export const glowPulse = (selector: string, delay: number = 0) => {
   });
 };
 
-// ============================================================================
-// HOVER INTERACTIONS
-// ============================================================================
 
 export const cardHoverEffect = (selector: string) => {
   gsap.utils.toArray<HTMLElement>(selector).forEach((card) => {
@@ -245,9 +230,6 @@ export const buttonHoverEffect = (selector: string) => {
   });
 };
 
-// ============================================================================
-// ACCORDION/STATE ANIMATIONS
-// ============================================================================
 
 export interface AccordionItem {
   trigger: HTMLElement;
@@ -284,9 +266,6 @@ export const setupAccordion = (items: AccordionItem[]) => {
   });
 };
 
-// ============================================================================
-// UTILITY FUNCTIONS
-// ============================================================================
 
 export const killAllAnimations = () => {
   gsap.globalTimeline.clear();
@@ -303,14 +282,10 @@ export const onWindowResize = (callback: () => void) => {
   });
 };
 
-// ============================================================================
-// BATCH SETUP FOR SECTIONS
-// ============================================================================
 
 export const setupSectionAnimations = () => {
   if (typeof window === 'undefined') return;
 
-  // Hero entrance
   const heroTitles = document.querySelectorAll('.hero-title span');
   if (heroTitles.length > 0) {
     gsap.from(heroTitles, {
@@ -344,21 +319,16 @@ export const setupSectionAnimations = () => {
     });
   }
 
-  // Problem cards reveal
   cardCascadeReveal('.problem-card', -100);
 
-  // Comparison table
   tableRowReveal('.comparison-row');
 
-  // Pricing cards
   cardScaleReveal('.pricing-card', 0.3);
   proCardLift('.pricing-card.pro');
 
-  // Interactions
   cardHoverEffect('.interactive-card');
   buttonHoverEffect('button');
 
-  // Accordion
   const faqItems: AccordionItem[] = [];
   document.querySelectorAll('.faq-item').forEach((item) => {
     const trigger = item.querySelector('.faq-trigger') as HTMLElement;
@@ -371,7 +341,6 @@ export const setupSectionAnimations = () => {
     setupAccordion(faqItems);
   }
 
-  // Refresh ScrollTrigger after all animations are set up
   gsap.delayedCall(0.5, () => {
     ScrollTrigger.refresh();
   });

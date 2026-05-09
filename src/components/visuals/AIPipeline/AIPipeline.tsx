@@ -48,7 +48,6 @@ export default function AIPipeline() {
   const [canvasWidth, setCanvasWidth] = useState(900)
   const canvasRef = useRef<HTMLDivElement>(null)
 
-  /* observe canvas width */
   useEffect(() => {
     const el = canvasRef.current
     if (!el) return
@@ -106,10 +105,13 @@ export default function AIPipeline() {
       <style>{GLOBAL_STYLES}</style>
 
       <div
-        className="relative w-full min-h-screen overflow-hidden bg-black px-7 py-11 font-sans"
-        style={{ paddingBottom: '44px', fontFamily: 'Inter, sans-serif' }}
+        className="relative w-full min-h-screen overflow-hidden bg-canvas px-7 py-11 font-sans"
+        style={{
+          paddingBottom: '44px',
+          fontFamily: 'Inter, sans-serif',
+          backgroundImage: 'linear-gradient(135deg, rgba(255, 159, 252, 0.05), rgba(82, 39, 255, 0.05))',
+        }}
       >
-        {/* faint grid */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -120,7 +122,6 @@ export default function AIPipeline() {
           }}
         />
 
-        {/* ── INTRO SECTION WITH BUTTON ── */}
         <div className="relative z-10 flex flex-col items-center justify-center text-center mb-12">
           <h1 className="text-display-lg text-ink mb-4" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
             The Workflow Orchestration
@@ -138,7 +139,6 @@ export default function AIPipeline() {
           </div>
         </div>
 
-        {/* ── CANVAS ── */}
         <div
           ref={canvasRef}
           className="relative w-full"
@@ -165,7 +165,6 @@ export default function AIPipeline() {
           )}
         </div>
 
-        {/* ── STATUS BAR ── */}
         <div
           className="relative flex items-center gap-3 rounded-xl bg-surface-1 border border-hairline mt-4 px-4.5 py-3 z-20"
           style={{
