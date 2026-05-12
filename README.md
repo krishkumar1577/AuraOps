@@ -1,111 +1,138 @@
+<!--
+█████╗ ██╗   ██╗██████╗  █████╗  ██████╗ ██████╗ ███████╗
+██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔═══██╗██╔══██╗██╔════╝
+███████║██║   ██║██████╔╝███████║██║   ██║██████╔╝███████╗
+██╔══██║██║   ██║██╔══██╗██╔══██║██║   ██║██╔═══╝ ╚════██║
+██║  ██║╚██████╔╝██║  ██║██║  ██║╚██████╔╝██║     ███████║
+╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚══════╝
+-->
+
+<div align="center">
+
+<img src="public/auraops-logo.png" alt="AuraOps" width="72" />
+
 # AuraOps
 
-A modern web development environment built with **Vite + React + Tailwind CSS**.
+### Your AI Agent Works Locally. Breaks in Production. Not Anymore.
 
-## 🚀 Quick Start
+<p>
+  <a href="https://auraops.vercel.app"><img src="https://img.shields.io/badge/🌐_Live-auraops.vercel.app-7c3aed?style=for-the-badge&labelColor=0a0a0a" /></a>
+  <a href="https://github.com/krishkumar1577/AuraOps_backend"><img src="https://img.shields.io/badge/⚙️_Engine-Backend_Repo-7c3aed?style=for-the-badge&labelColor=0a0a0a" /></a>
+</p>
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+<p>
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=white&labelColor=0a0a0a" />
+  <img src="https://img.shields.io/badge/TypeScript-Strict-3178C6?style=flat-square&logo=typescript&logoColor=white&labelColor=0a0a0a" />
+  <img src="https://img.shields.io/badge/Tailwind-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white&labelColor=0a0a0a" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white&labelColor=0a0a0a" />
+</p>
 
-### Installation
+</div>
+
+---
+
+## 🎬 Demo
+
+<!-- ─────────────────────────────────────────────────────────────
+     DROP YOUR DEMO HERE — one line, that's it
+     
+     YouTube:
+     [![Watch](https://img.youtube.com/vi/YOUR_ID/maxresdefault.jpg)](https://youtube.com/watch?v=YOUR_ID)
+
+     Loom:
+     [![Watch](https://cdn.loom.com/sessions/thumbnails/YOUR_ID-with-play.gif)](https://loom.com/share/YOUR_ID)
+     ───────────────────────────────────────────────────────────── -->
+
+> 🎥 **Demo dropping soon** — `auraops deploy` shipping a LangChain agent live in 26 seconds.
+
+---
+
+## What Is This Repo?
+
+The marketing site for **AuraOps** — an AI deployment platform that eliminates the Infrastructure Tax.
+
+```
+┌─────────────────────────────────────────────────────┐
+│  This repo  →  Landing page  (auraops.vercel.app)   │
+│  Backend    →  Deployment engine  (AuraOps_backend) │
+└─────────────────────────────────────────────────────┘
+```
+
+Looking for the actual engine that deploys AI agents in 30 seconds?
+👉 **[AuraOps_backend](https://github.com/krishkumar1577/AuraOps_backend)**
+
+---
+
+## Stack
+
+| Layer | Tech |
+|---|---|
+| Framework | React 18 |
+| Language | TypeScript (strict) |
+| Styling | Tailwind CSS v4 |
+| Build | Vite |
+| Deploy | Vercel (auto on push to `main`) |
+
+---
+
+## Run Locally
 
 ```bash
+git clone https://github.com/krishkumar1577/AuraOps.git
+cd AuraOps
 npm install
-```
-
-### Development
-
-Start the development server:
-
-```bash
 npm run dev
+# → http://localhost:5173
 ```
-
-The application will be available at `http://localhost:5173/`
-
-### Build
-
-Create an optimized production build:
 
 ```bash
-npm run build
+npm run build      # production build
+npm run preview    # preview production locally
+npm run lint       # ESLint check
 ```
 
-Preview the production build locally:
+---
 
-```bash
-npm run preview
-```
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
-├── App.tsx          # Main React component
-├── App.css          # App styles
-├── index.css        # Global styles with Tailwind CSS
-├── main.tsx         # Application entry point
+├── App.tsx          # Root component
+├── index.css        # Global styles + Tailwind
+├── main.tsx         # Entry point
 └── assets/          # Static assets
+
+public/
+└── auraops-logo.png
 ```
 
-## 🎨 Technologies
+---
 
-- **Vite** - Next generation frontend tooling for fast development and optimized builds
-- **React** - Modern UI library with hooks and JSX
-- **TypeScript** - Type-safe JavaScript for better development experience
-- **Tailwind CSS** - Utility-first CSS framework for rapid UI development
-- **PostCSS** - CSS transformations with Autoprefixer support
+## Contributing
 
-## 🔧 Available Scripts
+Found a bug or want to improve the site? PRs are welcome.
 
-- `npm run dev` - Start development server with hot module replacement
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build locally
-- `npm run lint` - Run ESLint for code quality checks
+1. Fork the repo
+2. Create your branch: `git checkout -b fix/your-fix`
+3. Commit: `git commit -m 'fix: description'`
+4. Push: `git push origin fix/your-fix`
+5. Open a PR
 
-## 📦 Dependencies
+---
 
-### Main
-- `react` - UI library
-- `react-dom` - React DOM rendering
+<div align="center">
 
-### Development
-- `vite` - Build tool and dev server
-- `@vitejs/plugin-react` - Vite React plugin with Oxc/SWC
-- `tailwindcss` - Utility-first CSS framework v4
-- `@tailwindcss/postcss` - PostCSS plugin for Tailwind CSS v4
-- `postcss` - CSS transformations
-- `autoprefixer` - Vendor prefix automation
-- `typescript` - TypeScript compiler
-- `eslint` - Code quality and style
+```
+$ auraops deploy --provider lambda-labs
+✓ Blueprint generated      (0.4s)
+✓ Weights cached           (<1ms)
+✓ GPU acquired             (0.8s)
+✓ Health check passed      (3.2s)
+🚀 Live in 26.8s
+```
 
-## 🌐 Browser Support
+**[⭐ Star the backend](https://github.com/krishkumar1577/AuraOps_backend)**  · **[🐛 Report a bug](https://github.com/krishkumar1577/AuraOps/issues)**
 
-Works with all modern browsers that support ESM.
+*Deleting the Infrastructure Tax, one deploy at a time.*
 
-## 📝 Configuration Files
-
-### tailwind.config.js
-Tailwind CSS v4 configuration with content scanning for template files.
-
-### postcss.config.js
-PostCSS configuration using the new `@tailwindcss/postcss` plugin for v4.
-
-### vite.config.ts
-Vite build configuration with React plugin and TypeScript support.
-
-### tsconfig.json
-TypeScript configuration for the application and build tools.
-
-## 🎯 Best Practices
-
-- Use Tailwind CSS utility classes for styling
-- Keep components small and focused
-- Leverage TypeScript for type safety
-- Check [ESLint configuration](eslint.config.js) for code quality rules
-
-## 📄 License
-
-MIT
-
+</div>
