@@ -79,7 +79,7 @@ export default function TopNotchNav({
               <a
                 key={link.label}
                 href={link.href}
-                className="text-[12px] font-medium tracking-tight text-ink-subtle hover:text-ink transition-all duration-300 whitespace-nowrap"
+                className="text-[12px] font-medium tracking-tight text-white/70 hover:text-white transition-all duration-300 whitespace-nowrap"
                 style={{
                   transitionDelay: open ? `${i * 40}ms` : '0ms',
                   transform: open ? 'translateX(0)' : 'translateX(-10px)',
@@ -106,7 +106,7 @@ export default function TopNotchNav({
                 href={link.href}
                 target={link.target}
                 rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
-                className="text-[12px] font-medium tracking-tight text-ink-subtle hover:text-ink transition-all duration-300 whitespace-nowrap"
+                className="text-[12px] font-medium tracking-tight text-white/70 hover:text-white transition-all duration-300 whitespace-nowrap"
                 style={{
                   transitionDelay: open ? `${(i + 2) * 40}ms` : '0ms',
                   transform: open ? 'translateX(0)' : 'translateX(10px)',

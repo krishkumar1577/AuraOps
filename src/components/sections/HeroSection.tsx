@@ -190,10 +190,9 @@ export function HeroSection({ onVideoClick, onTryClick }: HeroSectionProps) {
           ))}
         </h1>
 
-        <p className="text-lg md:text-xl text-white/85 max-w-2xl mb-10 leading-relaxed reveal" style={{ animationDelay: '1.2s', textShadow: '0 0 16px rgba(0,0,0,0.35)' }}>
-          Deploy from laptop to live GPU in 30 seconds. Same code. Same behavior everywhere.
-          <br />
-          No CUDA conflicts. No environment drift. No surprises.
+        <p className="text-lg md:text-xl text-white/85 max-w-2xl mb-10 leading-relaxed reveal" style={{ animationDelay: '1.2s', textShadow: '0 0-16px rgba(0,0,0,0.35)' }}>
+          Deploy LLMs to production GPUs with a single command. <br className="hidden md:block" />
+          <span className="text-white/40">No Dockerfiles, no Kubernetes, no headaches.</span>
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 mb-12 justify-center reveal" style={{ animationDelay: '1.4s' }}>
