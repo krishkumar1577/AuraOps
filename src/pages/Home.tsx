@@ -1,7 +1,6 @@
+import { lazy, Suspense } from 'react'
 import TopNotchNav from '../components/layout/TopNotchNav'
-import AIPipeline from '../components/visuals/AIPipeline/AIPipeline'
 import CompactFAQ from '../components/sections/CompactFAQ'
-import Footer from '../components/layout/Footer'
 import { HeroSection } from '../components/sections/HeroSection'
 import { FounderNarrativeSection } from '../components/sections/FounderNarrativeSection'
 import { ProblemSection } from '../components/sections/ProblemSection'
@@ -15,11 +14,14 @@ import { FinalCTASection } from '../components/sections/FinalCTASection'
 import StatusTicker from '../components/layout/StatusTicker'
 import { Analytics } from "@vercel/analytics/react"
 
+const AIPipeline = lazy(() => import('../components/visuals/AIPipeline/AIPipeline'))
+const Footer = lazy(() => import('../components/layout/Footer'))
+
 const navLinks = [
   { label: 'Features', href: '#features' },
   { label: 'Workflow', href: '#workflow' },
   { label: 'Ecosystem', href: '#ecosystem' },
-  { label: 'Docs', href: 'https://github.com/AuraOps/docs', target: '_blank' as const },
+  { label: 'Docs', href: '/docs' },
   { label: 'Waitlist', href: '#waitlist' },
 ]
 
@@ -54,7 +56,9 @@ export default function Home() {
         className="w-screen bg-canvas py-16"
         style={{ backgroundImage: 'linear-gradient(135deg, rgba(82, 39, 255, 0.04), rgba(255, 159, 252, 0.03))' }}
       >
-        <AIPipeline />
+        <Suspense fallback={<div className="h-[640px] w-full" />}>
+          <AIPipeline />
+        </Suspense>
       </div>
 
       <BenefitsBeforeAfterCards />
@@ -89,7 +93,9 @@ export default function Home() {
       </section>
 
       <StatusTicker />
-      <Footer />
+      <Suspense fallback={<div className="h-[520px] w-full bg-canvas" />}>
+        <Footer />
+      </Suspense>
 
       <Analytics />
     </>
